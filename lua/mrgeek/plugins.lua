@@ -67,7 +67,13 @@ return packer.startup(function(use)
   }
 
   use {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    after = 'nvim-treesitter',
+  }
+
+  use {
     'numToStr/Comment.nvim',
+    after = 'nvim-ts-context-commentstring',
     config = function()
       require('mrgeek.plugins.comment')
     end,
