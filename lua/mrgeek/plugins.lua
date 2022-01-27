@@ -41,6 +41,18 @@ return packer.startup(function(use)
     after = 'nvim-treesitter',
   }
 
+  -- Git --
+  use {
+    'lewis6991/gitsigns.nvim',
+    opt = true,
+    config = function()
+      require('mrgeek.plugins.gitsigns')
+    end,
+    setup = function()
+      require('mrgeek.utils').packer_lazy_load 'gitsigns.nvim'
+    end,
+  }
+
   -- Color schemes --
   use 'folke/tokyonight.nvim' -- tokyonight theme yay
   use {
