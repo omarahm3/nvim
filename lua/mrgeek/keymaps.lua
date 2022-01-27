@@ -27,6 +27,9 @@ keymap('n', '<C-j>', '<C-w>j', opts)
 keymap('n', '<C-k>', '<C-w>k', opts)
 keymap('n', '<C-l>', '<C-w>l', opts)
 
+-- press escape to hide search highlights
+keymap('n', '<Esc>', ':noh<CR>', opts)
+
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 keymap('n', '<C-n>', ':NvimTreeToggle<CR>', opts)
 

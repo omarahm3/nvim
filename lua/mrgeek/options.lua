@@ -31,7 +31,7 @@ local options = {
   numberwidth = 2,                                  -- set number column width to 2 {default 4}
   signcolumn = 'yes',                               -- always show sign column otherwise it will shift text every time
   wrap = false,                                     -- disable text wrap and show it as 1 line
-  scrolloff = 20,                                   -- minimal number of screen lines to keep above and below the cursor
+  scrolloff = 8,                                   -- minimal number of screen lines to keep above and below the cursor
   sidescrolloff = 8,
   guifont = 'monospace:h17',                        -- font used on neovim gui
 }

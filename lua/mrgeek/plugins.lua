@@ -51,20 +51,30 @@ return packer.startup(function(use)
     end,
   }
 
+  -- LSP stuff --
+  use {
+    'neovim/nvim-lspconfig',
+  }
+
+  use {
+    "williamboman/nvim-lsp-installer",
+  }
+
   -- CMP and snippets plugins --
   use {
+    'hrsh7th/cmp-nvim-lsp',
+  }
+
+  use {
     'rafamadriz/friendly-snippets',
-    event = 'InsertEnter',
   }
 
   use {
     'L3MON4D3/LuaSnip',
-    after = 'friendly-snippets',
   }
 
   use {
     'hrsh7th/nvim-cmp',
-    after = 'LuaSnip',
     config = function()
       require('mrgeek.cmp').setup()
     end,
@@ -72,32 +82,22 @@ return packer.startup(function(use)
 
   use {
     'saadparwaiz1/cmp_luasnip',
-    after = 'nvim-cmp',
   }
 
   use {
     'hrsh7th/cmp-nvim-lua',
-    after = 'cmp_luasnip',
   }
-
-  -- use {
-  --   'hrsh7th/cmp-nvim-lsp',
-  --   after = 'cmp-nvim-lua',
-  -- }
 
   use {
     'hrsh7th/cmp-buffer',
-    after = 'cmp-nvim-lua',
   }
 
   use {
     'hrsh7th/cmp-path',
-    after = 'cmp-buffer',
   }
 
   use {
     'hrsh7th/cmp-cmdline',
-    after = 'cmp-path',
   }
 
   -- Experimental plugins --
