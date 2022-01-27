@@ -53,6 +53,17 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'tpope/vim-fugitive',
+    opt = true,
+    config = function()
+    end,
+    setup = function()
+      require('mrgeek.keymaps').vim_fugitive()
+      require('mrgeek.utils').packer_lazy_load 'vim-fugitive'
+    end,
+  }
+
   -- Color schemes --
   use 'folke/tokyonight.nvim' -- tokyonight theme yay
   use {

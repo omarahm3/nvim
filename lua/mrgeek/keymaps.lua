@@ -84,4 +84,9 @@ M.telescope = function()
   keymap('n', '<leader>gt', ':Telescope git_status <CR>', opts)
 end
 
+M.vim_fugitive = function()
+  keymap('n', '<leader>gs', ':G<CR>', opts)
+  keymap('n', '<leader>gb', ':G blame<CR>', opts)
+end
+
 return M
