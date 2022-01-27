@@ -90,6 +90,7 @@ return packer.startup(function(use)
       require('mrgeek.plugins.gitsigns')
     end,
     setup = function()
+      require('mrgeek.keymaps').git_signs()
       require('mrgeek.utils').packer_lazy_load 'gitsigns.nvim'
     end,
   }

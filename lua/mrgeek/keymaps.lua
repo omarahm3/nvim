@@ -56,10 +56,10 @@ keymap('v', 'p', '"_dP', opts)
 
 -- Visual block --
 -- move text up and down
-keymap('x', 'J', ':move \'>+1<CR>gv-gv', opts)
-keymap('x', 'K', ':move \'<-2<CR>gv-gv', opts)
-keymap('x', '<A-j>', ':move \'>+1<CR>gv-gv', opts)
-keymap('x', '<A-k>', ':move \'<-2<CR>gv-gv', opts)
+keymap('x', 'J', ':move ">+1<CR>gv-gv', opts)
+keymap('x', 'K', ':move "<-2<CR>gv-gv', opts)
+keymap('x', '<A-j>', ':move ">+1<CR>gv-gv', opts)
+keymap('x', '<A-k>', ':move "<-2<CR>gv-gv', opts)
 
 -- Terminal --
 -- better terminal navigation
@@ -85,18 +85,37 @@ M.vim_fugitive = function()
   keymap('n', '<leader>gb', ':G blame<CR>', opts)
 end
 
+M.git_signs = function()
+  keymap('n', ']c', "&diff ? ']c' : ':Gitsigns next_hunk<CR>'", { expr = true })
+  keymap('n', '[c', "&diff ? ']c' : ':Gitsigns prev_hunk<CR>'", { expr = true })
+
+  keymap('n', '<leader>hs', ':Gitsigns stage_hunk<CR>', opts)
+  keymap('v', '<leader>hs', ':Gitsigns stage_hunk<CR>', opts)
+  keymap('n', '<leader>hr', ':Gitsigns reset_hunk<CR>', opts)
+  keymap('v', '<leader>hr', ':Gitsigns reset_hunk<CR>', opts)
+  keymap('n', '<leader>hS', ':Gitsigns stage_buffer<CR>', opts)
+  keymap('n', '<leader>hu', ':Gitsigns undo_stage_hunk<CR>', opts)
+  keymap('n', '<leader>hR', ':Gitsigns reset_buffer<CR>', opts)
+  keymap('n', '<leader>hp', ':Gitsigns preview_hunk<CR>', opts)
+  keymap('n', '<leader>hb', ':lua require"gitsigns".blame_line{full=true}<CR>', opts)
+  keymap('n', '<leader>tb', ':Gitsigns toggle_current_line_blame<CR>', opts)
+  keymap('n', '<leader>hd', ':Gitsigns diffthis<CR>', opts)
+  keymap('n', '<leader>hD', ':lua require"gitsigns".diffthis("~")<CR>', opts)
+  keymap('n', '<leader>td', ':Gitsigns toggle_deleted<CR>', opts)
+end
+
 M.buffer_line = function()
   keymap('n', '<S-l>', ':bnext<CR>', opts)
   keymap('n', '<S-h>', ':bprevious<CR>', opts)
-  keymap('n', '<leader>x', ':lua require(\'mrgeek.utils\').close_buffer()<CR>', opts)
+  keymap('n', '<leader>x', ':lua require("mrgeek.utils").close_buffer()<CR>', opts)
 
   keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', opts)
   keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', opts)
 end
 
 M.comment = function()
-  keymap('n', '<leader>/', ':lua require\'Comment.api\'.toggle_current_linewise()<CR>', opts)
-  keymap('v', '<leader>/', ':lua require\'Comment.api\'.toggle_current_linewise_op(vim.fn.visualmode())<CR>', opts)
+  keymap('n', '<leader>/', ':lua require"Comment.api".toggle_current_linewise()<CR>', opts)
+  keymap('v', '<leader>/', ':lua require"Comment.api".toggle_current_linewise_op(vim.fn.visualmode())<CR>', opts)
 end
 
 return M
