@@ -29,6 +29,9 @@ return packer.startup(function(use)
 
   -- Color schemes --
   use 'folke/tokyonight.nvim' -- tokyonight theme yay
+  use {
+    'projekt0n/github-nvim-theme',
+  }
 
   -- File managing plugins --
   use {
