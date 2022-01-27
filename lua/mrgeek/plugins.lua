@@ -89,6 +89,14 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    event = 'BufRead',
+    config = function()
+      require('mrgeek.plugins.indent_line')
+    end
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',
