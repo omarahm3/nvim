@@ -27,6 +27,9 @@ keymap('n', '<C-j>', '<C-w>j', opts)
 keymap('n', '<C-k>', '<C-w>k', opts)
 keymap('n', '<C-l>', '<C-w>l', opts)
 
+-- Format code
+keymap('n', '<leader>f', ':Format<CR>', opts)
+
 -- press escape to hide search highlights
 keymap('n', '<Esc>', ':noh<CR>', opts)
 
@@ -53,6 +56,9 @@ keymap('v', '<A-j>', ':m .+1<CR>==', opts)
 keymap('v', '<A-k>', ':m .-2<CR>==', opts)
 -- this will keep what you're pasting in the clipboard register
 keymap('v', 'p', '"_dP', opts)
+
+-- Format code
+keymap('v', '<leader>f', ':lua vim.lsp.buf.range_formatting()<CR>', opts)
 
 -- Visual block --
 -- move text up and down

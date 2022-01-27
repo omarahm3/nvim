@@ -153,6 +153,14 @@ return packer.startup(function(use)
     'williamboman/nvim-lsp-installer',
   }
 
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    after = 'nvim-lspconfig',
+    config = function()
+       require('mrgeek.plugins.null_ls')
+    end,
+  }
+
   -- CMP and snippets plugins --
   use {
     'hrsh7th/cmp-nvim-lsp',
