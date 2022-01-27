@@ -98,6 +98,6 @@ local default ={
     folder_arrows = 1,
     tree_width = 30,
   },
-} 
+}
 
 nvim_tree.setup(default)
