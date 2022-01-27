@@ -27,6 +27,13 @@ return packer.startup(function(use)
   use 'nvim-lua/popup.nvim' -- implementation of popup api from vim in neovim
   use 'nvim-lua/plenary.nvim' -- useful lua functions that is used by lots of plugins
 
+  use {
+    'lewis6991/impatient.nvim',
+    setup = function()
+      require('mrgeek.plugins.impatient')
+    end
+  }
+
   -- UI stuff --
   use {
     'nvim-treesitter/nvim-treesitter',
