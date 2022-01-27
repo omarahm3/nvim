@@ -94,4 +94,9 @@ M.buffer_line = function()
   keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', opts)
 end
 
+M.comment = function()
+  keymap('n', '<leader>/', ':lua require\'Comment.api\'.toggle_current_linewise()<CR>', opts)
+  keymap('v', '<leader>/', ':lua require\'Comment.api\'.toggle_current_linewise_op(vim.fn.visualmode())<CR>', opts)
+end
+
 return M

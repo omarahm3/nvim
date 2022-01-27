@@ -66,6 +66,16 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('mrgeek.plugins.comment')
+    end,
+    setup = function()
+      require('mrgeek.keymaps').comment()
+    end,
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',
