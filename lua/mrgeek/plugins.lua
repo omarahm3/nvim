@@ -36,6 +36,11 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'p00f/nvim-ts-rainbow',
+    after = 'nvim-treesitter',
+  }
+
   -- Color schemes --
   use 'folke/tokyonight.nvim' -- tokyonight theme yay
   use {
