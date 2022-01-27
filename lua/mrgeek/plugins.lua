@@ -27,6 +27,7 @@ return packer.startup(function(use)
   use 'nvim-lua/popup.nvim' -- implementation of popup api from vim in neovim
   use 'nvim-lua/plenary.nvim' -- useful lua functions that is used by lots of plugins
 
+  -- UI stuff --
   use {
     'nvim-treesitter/nvim-treesitter',
     event = 'BufRead',
@@ -39,6 +40,14 @@ return packer.startup(function(use)
   use {
     'p00f/nvim-ts-rainbow',
     after = 'nvim-treesitter',
+  }
+
+  use {
+    'windwp/nvim-autopairs',
+    after = 'nvim-treesitter',
+    config = function()
+      require('mrgeek.plugins.autopairs')
+    end,
   }
 
   -- Git --
