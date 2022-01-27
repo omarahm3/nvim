@@ -29,7 +29,7 @@ local default = {
   highlight = {
     enable = true,
     disable = { '' },
-    -- additional_vim_regex_highlighting = true,
+    additional_vim_regex_highlighting = true, -- Needed for PHP files
     use_languagetree = true,
   },
   indent = {
