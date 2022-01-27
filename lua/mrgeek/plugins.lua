@@ -118,9 +118,9 @@ return packer.startup(function(use)
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
     cmd = { 'NvimTreeToggle', 'NvimTreeFocus' },
-    config = function() require'nvim-tree'.setup {
-
-    } end
+    config = function()
+      require('mrgeek.plugins.nvimtree')
+    end
   }
 
   use {
@@ -195,10 +195,10 @@ return packer.startup(function(use)
   -- Experimental plugins --
   use 'nathom/filetype.nvim' -- better and more extensive filetypes list
 
-  -- Packer stuff --
-  -- automatically set up configuration after cloning packer
-  -- this must be at the end of all plugins
-  if PACKER_BOOTSTRAP then
-    require 'packer'.sync()
-  end
+  -- -- Packer stuff --
+  -- -- automatically set up configuration after cloning packer
+  -- -- this must be at the end of all plugins
+  -- if PACKER_BOOTSTRAP then
+  --   require 'packer'.sync()
+  -- end
 end)
