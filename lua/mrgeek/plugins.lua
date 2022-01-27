@@ -97,6 +97,14 @@ return packer.startup(function(use)
     end
   }
 
+  use {
+    'folke/which-key.nvim',
+    event = 'BufRead',
+    config = function()
+      require('mrgeek.plugins.whichkey')
+    end
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',
