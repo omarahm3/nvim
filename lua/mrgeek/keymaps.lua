@@ -39,10 +39,6 @@ keymap('n', '<C-Down>', ':resize +2<CR>', opts)
 keymap('n', '<C-Left>', ':vertical resize -2<CR>', opts)
 keymap('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 
--- navigate buffer
-keymap('n', '<S-l>', ':bnext<CR>', opts)
-keymap('n', '<S-h>', ':bprevious<CR>', opts)
-
 -- Insert --
 -- press jk fast enough to go to visual mode
 keymap('i', 'jk', '<ESC>', opts)
@@ -87,6 +83,15 @@ end
 M.vim_fugitive = function()
   keymap('n', '<leader>gs', ':G<CR>', opts)
   keymap('n', '<leader>gb', ':G blame<CR>', opts)
+end
+
+M.buffer_line = function()
+  keymap('n', '<S-l>', ':bnext<CR>', opts)
+  keymap('n', '<S-h>', ':bprevious<CR>', opts)
+  keymap('n', '<leader>x', ':lua require(\'mrgeek.utils\').close_buffer()<CR>', opts)
+
+  keymap('n', '<Tab>', ':BufferLineCycleNext<CR>', opts)
+  keymap('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', opts)
 end
 
 return M

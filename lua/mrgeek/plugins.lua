@@ -50,6 +50,22 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'kyazdani42/nvim-web-devicons',
+    after = 'nvim-treesitter',
+  }
+
+  use {
+    'akinsho/bufferline.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require('mrgeek.plugins.bufferline')
+    end,
+    setup = function()
+      require('mrgeek.keymaps').buffer_line()
+    end,
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',
