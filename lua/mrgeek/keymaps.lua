@@ -124,4 +124,12 @@ M.comment = function()
   keymap('v', '<leader>/', ':lua require"Comment.api".toggle_current_linewise_op(vim.fn.visualmode())<CR>', opts)
 end
 
+M.dashboard = function()
+  keymap('n', '<leader>bm', ':DashboardJumpMarks<CR>', opts)
+  keymap('n', '<leader>fn', ':DashboardNewFile<CR>', opts)
+  keymap('n', '<leader>db', ':Dashboard<CR>', opts)
+  keymap('n', '<leader>l', ':SessionLoad<CR>', opts)
+  keymap('n', '<leader>s', ':SessionSave<CR>', opts)
+end
+
 return M

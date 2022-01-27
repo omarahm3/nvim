@@ -105,6 +105,16 @@ return packer.startup(function(use)
     end
   }
 
+  use {
+    'glepnir/dashboard-nvim',
+    config = function()
+      require('mrgeek.plugins.dashboard')
+    end,
+    setup = function()
+      require('mrgeek.keymaps').dashboard()
+    end,
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',

@@ -4,7 +4,7 @@ if not present then
   return
 end
 
-vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
+vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile', 'dashboard' }
 vim.g.indent_blankline_filetype_exclude = {
   'help',
   'startify',
@@ -56,6 +56,7 @@ vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
 vim.opt.list = true
 -- vim.opt.listchars:append 'space:⋅'
 -- vim.opt.listchars:append 'space:'
+vim.opt.listchars = '' -- Probably this will cause an issue later TODO check it
 vim.opt.listchars:append 'eol:↴'
 
 local default = {
