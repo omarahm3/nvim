@@ -71,3 +71,17 @@ keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', term_opts)
 keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', term_opts)
 keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', term_opts)
 keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', term_opts)
+
+local M = {}
+
+M.telescope = function()
+  keymap('n', '<C-p>', ':Telescope find_files <CR>', opts)
+  keymap('n', '<leader>fb', ':Telescope buffers <CR>', opts)
+  keymap('n', '<leader>fa', ':Telescope find_files follow=true no_ignore=true hidden=true <CR>', opts)
+  keymap('n', '<leader>gm', ':Telescope git_commits <CR>', opts)
+  keymap('n', '<leader>fw', ':Telescope live_grep <CR>', opts)
+  keymap('n', '<leader>fo', ':Telescope oldfiles <CR>', opts)
+  keymap('n', '<leader>gt', ':Telescope git_status <CR>', opts)
+end
+
+return M

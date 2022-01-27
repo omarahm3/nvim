@@ -51,13 +51,24 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'nvim-telescope/telescope.nvim',
+    cmd = 'Telescope',
+    config = function()
+      require('mrgeek.telescope').setup()
+    end,
+    setup = function()
+      require('mrgeek.keymaps').telescope()
+    end,
+  }
+
   -- LSP stuff --
   use {
     'neovim/nvim-lspconfig',
   }
 
   use {
-    "williamboman/nvim-lsp-installer",
+    'williamboman/nvim-lsp-installer',
   }
 
   -- CMP and snippets plugins --
