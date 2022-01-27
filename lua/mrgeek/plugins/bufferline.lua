@@ -24,6 +24,7 @@ local default = {
     separator_style = 'thin',
     always_show_bufferline = true,
     diagnostics = false,
+    diagnostics_update_in_insert = false,
     custom_filter = function(buf_number)
        -- Func to filter out our managed/persistent split terms
        local present_type, type = pcall(function()
