@@ -115,6 +115,17 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'max397574/better-escape.nvim',
+    event = 'InsertEnter',
+    config = function()
+      require('better_escape').setup {
+        mapping = { 'jk' },
+        timeout = 300,
+      }
+    end,
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',
