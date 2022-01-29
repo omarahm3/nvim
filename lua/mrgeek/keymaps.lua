@@ -132,4 +132,8 @@ M.dashboard = function()
   keymap('n', '<leader>s', ':SessionSave<CR>', opts)
 end
 
+M.twilight = function()
+  keymap('n', '<leader>tw', ':Twilight<CR>', opts)
+end
+
 return M

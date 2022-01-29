@@ -146,6 +146,17 @@ return packer.startup(function(use)
     end
   }
 
+  use {
+    'folke/twilight.nvim',
+    event = 'BufRead',
+    config = function()
+      require('mrgeek.plugins.twilight')
+    end,
+    setup = function()
+      require('mrgeek.keymaps').twilight()
+    end,
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',
