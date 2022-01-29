@@ -154,6 +154,21 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'rcarriga/nvim-notify',
+  }
+
+  use {
+    'simrat39/symbols-outline.nvim',
+    cmd = 'SymbolsOutline',
+    config = function()
+      require('mrgeek.plugins.symbols_outline')
+    end,
+    setup = function()
+      require('mrgeek.keymaps').symbols_outline()
+    end,
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',

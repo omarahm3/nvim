@@ -136,4 +136,8 @@ M.twilight = function()
   keymap('n', '<leader>tw', ':Twilight<CR>', opts)
 end
 
+M.symbols_outline = function()
+  keymap('n', '<F8>', ':SymbolsOutline<CR>', opts)
+end
+
 return M
