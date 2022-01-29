@@ -135,6 +135,17 @@ return packer.startup(function(use)
     end
   }
 
+  use {
+    'blackCauldron7/surround.nvim',
+    event = 'InsertEnter',
+    config = function()
+      require('surround').setup {
+        mappings_style = 'sandwich',
+        prefix = '<C-s>',
+      }
+    end
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',
