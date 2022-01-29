@@ -1,9 +1,19 @@
--- automatically install packer if its not there
-local present, packer = pcall(require, 'mrgeek.packerinit')
+local fn = vim.fn
 
-if not present then
-  vim.notify('Packer was not loaded, probably this is your first time huh?')
-  return
+-- Automatically install packer
+local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+
+if fn.empty(fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = fn.system {
+    'git',
+    'clone',
+    '--depth',
+    '1',
+    'https://github.com/wbthomason/packer.nvim',
+    install_path,
+  }
+  print 'Installing packer close and reopen Neovim...'
+  vim.cmd [[packadd packer.nvim]]
 end
 
 -- autocommand that will reload neovim whenever you save plugins.lua file
@@ -13,6 +23,26 @@ vim.cmd [[
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]]
+
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+
+packer.init {
+  display = {
+    open_fn = function()
+      return require('packer.util').float { border = 'single' }
+    end,
+    prompt_border = 'single',
+  },
+  git = {
+    clone_timeout = 6000, -- seconds
+  },
+  max_jobs = 20,
+  compile_on_sync = true,
+}
 
 return packer.startup(function(use)
   -- Packer plugin --
@@ -300,10 +330,10 @@ return packer.startup(function(use)
   -- Experimental plugins --
   use 'nathom/filetype.nvim' -- better and more extensive filetypes list
 
-  -- -- Packer stuff --
-  -- -- automatically set up configuration after cloning packer
-  -- -- this must be at the end of all plugins
-  -- if PACKER_BOOTSTRAP then
-  --   require 'packer'.sync()
-  -- end
+  -- Packer stuff --
+  -- automatically set up configuration after cloning packer
+  -- this must be at the end of all plugins
+  if PACKER_BOOTSTRAP then
+    require 'packer'.sync()
+  end
 end)
