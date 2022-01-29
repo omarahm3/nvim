@@ -1,5 +1,3 @@
-local fn = vim.fn
-
 -- automatically install packer if its not there
 local present, packer = pcall(require, 'mrgeek.packerinit')
 
@@ -156,6 +154,9 @@ return packer.startup(function(use)
 
   use {
     'rcarriga/nvim-notify',
+    config = function()
+      require('mrgeek.plugins.notify')
+    end,
   }
 
   use {

@@ -1,4 +1,4 @@
-local present, symbols_outline = pcall(require, 'symbols-outline')
+local present, _ = pcall(require, 'symbols-outline')
 
 if not present then
   return
