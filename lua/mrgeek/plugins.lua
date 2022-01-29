@@ -139,10 +139,7 @@ return packer.startup(function(use)
     'blackCauldron7/surround.nvim',
     event = 'InsertEnter',
     config = function()
-      require('surround').setup {
-        mappings_style = 'sandwich',
-        prefix = '<C-s>',
-      }
+      require('mrgeek.plugins.surround')
     end
   }
 
