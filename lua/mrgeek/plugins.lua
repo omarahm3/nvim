@@ -229,6 +229,13 @@ return packer.startup(function(use)
   use {
     'projekt0n/github-nvim-theme',
   }
+  use {
+    'catppuccin/nvim',
+    as = 'catppuccin',
+    config = function()
+      require('mrgeek.plugins.catppuccin')
+    end
+  }
 
   -- File managing plugins --
   use {
