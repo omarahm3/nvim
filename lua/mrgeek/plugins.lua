@@ -260,13 +260,16 @@ return packer.startup(function(use)
 
   use {
     'nvim-telescope/telescope.nvim',
-    cmd = 'Telescope',
     config = function()
       require('mrgeek.telescope').setup()
     end,
     setup = function()
       require('mrgeek.keymaps').telescope()
     end,
+  }
+
+  use {
+    'nvim-telescope/telescope-file-browser.nvim',
   }
 
   -- LSP stuff --
