@@ -25,6 +25,7 @@ local default = {
     'rust',
     'lua',
     'vim',
+    'hcl',
   },
   highlight = {
     enable = true,
