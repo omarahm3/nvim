@@ -272,6 +272,25 @@ return packer.startup(function(use)
     'nvim-telescope/telescope-file-browser.nvim',
   }
 
+  use {
+    'ThePrimeagen/refactoring.nvim',
+    requires = {
+      {
+        'nvim-lua/plenary.nvim'
+      },
+      {
+        'nvim-treesitter/nvim-treesitter'
+      },
+    },
+    after = 'nvim-treesitter',
+    config = function()
+      require('refactoring').setup({})
+    end,
+    setup = function()
+      require('mrgeek.keymaps').refactoring()
+    end,
+  }
+
   -- LSP stuff --
   use {
     'neovim/nvim-lspconfig',

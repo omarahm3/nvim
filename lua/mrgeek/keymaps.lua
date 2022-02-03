@@ -141,4 +141,8 @@ M.symbols_outline = function()
   keymap('n', '<F8>', ':SymbolsOutline<CR>', opts)
 end
 
+M.refactoring = function()
+  keymap('v', '<leader>rr', '<Esc>:lua require("telescope").extensions.refactoring.refactors()<CR>', opts)
+end
+
 return M
