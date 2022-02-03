@@ -15,6 +15,9 @@ local sources = {
   -- PHP
   null_ls.builtins.diagnostics.php,
 
+  -- GIT
+  null_ls.builtins.code_actions.gitsigns,
+
   -- Lua
   b.formatting.stylua,
   b.diagnostics.luacheck.with { extra_args = { '--global vim' } },
