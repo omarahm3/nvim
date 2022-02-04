@@ -126,6 +126,14 @@ return packer.startup(function(use)
   }
 
   use {
+    'romgrk/nvim-treesitter-context',
+    after = 'nvim-treesitter',
+    config = function()
+      require('mrgeek.plugins.context')
+    end,
+  }
+
+  use {
     'glepnir/dashboard-nvim',
     config = function()
       require('mrgeek.plugins.dashboard')
