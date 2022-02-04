@@ -118,14 +118,6 @@ return packer.startup(function(use)
   }
 
   use {
-    'lukas-reineke/indent-blankline.nvim',
-    event = 'BufRead',
-    config = function()
-      require('mrgeek.plugins.indent_line')
-    end
-  }
-
-  use {
     'folke/which-key.nvim',
     event = 'BufRead',
     config = function()

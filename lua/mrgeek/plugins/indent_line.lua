@@ -1,3 +1,5 @@
+-- Setup for 'lukas-reineke/indent-blankline.nvim' plugin
+
 local present, indent_blankline = pcall(require, 'indent_blankline')
 
 if not present then
