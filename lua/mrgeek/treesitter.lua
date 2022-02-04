@@ -35,7 +35,7 @@ local default = {
   },
   indent = {
     enable = true,
-    disable = { 'yaml', 'php' },
+    disable = { 'yaml', 'php', 'go' },
   },
   rainbow = {
     enable = true,
