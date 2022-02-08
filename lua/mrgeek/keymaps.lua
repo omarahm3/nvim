@@ -145,4 +145,9 @@ M.refactoring = function()
   keymap('v', '<leader>rr', '<Esc>:lua require("telescope").extensions.refactoring.refactors()<CR>', opts)
 end
 
+M.sniprun = function()
+  keymap('v', '<leader>sr', ':lua require("sniprun").run("v")<CR>', opts)
+  keymap('n', '<leader>sr', ':lua require("sniprun").run()<CR>', opts)
+end
+
 return M

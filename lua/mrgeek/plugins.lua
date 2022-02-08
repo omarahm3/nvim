@@ -291,6 +291,18 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'michaelb/sniprun',
+    event = 'BufRead',
+    run = 'bash ./install.sh',
+    config = function()
+      require('mrgeek.plugins.snip_run')
+    end,
+    setup = function()
+      require('mrgeek.keymaps').sniprun()
+    end,
+  }
+
   -- LSP stuff --
   use {
     'neovim/nvim-lspconfig',
