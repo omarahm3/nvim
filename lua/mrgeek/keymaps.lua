@@ -141,6 +141,15 @@ M.symbols_outline = function()
   keymap('n', '<F8>', ':SymbolsOutline<CR>', opts)
 end
 
+M.toggle_term = function()
+  keymap('n', '<leader>tf', ':ToggleTerm direction=float<CR>', opts)
+  keymap('n', '<leader>th', ':ToggleTerm size=10 direction=horizontal<CR>', opts)
+  keymap('n', '<leader>tv', ':ToggleTerm size=80 direction=vertical<CR>', opts)
+  keymap('n', '<leader>tn', ':lua _NODE_TOGGLE()<CR>', opts)
+  keymap('n', '<leader>tt', ':lua _HTOP_TOGGLE()<CR>', opts)
+  keymap('n', '<leader>tg', ':lua _LAZYGIT_TOGGLE()<CR>', opts)
+end
+
 M.refactoring = function()
   keymap('v', '<leader>rr', '<Esc>:lua require("telescope").extensions.refactoring.refactors()<CR>', opts)
 end

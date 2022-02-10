@@ -200,6 +200,16 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'akinsho/toggleterm.nvim',
+    config = function()
+      require('mrgeek.plugins.toggle_term')
+    end,
+    setup = function()
+      require('mrgeek.keymaps').toggle_term()
+    end,
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',
