@@ -52,8 +52,8 @@ keymap('v', '<S-Tab>', '<gv', opts)
 keymap('v', '<Tab>', '>gv', opts)
 
 -- move text up and down
-keymap('v', '<A-j>', ':m .+1<CR>==', opts)
-keymap('v', '<A-k>', ':m .-2<CR>==', opts)
+-- keymap('v', '<A-j>', ':m .+1<CR>==', opts)
+-- keymap('v', '<A-k>', ':m .-2<CR>==', opts)
 -- this will keep what you're pasting in the clipboard register
 keymap('v', 'p', '"_dP', opts)
 
@@ -62,10 +62,10 @@ keymap('v', '<leader>f', ':lua vim.lsp.buf.range_formatting()<CR>', opts)
 
 -- Visual block --
 -- move text up and down
-keymap('x', 'J', ':move ">+1<CR>gv-gv', opts)
-keymap('x', 'K', ':move "<-2<CR>gv-gv', opts)
-keymap('x', '<A-j>', ':move ">+1<CR>gv-gv', opts)
-keymap('x', '<A-k>', ':move "<-2<CR>gv-gv', opts)
+-- keymap('x', 'J', ':move ">+1<CR>gv-gv', opts)
+-- keymap('x', 'K', ':move "<-2<CR>gv-gv', opts)
+-- keymap('x', '<A-j>', ':move ">+1<CR>gv-gv', opts)
+-- keymap('x', '<A-k>', ':move "<-2<CR>gv-gv', opts)
 
 -- Terminal --
 -- better terminal navigation
@@ -163,6 +163,29 @@ M.renamer = function()
   keymap('i', '<F2>', ':lua require("renamer").rename()<CR>', opts)
   keymap('n', '<leader>rn', ':lua require("renamer").rename()<CR>', opts)
   keymap('v', '<leader>rn', ':lua require("renamer").rename()<CR>', opts)
+end
+
+-- Moving blocks
+M.go_move = function()
+  keymap("n", "<S-h>", "<Plug>GoNSMLeft", opts)
+  keymap("n", "<S-j>", "<Plug>GoNSMDown", opts)
+  keymap("n", "<S-k>", "<Plug>GoNSMUp", opts)
+  keymap("n", "<S-l>", "<Plug>GoNSMRight", opts)
+
+  keymap("x", "<S-h>", "<Plug>GoVSMLeft", opts)
+  keymap("x", "<S-j>", "<Plug>GoVSMDown", opts)
+  keymap("x", "<S-k>", "<Plug>GoVSMUp", opts)
+  keymap("x", "<S-l>", "<Plug>GoVSMRight", opts)
+
+  keymap("n", "<C-h>", "<Plug>GoNSDLeft", opts)
+  keymap("n", "<C-j>", "<Plug>GoNSDDown", opts)
+  keymap("n", "<C-k>", "<Plug>GoNSDUp", opts)
+  keymap("n", "<C-l>", "<Plug>GoNSDRight", opts)
+
+  keymap("x", "<C-h>", "<Plug>GoVSDLeft", opts)
+  keymap("x", "<C-j>", "<Plug>GoVSDDown", opts)
+  keymap("x", "<C-k>", "<Plug>GoVSDUp", opts)
+  keymap("x", "<C-l>", "<Plug>GoVSDRight", opts)
 end
 
 return M
