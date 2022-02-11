@@ -64,6 +64,17 @@ return packer.startup(function(use)
 
   -- UI stuff --
   use {
+    'nvim-lualine/lualine.nvim',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      opt = true
+    },
+    config = function()
+      require('mrgeek.plugins.lualine')
+    end,
+  }
+
+  use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = function()
