@@ -130,7 +130,7 @@ M.dashboard = function()
   keymap('n', '<leader>fn', ':DashboardNewFile<CR>', opts)
   keymap('n', '<leader>db', ':Dashboard<CR>', opts)
   keymap('n', '<leader>l', ':SessionLoad<CR>', opts)
-  keymap('n', '<leader>s', ':SessionSave<CR>', opts)
+  keymap('n', '<leader>ss', ':SessionSave<CR>', opts)
 end
 
 M.twilight = function()
