@@ -159,4 +159,10 @@ M.sniprun = function()
   keymap('n', '<leader>sr', ':lua require("sniprun").run()<CR>', opts)
 end
 
+M.renamer = function()
+  keymap('i', '<F2>', ':lua require("renamer").rename()<CR>', opts)
+  keymap('n', '<leader>rn', ':lua require("renamer").rename()<CR>', opts)
+  keymap('v', '<leader>rn', ':lua require("renamer").rename()<CR>', opts)
+end
+
 return M

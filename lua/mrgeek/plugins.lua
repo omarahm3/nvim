@@ -219,6 +219,23 @@ return packer.startup(function(use)
     end
   }
 
+  use {
+    'filipdutescu/renamer.nvim',
+    event = 'BufRead',
+    branch = 'master',
+    requires = {
+      {
+        'nvim-lua/plenary.nvim'
+      },
+    },
+    config = function()
+      require('mrgeek.plugins.renamer')
+    end,
+    setup = function()
+      require('mrgeek.keymaps').renamer()
+    end,
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',
