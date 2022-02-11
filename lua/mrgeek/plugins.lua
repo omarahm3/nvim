@@ -65,11 +65,13 @@ return packer.startup(function(use)
   -- UI stuff --
   use {
     'nvim-treesitter/nvim-treesitter',
-    event = 'BufRead',
     run = ':TSUpdate',
     config = function()
       require('mrgeek.treesitter').setup()
     end,
+    setup = function()
+      require('mrgeek.post_setup').setup_fold()
+    end
   }
 
   use {
@@ -208,6 +210,14 @@ return packer.startup(function(use)
     setup = function()
       require('mrgeek.keymaps').toggle_term()
     end,
+  }
+
+  use{
+    'anuvyklack/pretty-fold.nvim',
+    config = function()
+      require('pretty-fold').setup{}
+      require('pretty-fold.preview').setup()
+    end
   }
 
   -- Git --
