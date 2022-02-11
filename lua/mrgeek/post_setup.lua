@@ -8,6 +8,7 @@ M.setup_fold = function ()
   -- vim.cmd'set foldminlines=4'
   -- vim.cmd'set foldopen=block,hor,mark,jump,percent,quickfix,search,tag,undo'
   vim.wo.foldmethod = 'expr'
+  vim.o.foldlevelstart = 99
   vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
   vim.wo.foldenable = false -- Can be enabled directly on buffer using 'zi'
 end
