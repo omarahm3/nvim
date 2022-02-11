@@ -305,7 +305,22 @@ return packer.startup(function(use)
   }
 
   use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    requires = {
+      {
+        'nvim-telescope/telescope.nvim'
+      }
+    },
+    run = 'make'
+  }
+
+  use {
     'nvim-telescope/telescope-file-browser.nvim',
+    requires = {
+      {
+        'nvim-telescope/telescope.nvim'
+      }
+    },
   }
 
   use {

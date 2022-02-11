@@ -77,7 +77,7 @@ keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', term_opts)
 local M = {}
 
 M.telescope = function()
-  keymap('n', '<C-p>', ':Telescope find_files <CR>', opts)
+  keymap('n', '<C-p>', ':lua require "telescope.builtin".git_files()<CR>', opts)
   keymap('n', '<leader>ff', ':lua require "telescope".extensions.file_browser.file_browser() <CR>', opts)
   keymap('n', '<leader>fb', ':Telescope buffers <CR>', opts)
   keymap('n', '<leader>fa', ':Telescope find_files follow=true no_ignore=true hidden=true <CR>', opts)
