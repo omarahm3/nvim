@@ -4,6 +4,22 @@ if not present then
    return
 end
 
+local telescope_actions = require('telescope.actions.set')
+
+-- Fixing issue with folds not working on files opened with telescope
+-- REF: https://github.com/nvim-telescope/telescope.nvim/issues/699
+local fix_folds = {
+  hidden = true,
+  attach_mappings = function (_)
+    telescope_actions.select:enhance({
+			post = function()
+				vim.cmd(":normal! zx")
+			end,
+		})
+		return true
+  end
+}
+
 local default = {
    defaults = {
       vimgrep_arguments = {
@@ -51,21 +67,6 @@ local default = {
         '╯',
         '╰',
       },
-      extensions = {
-        file_browser = {
-          theme = 'ivy',
-          mappings = {
-            ['i'] = {},
-            ['n'] = {},
-          }
-        },
-        fzf = {
-          fuzzy = true,
-          override_generic_sorter = false,
-          override_file_sorter = true,
-          case_mode = 'smart_case',
-        }
-      },
       color_devicons = true,
       use_less = true,
       set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
@@ -75,6 +76,29 @@ local default = {
       -- Developer configurations: Not meant for general override
       buffer_previewer_maker = require('telescope.previewers').buffer_previewer_maker,
    },
+    extensions = {
+      file_browser = {
+        theme = 'ivy',
+        mappings = {
+          ['i'] = {},
+          ['n'] = {},
+        }
+      },
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = false,
+        override_file_sorter = true,
+        case_mode = 'smart_case',
+      }
+    },
+    pickers = {
+      buffers = fix_folds,
+      find_files = fix_folds,
+      git_files = fix_folds,
+      grep_string = fix_folds,
+      live_grep = fix_folds,
+      oldfiles = fix_folds,
+    },
 }
 
 local M = {}
