@@ -215,8 +215,7 @@ return packer.startup(function(use)
   use{
     'anuvyklack/pretty-fold.nvim',
     config = function()
-      require('pretty-fold').setup{}
-      require('pretty-fold.preview').setup()
+      require('mrgeek.plugins.pretty_fold')
     end
   }
 
