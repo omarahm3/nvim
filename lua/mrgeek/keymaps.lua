@@ -182,10 +182,10 @@ M.go_move = function()
   -- keymap("n", "<C-k>", "<Plug>GoNSDUp", opts)
   -- keymap("n", "<C-l>", "<Plug>GoNSDRight", opts)
 
-  keymap("x", "<C-h>", "<Plug>GoVSDLeft", opts)
-  keymap("x", "<C-j>", "<Plug>GoVSDDown", opts)
-  keymap("x", "<C-k>", "<Plug>GoVSDUp", opts)
-  keymap("x", "<C-l>", "<Plug>GoVSDRight", opts)
+  -- keymap("x", "<C-h>", "<Plug>GoVSDLeft", opts)
+  -- keymap("x", "<C-j>", "<Plug>GoVSDDown", opts)
+  -- keymap("x", "<C-k>", "<Plug>GoVSDUp", opts)
+  -- keymap("x", "<C-l>", "<Plug>GoVSDRight", opts)
 end
 
 return M
