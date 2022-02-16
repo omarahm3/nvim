@@ -189,4 +189,13 @@ M.go_move = function()
   -- keymap("x", "<C-l>", "<Plug>GoVSDRight", opts)
 end
 
+M.jester = function()
+  keymap("n", "<leader>jt", ":lua require('jester').run()<CR>", opts)
+  keymap("n", "<leader>jf", ":lua require('jester').run_file()<CR>", opts)
+  keymap("n", "<leader>jl", ":lua require('jester').run_last()<CR>", opts)
+  keymap("n", "<leader>jdd", ":lua require('jester').debug()<CR>", opts)
+  keymap("n", "<leader>jdf", ":lua require('jester').debug_file()<CR>", opts)
+  keymap("n", "<leader>jdl", ":lua require('jester').debug_last()<CR>", opts)
+end
+
 return M

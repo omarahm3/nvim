@@ -267,6 +267,17 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'David-Kunz/jester',
+    event = 'BufRead',
+    config = function()
+      require('mrgeek.plugins.jester')
+    end,
+    setup = function()
+      require('mrgeek.keymaps').jester()
+    end,
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',
