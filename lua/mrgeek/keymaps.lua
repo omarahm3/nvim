@@ -90,6 +90,7 @@ end
 M.vim_fugitive = function()
   keymap('n', '<leader>gs', ':G<CR>', opts)
   keymap('n', '<leader>gb', ':G blame<CR>', opts)
+  keymap('n', '<leader>gh', ':0Gclog<CR>', opts)
 end
 
 M.git_signs = function()
