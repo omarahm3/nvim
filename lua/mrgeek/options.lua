@@ -39,6 +39,8 @@ local options = {
 -- these are vim.g.<OPTIONS>
 local g_options = {
   tokyonight_style = 'night',                       -- the main variant of tokyonight theme
+  did_load_filetypes = 0,                           -- Needed by nathom/filetype.nvim to prevent loading default filetypes
+  do_filetype_lua = 1,
 }
 
 vim.opt.shortmess:append 'c'

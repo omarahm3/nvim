@@ -462,7 +462,19 @@ return packer.startup(function(use)
   }
 
   -- Experimental plugins --
-  use 'nathom/filetype.nvim' -- better and more extensive filetypes list
+  use {
+    'nathom/filetype.nvim', -- better and more extensive filetypes list
+    config = function()
+      require('filetype').setup({
+        overrides = {
+          complex = {
+            -- Set the filetype of any full filename matching the regex to gitconfig
+            ["Dockerfile*"] = "dockerfile", -- Included in the plugin
+          },
+        },
+      })
+    end,
+  }
 
   -- Packer stuff --
   -- automatically set up configuration after cloning packer
