@@ -402,6 +402,18 @@ return packer.startup(function(use)
   }
 
   use {
+    'ray-x/navigator.lua',
+    requires = {
+      'ray-x/guihua.lua',
+      run = 'cd lua/fzy && make',
+    },
+    after = 'nvim-lspconfig',
+    config = function()
+      require('mrgeek.plugins.navigator')
+    end,
+  }
+
+  use {
     'williamboman/nvim-lsp-installer',
   }
 
