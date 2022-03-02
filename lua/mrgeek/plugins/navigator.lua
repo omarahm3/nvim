@@ -38,7 +38,7 @@ local default = {
     diagnostic_head_severity_1 = "🈲",
     -- refer to lua/navigator.lua for more icons setups
   },
-  lsp_installer = false, -- set to true if you would like use the lsp installed by williamboman/nvim-lsp-installer
+  lsp_installer = true, -- set to true if you would like use the lsp installed by williamboman/nvim-lsp-installer
   lsp = {
     code_action = {enable = true, sign = true, sign_priority = 40, virtual_text = false},
     code_lens_action = {enable = true, sign = true, sign_priority = 40, virtual_text = false},
@@ -55,7 +55,7 @@ local default = {
     diagnostic_update_in_insert = false, -- update diagnostic message in insert mode
     disply_diagnostic_qf = true, -- always show quickfix if there are diagnostic errors, set to false if you  want to ignore it
     tsserver = {
-      filetypes = {'typescript'} -- disable javascript etc,
+      filetypes = {'typescript', 'javascript'} -- disable javascript etc,
       -- set to {} to disable the lspclient for all filetypes
     },
     gopls = {   -- gopls setting
@@ -73,7 +73,7 @@ local default = {
       sumneko_root_path = vim.fn.expand("$HOME") .. "/github/sumneko/lua-language-server",
       sumneko_binary = vim.fn.expand("$HOME") .. "/github/sumneko/lua-language-server/bin/macOS/lua-language-server",
     },
-    servers = {'cmake', 'ltex'}, -- by default empty, and it should load all LSP clients avalible based on filetype
+    -- servers = {'cmake', 'ltex'}, -- by default empty, and it should load all LSP clients avalible based on filetype
     -- but if you whant navigator load  e.g. `cmake` and `ltex` for you , you
     -- can put them in the `servers` list and navigator will auto load them.
     -- you could still specify the custom config  like this
