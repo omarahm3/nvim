@@ -198,4 +198,10 @@ M.jester = function()
   keymap("n", "<leader>jdl", ":lua require('jester').debug_last()<CR>", opts)
 end
 
+M.yoda = function()
+  keymap("v", "<leader>yc", ":YodeCreateSeditorFloating<CR>", opts)
+  keymap("v", "<leader>yr", ":YodeCreateSeditorReplace<CR>", opts)
+  keymap("n", "<leader>yd", ":YodeBufferDelete<CR>", opts)
+end
+
 return M

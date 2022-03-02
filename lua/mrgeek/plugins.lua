@@ -278,6 +278,20 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'hoschi/yode-nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
+    event = 'BufRead',
+    config = function()
+      require('yode-nvim').setup({})
+    end,
+    setup = function()
+      require('mrgeek.keymaps').yoda()
+    end,
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',
