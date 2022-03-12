@@ -316,6 +316,17 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'sindrets/diffview.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('mrgeek.plugins.diffview')
+    end,
+    setup = function()
+      require('mrgeek.keymaps').diffview()
+    end,
+  }
+
   -- Color schemes --
   use 'folke/tokyonight.nvim' -- tokyonight theme yay
   use {
@@ -433,6 +444,18 @@ return packer.startup(function(use)
     config = function()
       require('mrgeek.plugins.lsp_signature')
     end,
+  }
+
+  use {
+    'folke/trouble.nvim',
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
   }
 
   -- CMP and snippets plugins --

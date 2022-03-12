@@ -204,4 +204,13 @@ M.yoda = function()
   keymap("n", "<leader>yd", ":YodeBufferDelete<CR>", opts)
 end
 
+M.diffview = function()
+  keymap("n", "<leader>do", ":DiffviewOpen -uno<CR>", opts)
+  keymap("n", "<leader>dc", ":DiffviewClose<CR>", opts)
+  keymap("n", "<leader>df", ":DiffviewToggleFiles<CR>", opts)
+  keymap("n", "<leader>ds", ":DiffviewFocusFiles<CR>", opts)
+  keymap("n", "<leader>dr", ":DiffviewRefresh<CR>", opts)
+  keymap("n", "<leader>dh", ":DiffviewFileHistory %:p<CR>", opts)
+end
+
 return M
