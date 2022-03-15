@@ -513,6 +513,10 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'dstein64/vim-startuptime',
+  }
+
   -- Packer stuff --
   -- automatically set up configuration after cloning packer
   -- this must be at the end of all plugins
