@@ -86,6 +86,11 @@ return packer.startup(function(use)
   }
 
   use {
+    'nvim-treesitter/playground',
+    after = 'nvim-treesitter',
+  }
+
+  use {
     'p00f/nvim-ts-rainbow',
     after = 'nvim-treesitter',
   }
@@ -384,6 +389,28 @@ return packer.startup(function(use)
   use {
     'nvim-telescope/telescope-file-browser.nvim',
     requires = {
+      {
+        'nvim-telescope/telescope.nvim'
+      }
+    },
+  }
+
+  use {
+    'airblade/vim-rooter',
+    config = function()
+      vim.g['rooter_cd_cmd'] = 'lcd'
+    end
+  }
+
+  use {
+    'cljoly/telescope-repo.nvim',
+    requires = {
+      {
+        'airblade/vim-rooter'
+      },
+      {
+        'nvim-lua/plenary.nvim'
+      },
       {
         'nvim-telescope/telescope.nvim'
       }

@@ -85,6 +85,7 @@ M.telescope = function()
   keymap('n', '<leader>fw', ':Telescope live_grep <CR>', opts)
   keymap('n', '<leader>fo', ':Telescope oldfiles <CR>', opts)
   keymap('n', '<leader>gt', ':Telescope git_status <CR>', opts)
+  keymap('n', '<leader>fr', ':lua require"telescope".extensions.repo.list{fd_opts={"--no-ignore-vcs"}} <CR>', opts)
 end
 
 M.vim_fugitive = function()
