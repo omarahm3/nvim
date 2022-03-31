@@ -214,4 +214,10 @@ M.diffview = function()
   keymap("n", "<leader>dh", ":DiffviewFileHistory %:p<CR>", opts)
 end
 
+M.truezen = function()
+  keymap('n', '<leader>za', ':TZAtaraxis<CR>', opts)
+  keymap('n', '<leader>zf', ':TZFocus<CR>', opts)
+  keymap('n', '<leader>zm', ':TZMinimalist<CR>', opts)
+end
+
 return M

@@ -201,6 +201,25 @@ return packer.startup(function(use)
   }
 
   use {
+    'Pocco81/TrueZen.nvim',
+    event = 'BufRead',
+    config = function()
+      require('mrgeek.plugins.truezen')
+    end,
+    setup = function()
+      require('mrgeek.keymaps').truezen()
+    end,
+  }
+
+  use({
+    'gbprod/cutlass.nvim',
+    config = function()
+      require('cutlass').setup({
+      })
+    end
+  })
+
+  use {
     'rcarriga/nvim-notify',
     config = function()
       require('mrgeek.plugins.notify')
