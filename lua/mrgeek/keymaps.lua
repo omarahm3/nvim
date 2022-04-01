@@ -220,4 +220,8 @@ M.truezen = function()
   keymap('n', '<leader>zm', ':TZMinimalist<CR>', opts)
 end
 
+M.hop = function()
+  keymap('n', 'f', '<cmd>lua require"hop".hint_words()<cr>', {})
+end
+
 return M
