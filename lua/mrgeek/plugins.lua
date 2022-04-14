@@ -544,6 +544,22 @@ return packer.startup(function(use)
     'hrsh7th/cmp-cmdline',
   }
 
+  use {
+    'zbirenbaum/copilot.lua',
+    event = { 'VimEnter' },
+    -- branch = 'dev',
+    config = function()
+      vim.defer_fn(function()
+        require('copilot').setup()
+      end, 100)
+    end,
+  }
+
+  use {
+    'zbirenbaum/copilot-cmp',
+    after = {'copilot.lua', 'nvim-cmp'},
+  }
+
   -- Experimental plugins --
   use {
     'nathom/filetype.nvim', -- better and more extensive filetypes list
@@ -557,6 +573,10 @@ return packer.startup(function(use)
         },
       })
     end,
+  }
+
+  use {
+    'kevinhwang91/nvim-bqf',
   }
 
   use {

@@ -102,6 +102,7 @@ local default = {
       -- Kind icons
       vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
       vim_item.menu = ({
+        copilot = '[CO]',
         nvim_lsp = '[LSP]',
         nvim_lua = '[NVIM_LUA]',
         luasnip = '[Snippet]',
@@ -112,6 +113,7 @@ local default = {
     end,
   },
   sources = {
+    { name = 'copilot' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'luasnip' },
@@ -122,8 +124,10 @@ local default = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
-  documentation = {
-    border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+  window = {
+    documentation = {
+      border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+    },
   },
   experimental = {
     ghost_text = true,
@@ -136,5 +140,7 @@ local M = {}
 M.setup = function()
   cmp.setup(default)
 end
+
+vim.cmd("au InsertChange * lua require('copilot.utils').send_completion_request()")
 
 return M
