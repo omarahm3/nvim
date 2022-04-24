@@ -78,13 +78,14 @@ local M = {}
 
 M.telescope = function()
   keymap('n', '<C-p>', ':lua require "telescope.builtin".git_files()<CR>', opts)
-  keymap('n', '<leader>ff', ':lua require "telescope".extensions.file_browser.file_browser() <CR>', opts)
+  keymap('n', '<leader>ff', ':Telescope file_browser <CR>', opts)
   keymap('n', '<leader>fb', ':Telescope buffers <CR>', opts)
   keymap('n', '<leader>fa', ':Telescope find_files follow=true no_ignore=true hidden=true <CR>', opts)
   keymap('n', '<leader>gm', ':Telescope git_commits <CR>', opts)
   keymap('n', '<leader>fw', ':Telescope live_grep <CR>', opts)
   keymap('n', '<leader>fo', ':Telescope oldfiles <CR>', opts)
   keymap('n', '<leader>gt', ':Telescope git_status <CR>', opts)
+  keymap('n', '<leader>fr', ':lua require"telescope".extensions.repo.list{fd_opts={"--no-ignore-vcs"}} <CR>', opts)
 end
 
 M.vim_fugitive = function()
@@ -196,6 +197,31 @@ M.jester = function()
   keymap("n", "<leader>jdd", ":lua require('jester').debug()<CR>", opts)
   keymap("n", "<leader>jdf", ":lua require('jester').debug_file()<CR>", opts)
   keymap("n", "<leader>jdl", ":lua require('jester').debug_last()<CR>", opts)
+end
+
+M.yoda = function()
+  keymap("v", "<leader>yc", ":YodeCreateSeditorFloating<CR>", opts)
+  keymap("v", "<leader>yr", ":YodeCreateSeditorReplace<CR>", opts)
+  keymap("n", "<leader>yd", ":YodeBufferDelete<CR>", opts)
+end
+
+M.diffview = function()
+  keymap("n", "<leader>do", ":DiffviewOpen -uno<CR>", opts)
+  keymap("n", "<leader>dc", ":DiffviewClose<CR>", opts)
+  keymap("n", "<leader>df", ":DiffviewToggleFiles<CR>", opts)
+  keymap("n", "<leader>ds", ":DiffviewFocusFiles<CR>", opts)
+  keymap("n", "<leader>dr", ":DiffviewRefresh<CR>", opts)
+  keymap("n", "<leader>dh", ":DiffviewFileHistory %:p<CR>", opts)
+end
+
+M.truezen = function()
+  keymap('n', '<leader>za', ':TZAtaraxis<CR>', opts)
+  keymap('n', '<leader>zf', ':TZFocus<CR>', opts)
+  keymap('n', '<leader>zm', ':TZMinimalist<CR>', opts)
+end
+
+M.hop = function()
+  keymap('n', 'f', '<cmd>lua require"hop".hint_words()<cr>', {})
 end
 
 return M

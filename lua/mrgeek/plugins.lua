@@ -86,6 +86,11 @@ return packer.startup(function(use)
   }
 
   use {
+    'nvim-treesitter/playground',
+    after = 'nvim-treesitter',
+  }
+
+  use {
     'p00f/nvim-ts-rainbow',
     after = 'nvim-treesitter',
   }
@@ -106,6 +111,7 @@ return packer.startup(function(use)
   use {
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
+    branch = 'main',
     config = function()
       require('mrgeek.plugins.bufferline')
     end,
@@ -196,6 +202,25 @@ return packer.startup(function(use)
   }
 
   use {
+    'Pocco81/TrueZen.nvim',
+    event = 'BufRead',
+    config = function()
+      require('mrgeek.plugins.truezen')
+    end,
+    setup = function()
+      require('mrgeek.keymaps').truezen()
+    end,
+  }
+
+  use({
+    'gbprod/cutlass.nvim',
+    config = function()
+      require('cutlass').setup({
+      })
+    end
+  })
+
+  use {
     'rcarriga/nvim-notify',
     config = function()
       require('mrgeek.plugins.notify')
@@ -278,6 +303,20 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'hoschi/yode-nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
+    event = 'BufRead',
+    config = function()
+      require('yode-nvim').setup({})
+    end,
+    setup = function()
+      require('mrgeek.keymaps').yoda()
+    end,
+  }
+
   -- Git --
   use {
     'lewis6991/gitsigns.nvim',
@@ -302,8 +341,29 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'sindrets/diffview.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('mrgeek.plugins.diffview')
+    end,
+    setup = function()
+      require('mrgeek.keymaps').diffview()
+    end,
+  }
+
   -- Color schemes --
   use 'folke/tokyonight.nvim' -- tokyonight theme yay
+
+  use {
+    'marko-cerovac/material.nvim',
+    config = function()
+      require('mrgeek.theme.material')
+    end,
+  }
+
+  use 'shaunsingh/moonlight.nvim'
+
   use {
     'projekt0n/github-nvim-theme',
   }
@@ -366,6 +426,28 @@ return packer.startup(function(use)
   }
 
   use {
+    'airblade/vim-rooter',
+    config = function()
+      vim.g['rooter_cd_cmd'] = 'lcd'
+    end
+  }
+
+  use {
+    'cljoly/telescope-repo.nvim',
+    requires = {
+      {
+        'airblade/vim-rooter'
+      },
+      {
+        'nvim-lua/plenary.nvim'
+      },
+      {
+        'nvim-telescope/telescope.nvim'
+      }
+    },
+  }
+
+  use {
     'ThePrimeagen/refactoring.nvim',
     requires = {
       {
@@ -421,6 +503,18 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'folke/trouble.nvim',
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
   -- CMP and snippets plugins --
   use {
     'hrsh7th/cmp-nvim-lsp',
@@ -461,6 +555,22 @@ return packer.startup(function(use)
     'hrsh7th/cmp-cmdline',
   }
 
+  use {
+    'zbirenbaum/copilot.lua',
+    event = { 'VimEnter' },
+    -- branch = 'dev',
+    config = function()
+      vim.defer_fn(function()
+        require('copilot').setup()
+      end, 100)
+    end,
+  }
+
+  use {
+    'zbirenbaum/copilot-cmp',
+    after = {'copilot.lua', 'nvim-cmp'},
+  }
+
   -- Experimental plugins --
   use {
     'nathom/filetype.nvim', -- better and more extensive filetypes list
@@ -474,6 +584,26 @@ return packer.startup(function(use)
         },
       })
     end,
+  }
+
+  use {
+    'kevinhwang91/nvim-bqf',
+  }
+
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v1',
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end,
+    setup = function()
+      require('mrgeek.keymaps').hop()
+    end
+  }
+
+  use {
+    'dstein64/vim-startuptime',
   }
 
   -- Packer stuff --

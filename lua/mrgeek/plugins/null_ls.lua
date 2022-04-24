@@ -14,6 +14,13 @@ local sources = {
 
   -- PHP
   null_ls.builtins.diagnostics.php,
+  null_ls.builtins.diagnostics.phpcs.with({
+    command = './bin/phpcs',
+    args = {
+      "--standard=./ruleset.xml",
+      -- "src/"
+    }
+  }),
 
   -- GIT
   null_ls.builtins.code_actions.gitsigns,

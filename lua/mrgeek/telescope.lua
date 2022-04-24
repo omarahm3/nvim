@@ -106,7 +106,7 @@ local M = {}
 M.setup = function()
    telescope.setup(default)
 
-   local extensions = { 'terms', 'file_browser', 'fzf' }
+   local extensions = { 'terms', 'file_browser', 'fzf', 'repo' }
 
    pcall(function()
       for _, ext in ipairs(extensions) do
