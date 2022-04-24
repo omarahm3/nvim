@@ -1,4 +1,4 @@
-local theme = 'github_dark_default'
+local theme = 'material'
 
 local status_ok, _ = pcall(vim.cmd, 'colorscheme ' .. theme)
 

@@ -111,6 +111,7 @@ return packer.startup(function(use)
   use {
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
+    branch = 'main',
     config = function()
       require('mrgeek.plugins.bufferline')
     end,
@@ -353,6 +354,16 @@ return packer.startup(function(use)
 
   -- Color schemes --
   use 'folke/tokyonight.nvim' -- tokyonight theme yay
+
+  use {
+    'marko-cerovac/material.nvim',
+    config = function()
+      require('mrgeek.theme.material')
+    end,
+  }
+
+  use 'shaunsingh/moonlight.nvim'
+
   use {
     'projekt0n/github-nvim-theme',
   }
