@@ -183,7 +183,7 @@ return packer.startup(function(use)
   }
 
   use {
-    'blackCauldron7/surround.nvim',
+    'ur4ltz/surround.nvim',
     event = 'InsertEnter',
     config = function()
       require('mrgeek.plugins.surround')
