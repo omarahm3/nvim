@@ -73,6 +73,16 @@ return packer.startup(function(use)
       require('mrgeek.plugins.lualine')
     end,
   }
+  
+  use {
+    'stevearc/dressing.nvim',
+    requires = {
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      require('mrgeek.plugins.dressing')
+    end
+  }
 
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -96,6 +106,13 @@ return packer.startup(function(use)
     config = function()
       require('nvim-ts-autotag').setup()
     end,
+  }
+  
+  use {
+    'jose-elias-alvarez/nvim-lsp-ts-utils',
+    after = {
+      'nvim-treesitter'
+    }
   }
 
   use {
@@ -491,10 +508,12 @@ return packer.startup(function(use)
     end,
   }
 
-  -- LSP stuff --
+  -- LSP base --
   use {
     'neovim/nvim-lspconfig',
   }
+
+  -- LSP plugins --
 
   use {
     'williamboman/nvim-lsp-installer',
@@ -515,16 +534,17 @@ return packer.startup(function(use)
       require('mrgeek.plugins.lsp_signature')
     end,
   }
-
+  
   use {
-    'folke/trouble.nvim',
+    'onsails/lspkind-nvim',
+    after = 'nvim-lspconfig',
+  }
+  
+  use {
+    'folke/lsp-trouble.nvim',
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require("trouble").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
+      require('mrgeek.plugins.trouble')
     end
   }
 
@@ -601,10 +621,6 @@ return packer.startup(function(use)
         },
       })
     end,
-  }
-
-  use {
-    'kevinhwang91/nvim-bqf',
   }
 
   use {
