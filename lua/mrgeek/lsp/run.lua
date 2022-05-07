@@ -48,6 +48,12 @@ lspconfig.psalm.setup {
   on_attach = require('mrgeek.lsp.settings.psalm').on_attach,
 }
 
+lspconfig.psalm.setup {
+  capabilities = require('mrgeek.lsp.settings.psalm').capabilities,
+  handlers = handlers,
+  on_attach = require('mrgeek.lsp.settings.psalm').on_attach,
+}
+
 for _, server in ipairs { 'bashls', 'cssls', 'graphql', 'html', 'volar' } do
   lspconfig[server].setup {
     on_attach = on_attach,
