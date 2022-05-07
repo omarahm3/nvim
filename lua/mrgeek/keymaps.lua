@@ -149,7 +149,8 @@ M.toggle_term = function()
   keymap('n', '<leader>tv', ':ToggleTerm size=80 direction=vertical<CR>', opts)
   keymap('n', '<leader>tn', ':lua _NODE_TOGGLE()<CR>', opts)
   keymap('n', '<leader>tt', ':lua _HTOP_TOGGLE()<CR>', opts)
-  keymap('n', '<leader>tg', ':lua _LAZYGIT_TOGGLE()<CR>', opts)
+  keymap('n', '<leader>tg', ':lua _GORE_TOGGLE()<CR>', opts)
+  keymap('n', '<leader>tl', ':lua _LAZYGIT_TOGGLE()<CR>', opts)
 end
 
 M.refactoring = function()

@@ -60,4 +60,10 @@ function _HTOP_TOGGLE()
   htop:toggle()
 end
 
+local gore = Terminal:new({ cmd = 'gore', hidden = true })
+
+function _GORE_TOGGLE()
+  gore:toggle()
+end
+
 toggleterm.setup(default)
