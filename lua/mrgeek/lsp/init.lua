@@ -5,6 +5,13 @@ if not present then
   return
 end
 
+local signs = {
+  { name = "DiagnosticSignError", text = "" },
+  { name = "DiagnosticSignWarn", text = "" },
+  { name = "DiagnosticSignHint", text = "" },
+  { name = "DiagnosticSignInfo", text = "" },
+}
+
 local config = {
   virtual_text = false,
   signs = {
@@ -14,7 +21,6 @@ local config = {
   underline = true,
   severity_sort = true,
   float = {
-    source = false,
     style = 'minimal',
     border = 'rounded',
     source = 'always',
@@ -28,12 +34,6 @@ local config = {
       end
 
       if diagnostic.source == 'eslint' then
-        for _, table in pairs(codes) do
-          if vim.tbl_contains(table, code) then
-            return string.format('%s [%s]', table.icon .. diagnostic.message, code)
-          end
-        end
-
         return string.format('%s [%s]', diagnostic.message, code)
       end
 
@@ -46,46 +46,9 @@ vim.diagnostic.config(config)
 
 -- UI
 
-local signs = {
-  { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
-}
-
 for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texth1 = sign.name, text = sign.text, numh1 = "" })
 end
 
 require 'mrgeek.lsp.lsp-installer'
 require 'mrgeek.lsp.run'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
