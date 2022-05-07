@@ -1,9 +1,9 @@
-local present, lspconfig = pcall(require, 'lspconfig')
+local lspconfig = require('lspconfig')
 
-if not present then
-  return
-end
+local M = {}
 
-return {
+M.settings = {
   root_dir = lspconfig.util.root_pattern('composer.json'),
 }
+
+return M

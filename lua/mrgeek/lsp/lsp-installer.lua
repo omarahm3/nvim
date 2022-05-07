@@ -5,29 +5,9 @@ if not present then
   return
 end
 
--- Register a handler that will be called for all installed servers
--- Alternatively, you may also register handlers on specific server instances instead
-lsp_installer.on_server_ready(function(server)
-  local opts = {
-    on_attach = require('mrgeek.lsp.handlers').on_attach,
-    capabilities = require('mrgeek.lsp.handlers').capabilities,
-  }
-
-  if server.name == 'jsonls' then
-    local jsonls_opts = require('mrgeek.lsp.settings.jsonls')
-    opts = vim.tbl_deep_extend('force', jsonls_opts, opts)
-  end
-
-  if server.name == 'psalm' then
-    local psalm_opts = require('mrgeek.lsp.settings.psalm')
-    opts = vim.tbl_deep_extend('force', psalm_opts, opts)
-  end
-
-  if server.name == 'sumneko_lua' then
-    local lua_opts = require('mrgeek.lsp.settings.sumneko_lua')
-    opts = vim.tbl_deep_extend('force', lua_opts, opts)
-  end
-
-  server:setup(opts)
-  vim.cmd [[ do User LspAttachBuffers ]]
-end)
+lsp_installer.setup {
+  -- A list of servers to automatically install if they're not already installed
+  ensure_installed = { 'bashls', 'cssls', 'eslint', 'html', 'jsonls', 'sumneko_lua', 'tsserver', 'psalm' },
+  -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed
+  automatic_installation = true,
+}
