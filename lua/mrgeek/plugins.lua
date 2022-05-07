@@ -549,12 +549,12 @@ return packer.startup(function(use)
       require('mrgeek.plugins.lsp_signature')
     end,
   }
-  
+
   use {
     'onsails/lspkind-nvim',
     after = 'nvim-lspconfig',
   }
-  
+
   use {
     'folke/lsp-trouble.nvim',
     requires = "kyazdani42/nvim-web-devicons",
@@ -653,6 +653,8 @@ return packer.startup(function(use)
   use {
     'dstein64/vim-startuptime',
   }
+
+  use { 'antoinemadec/FixCursorHold.nvim' }
 
   -- Packer stuff --
   -- automatically set up configuration after cloning packer

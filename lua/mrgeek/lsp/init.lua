@@ -52,3 +52,4 @@ end
 
 require 'mrgeek.lsp.lsp-installer'
 require 'mrgeek.lsp.run'
+require 'mrgeek.lsp.functions'
