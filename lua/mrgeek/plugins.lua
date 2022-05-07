@@ -91,6 +91,14 @@ return packer.startup(function(use)
   }
 
   use {
+    'windwp/nvim-ts-autotag',
+    after = 'nvim-treesitter',
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
+  }
+
+  use {
     'p00f/nvim-ts-rainbow',
     after = 'nvim-treesitter',
   }
@@ -216,7 +224,7 @@ return packer.startup(function(use)
     'gbprod/cutlass.nvim',
     config = function()
       require('cutlass').setup({
-      })
+    })
     end
   })
 
@@ -248,8 +256,13 @@ return packer.startup(function(use)
     end,
   }
 
-  use{
+  use {
     'anuvyklack/pretty-fold.nvim',
+    requires = {
+      {
+        'anuvyklack/nvim-keymap-amend'
+      },
+    },
     config = function()
       require('mrgeek.plugins.pretty_fold')
     end
