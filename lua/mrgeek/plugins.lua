@@ -114,6 +114,20 @@ return packer.startup(function(use)
       'nvim-treesitter'
     }
   }
+  
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = {
+      'nvim-treesitter'
+    }
+  }
+  
+  use {
+    'RRethy/nvim-treesitter-textsubjects',
+    after = {
+      'nvim-treesitter'
+    }
+  }
 
   use {
     'p00f/nvim-ts-rainbow',
