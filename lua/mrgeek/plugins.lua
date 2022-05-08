@@ -556,7 +556,7 @@ return packer.startup(function(use)
   }
 
   use {
-    'folke/lsp-trouble.nvim',
+    'folke/trouble.nvim',
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
       require('mrgeek.plugins.trouble')

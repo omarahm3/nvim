@@ -1,6 +1,7 @@
 local present, plugin = pcall(require, 'trouble')
 
 if not present then
+  vim.notify('trouble is not installed')
   return
 end
 
