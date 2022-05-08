@@ -48,6 +48,38 @@ local kind_icons = {
   TypeParameter = '',
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
+local source_mapping = {
+  copilot = MrGeek.icons.light,
+  nvim_lsp = MrGeek.icons.paragraph .. '[LSP]',
+  nvim_lua = MrGeek.icons.bomb,
+  luasnip = MrGeek.icons.snippet,
+  buffer = MrGeek.icons.buffer,
+  path = MrGeek.icons.folderOpen2,
+}
+
+local format = function(entry, vim_item)
+  -- Kind icons
+  vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
+  vim_item.menu = source_mapping[entry.source.name]
+  return vim_item
+end
+
+
+local present, lspkind = pcall(require, 'lspkind')
+
+-- In case LSPKind is available then configure CMP to use it
+if present then
+  format = function(entry, vim_item)
+    vim_item.kind = lspkind.symbolic(vim_item.kind, { with_text = true })
+    local menu = source_mapping[entry.source.name]
+    local maxwidth = 50
+
+    vim_item.menu = menu
+    vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
+
+    return vim_item
+  end
+end
 
 local default = {
   snippet = {
@@ -98,19 +130,7 @@ local default = {
   },
   formatting = {
     fields = { 'kind', 'abbr', 'menu' },
-    format = function(entry, vim_item)
-      -- Kind icons
-      vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
-      vim_item.menu = ({
-        copilot = '[CO]',
-        nvim_lsp = '[LSP]',
-        nvim_lua = '[NVIM_LUA]',
-        luasnip = '[Snippet]',
-        buffer = '[Buffer]',
-        path = '[Path]',
-      })[entry.source.name]
-      return vim_item
-    end,
+    format = format,
   },
   sources = {
     { name = 'copilot' },
@@ -120,20 +140,51 @@ local default = {
     { name = 'buffer' },
     { name = 'path' },
   },
+  sorting = {
+    comparators = {
+      cmp.config.compare.exact,
+      cmp.config.compare.locality,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.score,
+      cmp.config.compare.offset,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.order,
+    },
+  },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
   window = {
-    documentation = {
-      border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-    },
+    completion = cmp.config.window.bordered({
+      winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder"
+    }),
+    documentation = cmp.config.window.bordered({
+      winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder"
+    }),
   },
   experimental = {
     ghost_text = true,
     native_menu = false,
   },
 }
+
+-- `/` cmdline setup.
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+-- `:` cmdline setup.
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
 
 local M = {}
 

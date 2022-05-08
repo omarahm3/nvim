@@ -47,6 +47,13 @@ packer.init {
 return packer.startup(function(use)
   -- Packer plugin --
   use {
+    'lewis6991/impatient.nvim',
+    setup = function()
+      require('mrgeek.plugins.impatient')
+    end
+  }
+  
+  use {
     'wbthomason/packer.nvim', -- have packer manage itself
     event = 'VimEnter',
   }
@@ -55,12 +62,6 @@ return packer.startup(function(use)
   use 'nvim-lua/popup.nvim' -- implementation of popup api from vim in neovim
   use 'nvim-lua/plenary.nvim' -- useful lua functions that is used by lots of plugins
 
-  use {
-    'lewis6991/impatient.nvim',
-    setup = function()
-      require('mrgeek.plugins.impatient')
-    end
-  }
 
   -- UI stuff --
   use {
@@ -72,6 +73,16 @@ return packer.startup(function(use)
     config = function()
       require('mrgeek.plugins.lualine')
     end,
+  }
+  
+  use {
+    'stevearc/dressing.nvim',
+    requires = {
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      require('mrgeek.plugins.dressing')
+    end
   }
 
   use {
@@ -96,6 +107,27 @@ return packer.startup(function(use)
     config = function()
       require('nvim-ts-autotag').setup()
     end,
+  }
+  
+  use {
+    'jose-elias-alvarez/nvim-lsp-ts-utils',
+    after = {
+      'nvim-treesitter'
+    }
+  }
+  
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = {
+      'nvim-treesitter'
+    }
+  }
+  
+  use {
+    'RRethy/nvim-treesitter-textsubjects',
+    after = {
+      'nvim-treesitter'
+    }
   }
 
   use {
@@ -491,10 +523,12 @@ return packer.startup(function(use)
     end,
   }
 
-  -- LSP stuff --
+  -- LSP base --
   use {
     'neovim/nvim-lspconfig',
   }
+
+  -- LSP plugins --
 
   use {
     'williamboman/nvim-lsp-installer',
@@ -517,14 +551,15 @@ return packer.startup(function(use)
   }
 
   use {
+    'onsails/lspkind-nvim',
+    after = 'nvim-lspconfig',
+  }
+
+  use {
     'folke/trouble.nvim',
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require("trouble").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
+      require('mrgeek.plugins.trouble')
     end
   }
 
@@ -604,10 +639,6 @@ return packer.startup(function(use)
   }
 
   use {
-    'kevinhwang91/nvim-bqf',
-  }
-
-  use {
     'phaazon/hop.nvim',
     branch = 'v1',
     config = function()
@@ -622,6 +653,8 @@ return packer.startup(function(use)
   use {
     'dstein64/vim-startuptime',
   }
+
+  use { 'antoinemadec/FixCursorHold.nvim' }
 
   -- Packer stuff --
   -- automatically set up configuration after cloning packer

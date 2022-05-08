@@ -74,6 +74,20 @@ keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', term_opts)
 keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', term_opts)
 keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', term_opts)
 
+-- LSP --
+keymap("n", 'gd', ":lua vim.lsp.buf.definition()<CR>", opts)
+keymap("n", 'gr', ":TroubleToggle lsp_references<CR>", opts)
+keymap("n", '<C-Space>', ":lua vim.lsp.buf.code_action()<CR>", opts)
+keymap("n", '<leader>ca', ":lua vim.lsp.buf.code_action()<CR>", opts)
+keymap("v", '<leader>ca', ":'<,'>lua vim.lsp.buf.range_code_action()<CR>", opts)
+keymap("n", '<leader>cr', ":lua vim.lsp.buf.rename()<CR>", opts)
+keymap("n", '<leader>cf', ":lua vim.lsp.buf.format({ async = true })<CR>", opts)
+keymap("v", '<leader>cf', ":'<.'>lua vim.lsp.buf.range_formatting()<CR>", opts)
+keymap("n", 'K', ":lua vim.lsp.buf.hover()<CR>", opts)
+keymap("n", 'L', ":lua vim.lsp.buf.signature_help()<CR>", opts)
+keymap("n", ']g', ":lua vim.diagnostic.goto_next({ float = { border = 'rounded' }})<CR>", opts)
+keymap("n", '[g', ":lua vim.diagnostic.goto_prev({ float = { border = 'rounded' }})<CR>", opts)
+
 local M = {}
 
 M.telescope = function()
@@ -222,7 +236,7 @@ M.truezen = function()
 end
 
 M.hop = function()
-  keymap('n', 'f', '<cmd>lua require"hop".hint_words()<cr>', {})
+  keymap('n', 'f', ':lua require"hop".hint_words()<cr>', {})
 end
 
 return M
