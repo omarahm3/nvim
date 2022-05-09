@@ -85,6 +85,7 @@ keymap("n", '<leader>cf', ":lua vim.lsp.buf.format({ async = true })<CR>", opts)
 keymap("v", '<leader>cf', ":'<.'>lua vim.lsp.buf.range_formatting()<CR>", opts)
 keymap("n", 'K', ":lua vim.lsp.buf.hover()<CR>", opts)
 keymap("n", 'L', ":lua vim.lsp.buf.signature_help()<CR>", opts)
+keymap("n", 'gl', ":lua vim.diagnostic.open_float({ float = { border = 'rounded' }})<CR>", opts)
 keymap("n", ']g', ":lua vim.diagnostic.goto_next({ float = { border = 'rounded' }})<CR>", opts)
 keymap("n", '[g', ":lua vim.diagnostic.goto_prev({ float = { border = 'rounded' }})<CR>", opts)
 
