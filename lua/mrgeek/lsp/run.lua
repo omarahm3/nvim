@@ -8,11 +8,12 @@ local handlers = {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local present, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 
+
 if present then
   capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 end
 
-local function on_attach(client, bufnr)
+local function on_attach(client, _)
   -- set up buffer keymaps, etc.
   require('mrgeek.lsp.functions').lsp_highlight_document(client)
 end
@@ -43,17 +44,24 @@ lspconfig.tsserver.setup {
   on_attach = require('mrgeek.lsp.settings.tsserver').on_attach,
 }
 
-lspconfig.psalm.setup {
-  capabilities = require('mrgeek.lsp.settings.psalm').capabilities,
+lspconfig.intelephense.setup {
+  on_attach = on_attach,
   handlers = handlers,
-  on_attach = require('mrgeek.lsp.settings.psalm').on_attach,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern('composer.json'),
+  filetypes = { 'php' },
 }
 
-lspconfig.psalm.setup {
-  capabilities = require('mrgeek.lsp.settings.psalm').capabilities,
+lspconfig.phpactor.setup {
+  on_attach = on_attach,
   handlers = handlers,
-  on_attach = require('mrgeek.lsp.settings.psalm').on_attach,
+  capabilities = capabilities,
 }
+
+-- lspconfig.psalm.setup {
+--   root_dir = lspconfig.util.root_pattern('composer.json'),
+--   filetypes = { 'php' },
+-- }
 
 lspconfig.gopls.setup {
   capabilities = capabilities,
@@ -61,7 +69,7 @@ lspconfig.gopls.setup {
   on_attach = on_attach,
 }
 
-for _, server in ipairs { 'bashls', 'cssls', 'graphql', 'html', 'volar' } do
+for _, server in ipairs { 'bashls', 'cssls', 'html' } do
   lspconfig[server].setup {
     on_attach = on_attach,
     capabilities = capabilities,
