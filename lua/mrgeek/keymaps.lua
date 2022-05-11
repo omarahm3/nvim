@@ -187,7 +187,7 @@ end
 M.go_move = function()
   keymap("n", "<S-h>", "<Plug>GoNSMLeft", opts)
   keymap("n", "<S-j>", "<Plug>GoNSMDown", opts)
-  keymap("n", "<S-k>", "<Plug>GoNSMUp", opts)
+  -- keymap("n", "<S-k>", "<Plug>GoNSMUp", opts)
   keymap("n", "<S-l>", "<Plug>GoNSMRight", opts)
 
   -- keymap("x", "<S-h>", "<Plug>GoVSMLeft", opts)
