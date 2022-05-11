@@ -81,7 +81,7 @@ keymap("n", '<C-Space>', ":lua vim.lsp.buf.code_action()<CR>", opts)
 keymap("n", '<leader>ca', ":lua vim.lsp.buf.code_action()<CR>", opts)
 keymap("v", '<leader>ca', ":'<,'>lua vim.lsp.buf.range_code_action()<CR>", opts)
 keymap("n", '<leader>cr', ":lua vim.lsp.buf.rename()<CR>", opts)
-keymap("n", '<leader>cf', ":lua vim.lsp.buf.format({ async = true })<CR>", opts)
+keymap("n", '<leader>cf', ":lua vim.lsp.buf.formatting({ async = true })<CR>", opts)
 keymap("v", '<leader>cf', ":'<.'>lua vim.lsp.buf.range_formatting()<CR>", opts)
 keymap("n", 'K', ":lua vim.lsp.buf.hover()<CR>", opts)
 keymap("n", 'L', ":lua vim.lsp.buf.signature_help()<CR>", opts)
@@ -185,10 +185,10 @@ end
 
 -- Moving blocks
 M.go_move = function()
-  keymap("n", "<S-h>", "<Plug>GoNSMLeft", opts)
-  keymap("n", "<S-j>", "<Plug>GoNSMDown", opts)
+  -- keymap("n", "<S-h>", "<Plug>GoNSMLeft", opts)
+  -- keymap("n", "<S-j>", "<Plug>GoNSMDown", opts)
   -- keymap("n", "<S-k>", "<Plug>GoNSMUp", opts)
-  keymap("n", "<S-l>", "<Plug>GoNSMRight", opts)
+  -- keymap("n", "<S-l>", "<Plug>GoNSMRight", opts)
 
   -- keymap("x", "<S-h>", "<Plug>GoVSMLeft", opts)
   -- keymap("x", "<S-j>", "<Plug>GoVSMDown", opts)
