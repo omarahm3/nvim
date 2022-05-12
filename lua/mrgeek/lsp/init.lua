@@ -55,10 +55,16 @@ local config = {
 
 vim.diagnostic.config(config)
 
--- UI
-
-for _, sign in ipairs(signs) do
-  vim.fn.sign_define(sign.name, { texth1 = sign.name, text = sign.text, numh1 = "" })
+-- suppress error messages from lang servers
+vim.notify = function(msg, log_level)
+  if msg:match "exit code" then
+    return
+  end
+  if log_level == vim.log.levels.ERROR then
+    vim.api.nvim_err_writeln(msg)
+  else
+    vim.api.nvim_echo({ { msg } }, true, {})
+  end
 end
 
 require 'mrgeek.lsp.lsp-installer'

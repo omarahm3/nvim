@@ -6,6 +6,7 @@ local on_attach = function(client, bufnr)
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
   require('mrgeek.lsp.functions').lsp_highlight_document(client)
+  require('mrgeek.keymaps').lspconfig()
 end
 
 M.on_attach = on_attach;

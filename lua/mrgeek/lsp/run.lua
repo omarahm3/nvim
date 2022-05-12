@@ -14,8 +14,10 @@ if present then
 end
 
 local function on_attach(client, _)
-  -- set up buffer keymaps, etc.
+  -- client.resolved_capabilities.document_formatting = false
+  -- client.resolved_capabilities.document_range_formatting = false
   require('mrgeek.lsp.functions').lsp_highlight_document(client)
+  require('mrgeek.keymaps').lspconfig()
 end
 
 lspconfig.eslint.setup {
