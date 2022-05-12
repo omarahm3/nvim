@@ -1,4 +1,4 @@
-local present, lspconfig = pcall(require, 'lspconfig')
+local present, _ = pcall(require, 'lspconfig')
 
 if not present then
   vim.notify('LspConfig does not exist')
@@ -6,18 +6,29 @@ if not present then
 end
 
 local signs = {
-  { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
+  { name = "Error", text = "" },
+  { name = "Warn", text = "" },
+  { name = "Hint", text = "" },
+  { name = "Info", text = "" },
 }
+
+local function lspSymbol(name, icon)
+  local hl = "DiagnosticSign" .. name
+  vim.fn.sign_define(hl, {
+    text = icon,
+    numh1 = hl,
+    texthl = hl,
+  })
+end
+
+for _, row in ipairs(signs) do
+  lspSymbol(row.name, row.text)
+end
 
 local config = {
   virtual_text = false,
-  signs = {
-    active = signs,
-  },
-  update_in_insert = true,
+  signs = true,
+  update_in_insert = false,
   underline = true,
   severity_sort = true,
   float = {
