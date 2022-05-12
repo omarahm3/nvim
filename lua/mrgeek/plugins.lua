@@ -537,9 +537,6 @@ return packer.startup(function(use)
   use {
     'jose-elias-alvarez/null-ls.nvim',
     after = 'nvim-lspconfig',
-    config = function()
-      require('mrgeek.plugins.null_ls')
-    end,
   }
 
   use {
