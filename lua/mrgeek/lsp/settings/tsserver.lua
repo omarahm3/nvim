@@ -80,8 +80,6 @@ local on_attach = function(client, bufnr)
   }
 
   require('nvim-lsp-ts-utils').setup_client(client)
-  require('mrgeek.lsp.functions').lsp_highlight_document(client)
-  require('mrgeek.keymaps').lspconfig()
 end
 
 M.capabilities = capabilities;
