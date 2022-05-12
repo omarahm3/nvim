@@ -91,4 +91,30 @@ MrGeek = {
       },
     },
   },
+  dap = {
+    on_config_done = nil,
+    breakpoint = {
+      text = '',
+      texthl = 'LspDiagnosticsSignError',
+      linehl = '',
+      numhl = '',
+    },
+    breakpoint_rejected = {
+      text = '',
+      texthl = 'LspDiagnosticsSignHint',
+      linehl = '',
+      numhl = '',
+    },
+    stopped = {
+      text = '',
+      texthl = 'LspDiagnosticsSignInformation',
+      linehl = 'DiagnosticUnderlineInfo',
+      numhl = 'LspDiagnosticsSignInformation',
+    },
+  },
+  which_key = {
+    mappings = {
+      d = {}
+    }
+  }
 }

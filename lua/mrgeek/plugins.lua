@@ -530,6 +530,34 @@ return packer.startup(function(use)
     end,
   }
 
+  -- Debugging
+  use {
+    'mfussenegger/nvim-dap',
+    opt = true,
+    event = 'BufWinEnter',
+    module = { 'dap' },
+    wants = { 'nvim-dap-virtual-text', 'dap-buddy.nvim', 'nvim-dap-ui', 'which-key.nvim' },
+    requires = {
+      'Pocco81/dap-buddy.nvim',
+      'theHamsta/nvim-dap-virtual-text',
+      'rcarriga/nvim-dap-ui',
+      'nvim-telescope/telescope-dap.nvim',
+      { 'leoluz/nvim-dap-go', module = 'dap-go' },
+      { 'jbyuki/one-small-step-for-vimkind', module = 'osv' },
+    },
+    config = function()
+      require('mrgeek.plugins.dap')
+    end,
+  }
+
+  -- Debugger management
+  use {
+    'Pocco81/dap-buddy.nvim',
+    branch = 'dev',
+    event = 'BufWinEnter',
+    -- event = 'BufRead',
+  }
+
   -- LSP base --
   use {
     'neovim/nvim-lspconfig',
@@ -551,14 +579,6 @@ return packer.startup(function(use)
     after = 'nvim-lspconfig',
     config = function()
       require('mrgeek.plugins.lsp_signature')
-    end,
-  }
-
-  use {
-    'ray-x/go.nvim',
-    as = 'rayx-go',
-    config = function()
-      require('go').setup()
     end,
   }
 
