@@ -256,7 +256,7 @@ return packer.startup(function(use)
     'gbprod/cutlass.nvim',
     config = function()
       require('cutlass').setup({
-    })
+      })
     end
   })
 
@@ -538,7 +538,7 @@ return packer.startup(function(use)
     'jose-elias-alvarez/null-ls.nvim',
     after = 'nvim-lspconfig',
     config = function()
-       require('mrgeek.plugins.null_ls')
+      require('mrgeek.plugins.null_ls')
     end,
   }
 
@@ -620,7 +620,7 @@ return packer.startup(function(use)
 
   use {
     'zbirenbaum/copilot-cmp',
-    after = {'copilot.lua', 'nvim-cmp'},
+    after = { 'copilot.lua', 'nvim-cmp' },
   }
 
   -- Experimental plugins --
@@ -643,7 +643,7 @@ return packer.startup(function(use)
     branch = 'v1',
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
-      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end,
     setup = function()
       require('mrgeek.keymaps').hop()
