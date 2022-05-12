@@ -32,8 +32,10 @@ capabilities.textDocument.codeAction = {
     },
   },
 }
+local default_capabilities = require('mrgeek.lsp').common_capabilities()
 
 local on_attach = function(client, bufnr)
+  require('mrgeek.lsp').common_on_attach(client, bufnr)
   client.server_capabilities.document_formatting = false
   client.server_capabilities.document_range_formatting = false
 
@@ -82,7 +84,7 @@ local on_attach = function(client, bufnr)
   require('nvim-lsp-ts-utils').setup_client(client)
 end
 
-M.capabilities = capabilities;
+M.capabilities = vim.tbl_deep_extend('force', capabilities, default_capabilities);
 M.on_attach = on_attach;
 
 return M
