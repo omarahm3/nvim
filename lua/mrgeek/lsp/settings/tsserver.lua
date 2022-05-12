@@ -56,13 +56,13 @@ local on_attach = function(client, bufnr)
     eslint_opts = {
       -- diagnostics_format = '#{m} [#{c}]',
       condition = function(utils)
-        return utils.root_has_file('.eslintrc.js')
+        return utils.root_has_file('.eslintrc')
       end,
     },
 
     -- formatting
     enable_formatting = false,
-    formatter = 'prettier_d_slim',
+    formatter = 'eslint_d',
     formatter_config_fallback = nil,
 
     -- parentheses completion
