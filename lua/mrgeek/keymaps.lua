@@ -76,22 +76,6 @@ keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', term_opts)
 
 local M = {}
 
-M.lspconfig = function()
-  keymap("n", 'gd', ":lua vim.lsp.buf.definition()<CR>", opts)
-  keymap("n", 'gr', ":TroubleToggle lsp_references<CR>", opts)
-  keymap("n", '<C-Space>', ":lua vim.lsp.buf.code_action()<CR>", opts)
-  keymap("n", '<leader>ca', ":lua vim.lsp.buf.code_action()<CR>", opts)
-  keymap("v", '<leader>ca', ":'<,'>lua vim.lsp.buf.range_code_action()<CR>", opts)
-  keymap("n", '<leader>cr', ":lua vim.lsp.buf.rename()<CR>", opts)
-  keymap("n", '<leader>cf', ":lua vim.lsp.buf.formatting({ async = true })<CR>", opts)
-  keymap("v", '<leader>cf', ":'<.'>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  keymap("n", 'K', ":lua vim.lsp.buf.hover()<CR>", opts)
-  keymap("n", 'L', ":lua vim.lsp.buf.signature_help()<CR>", opts)
-  keymap("n", 'gl', ":lua vim.diagnostic.open_float({ float = { border = 'rounded' }})<CR>", opts)
-  keymap("n", ']g', ":lua vim.diagnostic.goto_next({ float = { border = 'rounded' }})<CR>", opts)
-  keymap("n", '[g', ":lua vim.diagnostic.goto_prev({ float = { border = 'rounded' }})<CR>", opts)
-end
-
 M.telescope = function()
   keymap('n', '<C-p>', ':lua require "telescope.builtin".git_files()<CR>', opts)
   keymap('n', '<leader>ff', ':Telescope file_browser <CR>', opts)
