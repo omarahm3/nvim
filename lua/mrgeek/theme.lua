@@ -1,4 +1,4 @@
-local theme = 'material'
+local theme = 'catppuccin'
 
 local status_ok, _ = pcall(vim.cmd, 'colorscheme ' .. theme)
 

@@ -55,9 +55,12 @@ return {
       ['K'] = { vim.lsp.buf.hover, 'Show hover' },
       ['gd'] = { vim.lsp.buf.definition, 'Goto Definition' },
       ['gD'] = { vim.lsp.buf.declaration, 'Goto declaration' },
-      ['gr'] = { vim.lsp.buf.references, 'Goto references' },
+      ['gr'] = { ':TroubleToggle lsp_references<CR>', 'Goto references' },
       ['gI'] = { vim.lsp.buf.implementation, 'Goto Implementation' },
       ['gs'] = { vim.lsp.buf.signature_help, 'show signature help' },
+      ['<leader>cf'] = { vim.lsp.buf.formatting, 'Format whole file' },
+      ['<leader>ca'] = { vim.lsp.buf.code_action, 'Check code action' },
+      ['<leader>cr'] = { vim.lsp.buf.rename, 'Check code action' },
       ['gp'] = {
         function()
           require('mrgeek.lsp.peek').Peek 'definition'
@@ -74,6 +77,9 @@ return {
       },
     },
     insert_mode = {},
-    visual_mode = {},
+    visual_mode = {
+      ['<leader>cf'] = { vim.lsp.buf.range_formatting, 'Format a code block' },
+      ['<leader>ca'] = { vim.lsp.buf.range_code_action, 'Code block code action' },
+    },
   },
 }
