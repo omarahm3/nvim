@@ -52,7 +52,7 @@ return packer.startup(function(use)
       require('mrgeek.plugins.impatient')
     end
   }
-  
+
   use {
     'wbthomason/packer.nvim', -- have packer manage itself
     event = 'VimEnter',
@@ -74,7 +74,7 @@ return packer.startup(function(use)
       require('mrgeek.plugins.lualine')
     end,
   }
-  
+
   use {
     'stevearc/dressing.nvim',
     requires = {
@@ -108,21 +108,21 @@ return packer.startup(function(use)
       require('nvim-ts-autotag').setup()
     end,
   }
-  
+
   use {
     'jose-elias-alvarez/nvim-lsp-ts-utils',
     after = {
       'nvim-treesitter'
     }
   }
-  
+
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = {
       'nvim-treesitter'
     }
   }
-  
+
   use {
     'RRethy/nvim-treesitter-textsubjects',
     after = {
