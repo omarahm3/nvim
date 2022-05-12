@@ -39,10 +39,10 @@ end
 
 function M.common_on_exit(_, _)
   if config.lsp.document_highlight then
-    pcall(vim.api.nvim_del_augroup_by_name, "lsp_document_highlight")
+    pcall(vim.api.nvim_del_augroup_by_name, 'lsp_document_highlight')
   end
   if config.lsp.code_lens_refresh then
-    pcall(vim.api.nvim_del_augroup_by_name, "lsp_code_lens_refresh")
+    pcall(vim.api.nvim_del_augroup_by_name, 'lsp_code_lens_refresh')
   end
 end
 
@@ -82,25 +82,8 @@ function M.setup()
   end
 
   -- UI stuff
-
-  local signs = {
-    { name = "Error", text = "" },
-    { name = "Warn", text = "" },
-    { name = "Hint", text = "" },
-    { name = "Info", text = "" },
-  }
-
-  local function lspSymbol(name, icon)
-    local hl = "DiagnosticSign" .. name
-    vim.fn.sign_define(hl, {
-      text = icon,
-      numh1 = hl,
-      texthl = hl,
-    })
-  end
-
-  for _, row in ipairs(signs) do
-    lspSymbol(row.name, row.text)
+  for _, sign in ipairs(config.lsp.diagnostics.signs.values) do
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
 
   require 'mrgeek.lsp.handlers'.setup()

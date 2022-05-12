@@ -3,7 +3,6 @@ local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local present, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 
-
 if present then
   capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 end
