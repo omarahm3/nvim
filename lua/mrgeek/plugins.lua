@@ -555,6 +555,14 @@ return packer.startup(function(use)
   }
 
   use {
+    'ray-x/go.nvim',
+    as = 'rayx-go',
+    config = function()
+      require('go').setup()
+    end,
+  }
+
+  use {
     'onsails/lspkind-nvim',
     after = 'nvim-lspconfig',
   }
