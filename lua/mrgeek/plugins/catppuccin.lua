@@ -31,7 +31,7 @@ local default = {
         information = 'underline',
       },
     },
-    lsp_trouble = false,
+    lsp_trouble = true,
     cmp = true,
     lsp_saga = false,
     gitgutter = false,
@@ -39,7 +39,7 @@ local default = {
     telescope = true,
     nvimtree = {
       enabled = true,
-      show_root = false,
+      show_root = true,
       transparent_panel = false,
     },
     which_key = true,
@@ -56,7 +56,7 @@ local default = {
     markdown = true,
     lightspeed = false,
     ts_rainbow = false,
-    hop = false,
+    hop = true,
     notify = true,
     telekasten = true,
   }
