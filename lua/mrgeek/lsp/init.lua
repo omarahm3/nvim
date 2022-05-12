@@ -1,72 +1,57 @@
-local present, _ = pcall(require, 'lspconfig')
+local M = {}
 
-if not present then
-  vim.notify('LspConfig does not exist')
-  return
+function M.common_on_attach()
+  local utils = require 'mrgeek.lsp.functions'
+  utils.setup_document_highlight()
 end
 
-local signs = {
-  { name = "Error", text = "" },
-  { name = "Warn", text = "" },
-  { name = "Hint", text = "" },
-  { name = "Info", text = "" },
-}
-
-local function lspSymbol(name, icon)
-  local hl = "DiagnosticSign" .. name
-  vim.fn.sign_define(hl, {
-    text = icon,
-    numh1 = hl,
-    texthl = hl,
-  })
+function M.get_common_opts()
+  return {
+    on_attach = M.common_on_attach,
+    on_init = M.common_on_init,
+    on_exit = M.common_on_exit,
+    capabilities = M.common_capabilities(),
+  }
 end
 
-for _, row in ipairs(signs) do
-  lspSymbol(row.name, row.text)
-end
+function M.setup()
+  local present, _ = pcall(require, 'lspconfig')
 
-local config = {
-  virtual_text = false,
-  signs = true,
-  update_in_insert = false,
-  underline = true,
-  severity_sort = true,
-  float = {
-    style = 'minimal',
-    border = 'rounded',
-    source = 'always',
-    header = '',
-    prefix = '',
-    format = function(diagnostic)
-      local code = diagnostic.user_data.lsp.code
-
-      if not diagnostic.source or not code then
-        return string.format('%s', diagnostic.message)
-      end
-
-      if diagnostic.source == 'eslint' then
-        return string.format('%s [%s]', diagnostic.message, code)
-      end
-
-      return string.format('%s [%s]', diagnostic.message, diagnostic.source)
-    end
-  },
-}
-
-vim.diagnostic.config(config)
-
--- suppress error messages from lang servers
-vim.notify = function(msg, log_level)
-  if msg:match "exit code" then
+  if not present then
+    vim.notify('LspConfig does not exist')
     return
   end
-  if log_level == vim.log.levels.ERROR then
-    vim.api.nvim_err_writeln(msg)
-  else
-    vim.api.nvim_echo({ { msg } }, true, {})
+
+  -- UI stuff
+
+  local signs = {
+    { name = "Error", text = "" },
+    { name = "Warn", text = "" },
+    { name = "Hint", text = "" },
+    { name = "Info", text = "" },
+  }
+
+  local function lspSymbol(name, icon)
+    local hl = "DiagnosticSign" .. name
+    vim.fn.sign_define(hl, {
+      text = icon,
+      numh1 = hl,
+      texthl = hl,
+    })
   end
+
+  for _, row in ipairs(signs) do
+    lspSymbol(row.name, row.text)
+  end
+
+  require 'mrgeek.lsp.handlers'.setup()
+
+  require 'mrgeek.lsp.lsp-installer'
+
+  require 'mrgeek.lsp.null-ls'
+
+  require 'mrgeek.lsp.run'
+  require 'mrgeek.lsp.functions'
 end
 
-require 'mrgeek.lsp.lsp-installer'
-require 'mrgeek.lsp.run'
-require 'mrgeek.lsp.functions'
+return M
