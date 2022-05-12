@@ -1,5 +1,3 @@
-local config = require 'mrgeek.lsp.config'
-
 local M = {
   floating_buf = nil,
   floating_win = nil,
@@ -32,8 +30,8 @@ local function create_floating_file(location, opts)
     bufnr,
     range.start.line,
     math.min(
-      range['end'].line + 1 + (opts.context or config.peek.max_height),
-      range.start.line + (opts.max_height or config.peek.max_height)
+      range['end'].line + 1 + (opts.context or MrGeek.lsp.peek.max_height),
+      range.start.line + (opts.max_height or MrGeek.lsp.peek.max_height)
     ),
     false
   )
@@ -44,8 +42,8 @@ local function create_floating_file(location, opts)
   local width, height = vim.lsp.util._make_floating_popup_size(contents, opts)
   local if_nil = vim.F.if_nil
   opts = vim.lsp.util.make_floating_popup_options(
-    if_nil(width, config.peek.max_width),
-    if_nil(height, config.peek.max_height),
+    if_nil(width, MrGeek.lsp.peek.max_width),
+    if_nil(height, MrGeek.lsp.peek.max_height),
     opts
   )
   -- Don't make it minimal as it is meant to be fully featured
@@ -74,7 +72,7 @@ local function preview_location_callback(result)
 
   local opts = {
     border = 'rounded',
-    context = config.peek.context,
+    context = MrGeek.lsp.peek.context,
   }
 
   if vim.tbl_islist(result) then

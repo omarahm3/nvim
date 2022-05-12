@@ -1,5 +1,3 @@
-local config = require 'mrgeek.lsp.config'
-
 local M = {}
 
 local function add_lsp_buffer_keybindings(bufnr)
@@ -17,7 +15,7 @@ local function add_lsp_buffer_keybindings(bufnr)
 
   -- TODO use whick key for all keymappings
   for mode_name, mode_char in pairs(mappings) do
-    wk.register(config.buffer_mappings[mode_name], { mode = mode_char, buffer = bufnr })
+    wk.register(MrGeek.lsp.buffer_mappings[mode_name], { mode = mode_char, buffer = bufnr })
   end
 end
 
@@ -42,10 +40,10 @@ function M.common_capabilities()
 end
 
 function M.common_on_exit(_, _)
-  if config.document_highlight then
+  if MrGeek.lsp.document_highlight then
     pcall(vim.api.nvim_del_augroup_by_name, 'lsp_document_highlight')
   end
-  if config.code_lens_refresh then
+  if MrGeek.lsp.code_lens_refresh then
     pcall(vim.api.nvim_del_augroup_by_name, 'lsp_code_lens_refresh')
   end
 end
@@ -57,11 +55,11 @@ end
 function M.common_on_attach(client, bufnr)
   local utils = require 'mrgeek.lsp.functions'
 
-  if config.document_highlight then
+  if MrGeek.lsp.document_highlight then
     utils.setup_document_highlight(client, bufnr)
   end
 
-  if config.code_lens_refresh then
+  if MrGeek.lsp.code_lens_refresh then
     utils.setup_codelens_refresh(client, bufnr)
   end
 
@@ -86,7 +84,7 @@ function M.setup()
   end
 
   -- UI stuff
-  for _, sign in ipairs(config.diagnostics.signs.values) do
+  for _, sign in ipairs(MrGeek.lsp.diagnostics.signs.values) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
 
