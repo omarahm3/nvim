@@ -1,8 +1,67 @@
+local config = require 'mrgeek.lsp.config'
+
 local M = {}
 
-function M.common_on_attach()
+local function add_lsp_buffer_keybindings(bufnr)
+  local mappings = {
+    normal_mode = 'n',
+    insert_mode = 'i',
+    visual_mode = 'v',
+  }
+
+  -- Remap using nvim api
+  for mode_name, mode_char in pairs(mappings) do
+    for key, remap in pairs(config.lsp.buffer_mappings[mode_name]) do
+      vim.api.nvim_buf_set_keymap(bufnr, mode_char, key, remap[1], { noremap = true, silent = true })
+    end
+  end
+end
+
+function M.common_capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  capabilities.textDocument.completion.completionItem.resolveSupport = {
+    properties = {
+      'documentation',
+      'detail',
+      'additionalTextEdits',
+    },
+  }
+
+  local present, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+
+  if present then
+    capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+  end
+
+  return capabilities
+end
+
+function M.common_on_exit(_, _)
+  if config.lsp.document_highlight then
+    pcall(vim.api.nvim_del_augroup_by_name, "lsp_document_highlight")
+  end
+  if config.lsp.code_lens_refresh then
+    pcall(vim.api.nvim_del_augroup_by_name, "lsp_code_lens_refresh")
+  end
+end
+
+function M.common_on_init(_, _)
+
+end
+
+function M.common_on_attach(client, bufnr)
   local utils = require 'mrgeek.lsp.functions'
-  utils.setup_document_highlight()
+
+  if config.lsp.document_highlight then
+    utils.setup_document_highlight(client, bufnr)
+  end
+
+  if config.lsp.code_lens_refresh then
+    utils.setup_codelens_refresh(client, bufnr)
+  end
+
+  add_lsp_buffer_keybindings(bufnr)
 end
 
 function M.get_common_opts()
