@@ -1,8 +1,6 @@
-local theme = 'catppuccin'
-
-local status_ok, _ = pcall(vim.cmd, 'colorscheme ' .. theme)
+local status_ok, _ = pcall(vim.cmd, 'colorscheme ' .. MrGeek.theme.name)
 
 if not status_ok then
-  vim.notify('Theme ' .. theme .. ' was not found and it was not applied!')
+  vim.notify('Theme ' .. MrGeek.theme.name .. ' was not found and it was not applied!')
   return
 end

@@ -400,6 +400,8 @@ return packer.startup(function(use)
   -- Color schemes --
   use 'folke/tokyonight.nvim' -- tokyonight theme yay
 
+  use { 'EdenEast/nightfox.nvim' }
+
   use {
     'marko-cerovac/material.nvim',
     config = function()
@@ -408,6 +410,11 @@ return packer.startup(function(use)
   }
 
   use 'shaunsingh/moonlight.nvim'
+
+  use({
+    'rose-pine/neovim',
+    as = 'rose-pine',
+  })
 
   use {
     'projekt0n/github-nvim-theme',
