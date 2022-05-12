@@ -612,6 +612,12 @@ return packer.startup(function(use)
   }
 
   use {
+    'tzachar/cmp-tabnine',
+    run = './install.sh',
+    requires = 'hrsh7th/nvim-cmp',
+  }
+
+  use {
     'zbirenbaum/copilot.lua',
     after = { 'copilot.vim' },
     event = { 'VimEnter' },
