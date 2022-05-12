@@ -47,6 +47,7 @@ local kind_icons = {
   Operator = '',
   TypeParameter = '',
 }
+
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 local source_mapping = {
   copilot = MrGeek.icons.light,
