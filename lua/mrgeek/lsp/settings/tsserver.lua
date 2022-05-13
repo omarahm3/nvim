@@ -32,12 +32,15 @@ capabilities.textDocument.codeAction = {
     },
   },
 }
+local default_capabilities = require('mrgeek.lsp').common_capabilities()
 
 local on_attach = function(client, bufnr)
+  require('mrgeek.lsp').common_on_attach(client, bufnr)
   client.server_capabilities.document_formatting = false
   client.server_capabilities.document_range_formatting = false
 
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   require('nvim-lsp-ts-utils').setup {
@@ -55,13 +58,13 @@ local on_attach = function(client, bufnr)
     eslint_opts = {
       -- diagnostics_format = '#{m} [#{c}]',
       condition = function(utils)
-        return utils.root_has_file('.eslintrc.js')
+        return utils.root_has_file('.eslintrc')
       end,
     },
 
     -- formatting
     enable_formatting = false,
-    formatter = 'prettier_d_slim',
+    formatter = 'eslint_d',
     formatter_config_fallback = nil,
 
     -- parentheses completion
@@ -79,10 +82,9 @@ local on_attach = function(client, bufnr)
   }
 
   require('nvim-lsp-ts-utils').setup_client(client)
-  require('mrgeek.lsp.functions').lsp_highlight_document(client)
 end
 
-M.capabilities = capabilities;
+M.capabilities = vim.tbl_deep_extend('force', capabilities, default_capabilities);
 M.on_attach = on_attach;
 
 return M

@@ -52,7 +52,7 @@ return packer.startup(function(use)
       require('mrgeek.plugins.impatient')
     end
   }
-  
+
   use {
     'wbthomason/packer.nvim', -- have packer manage itself
     event = 'VimEnter',
@@ -74,7 +74,7 @@ return packer.startup(function(use)
       require('mrgeek.plugins.lualine')
     end,
   }
-  
+
   use {
     'stevearc/dressing.nvim',
     requires = {
@@ -108,21 +108,21 @@ return packer.startup(function(use)
       require('nvim-ts-autotag').setup()
     end,
   }
-  
+
   use {
     'jose-elias-alvarez/nvim-lsp-ts-utils',
     after = {
       'nvim-treesitter'
     }
   }
-  
+
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = {
       'nvim-treesitter'
     }
   }
-  
+
   use {
     'RRethy/nvim-treesitter-textsubjects',
     after = {
@@ -256,7 +256,7 @@ return packer.startup(function(use)
     'gbprod/cutlass.nvim',
     config = function()
       require('cutlass').setup({
-    })
+      })
     end
   })
 
@@ -400,6 +400,8 @@ return packer.startup(function(use)
   -- Color schemes --
   use 'folke/tokyonight.nvim' -- tokyonight theme yay
 
+  use { 'EdenEast/nightfox.nvim' }
+
   use {
     'marko-cerovac/material.nvim',
     config = function()
@@ -408,6 +410,11 @@ return packer.startup(function(use)
   }
 
   use 'shaunsingh/moonlight.nvim'
+
+  use({
+    'rose-pine/neovim',
+    as = 'rose-pine',
+  })
 
   use {
     'projekt0n/github-nvim-theme',
@@ -523,6 +530,34 @@ return packer.startup(function(use)
     end,
   }
 
+  -- Debugging
+  use {
+    'mfussenegger/nvim-dap',
+    opt = true,
+    event = 'BufWinEnter',
+    module = { 'dap' },
+    wants = { 'nvim-dap-virtual-text', 'dap-buddy.nvim', 'nvim-dap-ui', 'which-key.nvim' },
+    requires = {
+      'Pocco81/dap-buddy.nvim',
+      'theHamsta/nvim-dap-virtual-text',
+      'rcarriga/nvim-dap-ui',
+      'nvim-telescope/telescope-dap.nvim',
+      { 'leoluz/nvim-dap-go', module = 'dap-go' },
+      { 'jbyuki/one-small-step-for-vimkind', module = 'osv' },
+    },
+    config = function()
+      require('mrgeek.plugins.dap')
+    end,
+  }
+
+  -- Debugger management
+  use {
+    'Pocco81/dap-buddy.nvim',
+    branch = 'dev',
+    event = 'BufWinEnter',
+    -- event = 'BufRead',
+  }
+
   -- LSP base --
   use {
     'neovim/nvim-lspconfig',
@@ -537,9 +572,6 @@ return packer.startup(function(use)
   use {
     'jose-elias-alvarez/null-ls.nvim',
     after = 'nvim-lspconfig',
-    config = function()
-       require('mrgeek.plugins.null_ls')
-    end,
   }
 
   use {
@@ -608,7 +640,14 @@ return packer.startup(function(use)
   }
 
   use {
+    'tzachar/cmp-tabnine',
+    run = './install.sh',
+    requires = 'hrsh7th/nvim-cmp',
+  }
+
+  use {
     'zbirenbaum/copilot.lua',
+    after = { 'copilot.vim' },
     event = { 'VimEnter' },
     -- branch = 'dev',
     config = function()
@@ -620,8 +659,11 @@ return packer.startup(function(use)
 
   use {
     'zbirenbaum/copilot-cmp',
-    after = {'copilot.lua', 'nvim-cmp'},
+    after = { 'copilot.lua', 'nvim-cmp' },
   }
+
+  -- Core
+  use { 'Tastyep/structlog.nvim' }
 
   -- Experimental plugins --
   use {
@@ -643,7 +685,7 @@ return packer.startup(function(use)
     branch = 'v1',
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
-      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end,
     setup = function()
       require('mrgeek.keymaps').hop()

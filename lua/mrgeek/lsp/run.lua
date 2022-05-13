@@ -1,78 +1,69 @@
 local lspconfig = require('lspconfig')
 
-local handlers = {
-  ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-  ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
-}
+local function resolve_config(server_config)
+  local defaults = require 'mrgeek.lsp'.get_common_opts()
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-local present, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+  defaults = vim.tbl_deep_extend('force', defaults, server_config)
 
-
-if present then
-  capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+  return defaults
 end
 
-local function on_attach(client, _)
-  -- set up buffer keymaps, etc.
-  require('mrgeek.lsp.functions').lsp_highlight_document(client)
+local function setup_server(server_name, server_config)
+  lspconfig[server_name].setup(resolve_config(server_config))
 end
 
-lspconfig.eslint.setup {
-  capabilities = capabilities,
-  handlers = handlers,
-  on_attach = require('mrgeek.lsp.settings.eslint').on_attach,
-  settings = require('mrgeek.lsp.settings.eslint').settings,
+local servers = {
+  {
+    name = 'eslint',
+    setup = {
+      on_attach = require('mrgeek.lsp.settings.eslint').on_attach,
+      settings = require('mrgeek.lsp.settings.eslint').settings,
+    }
+  },
+  {
+    name = 'jsonls',
+    setup = {
+      on_attach = require('mrgeek.lsp.settings.eslint').on_attach,
+      settings = require('mrgeek.lsp.settings.eslint').settings,
+    }
+  },
+  {
+    name = 'sumneko_lua',
+    setup = {
+      settings = require('mrgeek.lsp.settings.sumneko_lua').settings,
+    }
+  },
+  {
+    name = 'tsserver',
+    setup = {
+      capabilities = require('mrgeek.lsp.settings.tsserver').capabilities,
+      on_attach = require('mrgeek.lsp.settings.tsserver').on_attach,
+    }
+  },
+  {
+    name = 'intelephense',
+    setup = {
+      root_dir = lspconfig.util.root_pattern('composer.json'),
+      filetypes = { 'php' },
+    }
+  },
+  {
+    name = 'gopls',
+    setup = {
+      settubgs = {
+        codelenses = {
+          generate = false,
+          gc_detaills = true,
+        },
+      },
+    },
+  },
 }
 
-lspconfig.jsonls.setup {
-  capabilities = capabilities,
-  handlers = handlers,
-  on_attach = on_attach,
-  settings = require('mrgeek.lsp.settings.jsonls').settings,
-}
+for _, server in ipairs(servers) do
+  setup_server(server.name, server.setup)
+end
 
-lspconfig.sumneko_lua.setup {
-  handlers = handlers,
-  on_attach = on_attach,
-  settings = require('mrgeek.lsp.settings.sumneko_lua').settings,
-}
-
-lspconfig.tsserver.setup {
-  capabilities = require('mrgeek.lsp.settings.tsserver').capabilities,
-  handlers = handlers,
-  on_attach = require('mrgeek.lsp.settings.tsserver').on_attach,
-}
-
-lspconfig.intelephense.setup {
-  on_attach = on_attach,
-  handlers = handlers,
-  capabilities = capabilities,
-  root_dir = lspconfig.util.root_pattern('composer.json'),
-  filetypes = { 'php' },
-}
-
-lspconfig.phpactor.setup {
-  on_attach = on_attach,
-  handlers = handlers,
-  capabilities = capabilities,
-}
-
--- lspconfig.psalm.setup {
---   root_dir = lspconfig.util.root_pattern('composer.json'),
---   filetypes = { 'php' },
--- }
-
-lspconfig.gopls.setup {
-  capabilities = capabilities,
-  handlers = handlers,
-  on_attach = on_attach,
-}
-
-for _, server in ipairs { 'bashls', 'cssls', 'html' } do
-  lspconfig[server].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers = handlers,
-  }
+for _, server in ipairs { 'bashls', 'cssls', 'html', 'phpactor' } do
+  setup_server(server, {})
 end

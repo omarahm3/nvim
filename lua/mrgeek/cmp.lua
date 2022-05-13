@@ -47,8 +47,10 @@ local kind_icons = {
   Operator = '',
   TypeParameter = '',
 }
+
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 local source_mapping = {
+  cmp_tabnine = MrGeek.icons.ribbon,
   copilot = MrGeek.icons.light,
   nvim_lsp = MrGeek.icons.paragraph .. '[LSP]',
   nvim_lua = MrGeek.icons.bomb,
@@ -61,6 +63,7 @@ local format = function(entry, vim_item)
   -- Kind icons
   vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
   vim_item.menu = source_mapping[entry.source.name]
+
   return vim_item
 end
 
@@ -133,8 +136,9 @@ local default = {
     format = format,
   },
   sources = {
-    { name = 'copilot' },
     { name = 'nvim_lsp' },
+    { name = 'cmp_tabnine' },
+    { name = 'copilot' },
     { name = 'nvim_lua' },
     { name = 'luasnip' },
     { name = 'buffer' },

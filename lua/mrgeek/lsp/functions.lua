@@ -54,4 +54,58 @@ function M.lsp_highlight_document(client)
   end
 end
 
+function M.setup_document_highlight(client, bufnr)
+  local status_ok, highlight_supported = pcall(function()
+    return client.supports_method "textDocument/documentHighlight"
+  end)
+
+  if not status_ok or not highlight_supported then
+    return
+  end
+
+  local augroup_exist, _ = pcall(vim.api.nvim_get_autocmds, {
+    group = "lsp_document_highlight",
+  })
+
+  if not augroup_exist then
+    vim.api.nvim_create_augroup("lsp_document_highlight", {})
+  end
+
+  vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+    group = "lsp_document_highlight",
+    buffer = bufnr,
+    callback = vim.lsp.buf.document_highlight,
+  })
+
+  vim.api.nvim_create_autocmd("CursorMoved", {
+    group = "lsp_document_highlight",
+    buffer = bufnr,
+    callback = vim.lsp.buf.clear_references,
+  })
+end
+
+function M.setup_codelens_refresh(client, bufnr)
+  local status_ok, codelens_supported = pcall(function()
+    return client.supports_method "textDocument/codeLens"
+  end)
+
+  if not status_ok or not codelens_supported then
+    return
+  end
+
+  local augroup_exist, _ = pcall(vim.api.nvim_get_autocmds, {
+    group = "lsp_code_lens_refresh",
+  })
+
+  if not augroup_exist then
+    vim.api.nvim_create_augroup("lsp_code_lens_refresh", {})
+  end
+
+  vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+    group = "lsp_code_lens_refresh",
+    buffer = bufnr,
+    callback = vim.lsp.codelens.refresh,
+  })
+end
+
 return M

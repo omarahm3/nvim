@@ -1,0 +1,1 @@
+require 'mrgeek.core.config'
