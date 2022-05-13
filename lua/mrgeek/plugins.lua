@@ -662,6 +662,9 @@ return packer.startup(function(use)
     after = { 'copilot.lua', 'nvim-cmp' },
   }
 
+  -- Core
+  use { 'Tastyep/structlog.nvim' }
+
   -- Experimental plugins --
   use {
     'nathom/filetype.nvim', -- better and more extensive filetypes list

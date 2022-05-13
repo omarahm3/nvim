@@ -1,4 +1,4 @@
-local icons = require('mrgeek.icons')
+local icons = require('mrgeek.core.icons')
 
 local float = {
   style = 'minimal',
@@ -23,6 +23,10 @@ local float = {
 }
 
 MrGeek = {
+  log = {
+    level = 'debug',
+    override_notify = false,
+  },
   icons = icons,
   theme = {
     name = 'rose-pine',
