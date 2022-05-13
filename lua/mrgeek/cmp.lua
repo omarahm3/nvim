@@ -63,6 +63,7 @@ local format = function(entry, vim_item)
   -- Kind icons
   vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
   vim_item.menu = source_mapping[entry.source.name]
+
   return vim_item
 end
 
@@ -135,9 +136,9 @@ local default = {
     format = format,
   },
   sources = {
+    { name = 'nvim_lsp' },
     { name = 'cmp_tabnine' },
     { name = 'copilot' },
-    { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'luasnip' },
     { name = 'buffer' },
