@@ -303,6 +303,9 @@ MrGeek = {
         name = 'Focus',
         t = { ':Twilight<CR>', 'Twilight' },
         d = { ':YodeBufferDelete<CR>', 'Yoda delete buffer' },
+        a = { ':TZAtaraxis<CR>', 'Ataraxis mode' },
+        f = { ':TZFocus<CR>', 'Focus mode' },
+        m = { ':TZMinimalist<CR>', 'Minimalist mode' },
       },
     }
   }

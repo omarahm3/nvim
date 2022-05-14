@@ -213,9 +213,9 @@ M.diffview = function()
 end
 
 M.truezen = function()
-  keymap('n', '<leader>za', ':TZAtaraxis<CR>', opts)
-  keymap('n', '<leader>zf', ':TZFocus<CR>', opts)
-  keymap('n', '<leader>zm', ':TZMinimalist<CR>', opts)
+  -- keymap('n', '<leader>za', ':TZAtaraxis<CR>', opts)
+  -- keymap('n', '<leader>zf', ':TZFocus<CR>', opts)
+  -- keymap('n', '<leader>zm', ':TZMinimalist<CR>', opts)
 end
 
 M.hop = function()
