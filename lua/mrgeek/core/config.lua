@@ -70,7 +70,7 @@ MrGeek = {
         ['gs'] = { vim.lsp.buf.signature_help, 'show signature help' },
         ['<leader>cf'] = { vim.lsp.buf.formatting, 'Format whole file' },
         ['<leader>ca'] = { vim.lsp.buf.code_action, 'Check code action' },
-        ['<leader>cr'] = { vim.lsp.buf.rename, 'Check code action' },
+        ['<leader>cr'] = { vim.lsp.buf.rename, 'Rename' },
         ['gp'] = {
           function()
             require('mrgeek.lsp.peek').Peek 'definition'
@@ -177,11 +177,17 @@ MrGeek = {
       ['<C-j>'] = { '<C-w>j', 'Move window down' },
       ['<C-k>'] = { '<C-w>k', 'Move window up' },
       ['<C-l>'] = { '<C-w>l', 'Move window right' },
+      ['<C-p>'] = { ':Telescope find_files<CR>', 'Find file' },
     },
     vkeymappings = {
       ['/'] = { ':lua require"Comment.api".toggle_current_linewise_op(vim.fn.visualmode())<CR>', 'Comment' },
       g = {
         h = { ':lua require "gitsigns".stage_hunk()<CR>', 'Stage hunk' },
+      },
+      y = {
+        name = 'Focus',
+        c = { ':YodeCreateSeditorFloating<CR>', 'Yoda create' },
+        r = { ':YodeCreateSeditorReplace<CR>', 'Yoda replace' },
       }
     },
     keymappings = {
@@ -269,7 +275,34 @@ MrGeek = {
         w = { ':Telescope live_grep<CR>', 'Text' },
         k = { ':Telescope keymaps<CR>', 'Keymaps' },
         C = { ':Telescope commands<CR>', 'Commands' },
-      }
+      },
+      t = {
+        name = 'Terminal',
+        f = { ':ToggleTerm direction=float<CR>', 'Float' },
+        h = { ':ToggleTerm size=10 direction=horizontal<CR>', 'Horizontal' },
+        v = { ':ToggleTerm size=80 direction=vertical<CR>', 'Vertical' },
+        n = { ':lua _NODE_TOGGLE()<CR>', 'Node' },
+        t = { ':lua _HTOP_TOGGLE()<CR>', 'HTOP' },
+        g = { ':lua _GORE_TOGGLE()<CR>', 'Gore' },
+        l = { ':lua _LAZYGIT_TOGGLE()<CR>', 'Lazygit' },
+      },
+      j = {
+        name = 'Jest',
+        t = { ':lua require("jester").run()<CR>', 'Run test' },
+        f = { ':lua require("jester").run_file()<CR>', 'Run file' },
+        l = { ':lua require("jester").run_last()<CR>', 'Run last' },
+        d = {
+          name = 'Debug',
+          t = { ':lua require("jester").debug()<CR>', 'Debug test' },
+          f = { ':lua require("jester").debug_file()<CR>', 'Debug file' },
+          l = { ':lua require("jester").debug_last()<CR>', 'Debug last' },
+        }
+      },
+      y = {
+        name = 'Focus',
+        t = { ':Twilight<CR>', 'Twilight' },
+        d = { ':YodeBufferDelete<CR>', 'Yoda delete buffer' },
+      },
     }
   }
 }
