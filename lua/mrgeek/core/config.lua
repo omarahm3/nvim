@@ -131,18 +131,64 @@ MrGeek = {
       noremap = true, -- use `noremap` when creating keymaps
       nowait = true, -- use `nowait` when creating keymaps
     },
+    globalopts = {
+      mode = 'n', -- NORMAL mode
+      prefix = '',
+      buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+      silent = true, -- use `silent` when creating keymaps
+      noremap = true, -- use `noremap` when creating keymaps
+      nowait = true, -- use `nowait` when creating keymaps
+    },
+    vglobalopts = {
+      mode = 'v', -- VISUAL mode
+      prefix = '',
+      buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+      silent = true, -- use `silent` when creating keymaps
+      noremap = true, -- use `noremap` when creating keymaps
+      nowait = true, -- use `nowait` when creating keymaps
+    },
+    tglobalopts = {
+      mode = 't', -- TERMINAL mode
+      prefix = '',
+      silent = true, -- use `silent` when creating keymaps
+    },
+    vglobalmappings = {
+      ['<S-Tab>'] = { '<gv', 'Indent left' },
+      ['<Tab>'] = { '>gv', 'Indent right' },
+      ['p'] = { '"_dP', 'Keep what you are pasting in the clipboard register' },
+    },
+    terminal_globalmappings = {
+      ['<C-h>'] = { '<C-\\><C-N><C-w>h', 'Teminal left' },
+      ['<C-j>'] = { '<C-\\><C-N><C-w>j', 'Teminal down' },
+      ['<C-k>'] = { '<C-\\><C-N><C-w>k', 'Teminal up' },
+      ['<C-l>'] = { '<C-\\><C-N><C-w>l', 'Teminal right' },
+    },
+    globalmappings = {
+      ['<ESC>'] = { ':noh<CR>', 'No highlight' },
+      ['<C-s>'] = { ':w!<CR>', 'Save file' },
+      ['<Tab>'] = { ':BufferLineCycleNext<CR>', 'Next' },
+      ['<S-Tab>'] = { ':BufferLineCyclePrev<CR>', 'Previous' },
+      ['<F8>'] = { ':SymbolsOutline<CR>', 'Symbols outline' },
+      ['<C-Up>'] = { ':resize -2<CR>', 'Resize window up' },
+      ['<C-Down>'] = { ':resize +2<CR>', 'Resize window down' },
+      ['<C-Left>'] = { ':vertical resize -2<CR>', 'Resize window left' },
+      ['<C-Right>'] = { ':vertical resize +2<CR>', 'Resize window right' },
+      ['<C-h>'] = { '<C-w>h', 'Move window left' },
+      ['<C-j>'] = { '<C-w>j', 'Move window down' },
+      ['<C-k>'] = { '<C-w>k', 'Move window up' },
+      ['<C-l>'] = { '<C-w>l', 'Move window right' },
+    },
+    vkeymappings = {
+      ['/'] = { ':lua require"Comment.api".toggle_current_linewise_op(vim.fn.visualmode())<CR>', 'Comment' },
+      g = {
+        h = { ':lua require "gitsigns".stage_hunk()<CR>', 'Stage hunk' },
+      }
+    },
     keymappings = {
       ['w'] = { ':w!<CR>', 'Save file' },
       ['x'] = { ':lua require("mrgeek.utils").close_buffer()<CR>', 'Close current buffer' },
-
-      -- Buffers related
-      -- TODO Check how to register global keymappings without holding to leader
-      -- ['<ESC>'] = { ':noh<CR>', 'No highlight' },
-      -- ['jk'] = { '<ESC>', 'Escape insert mode and go to visual mode' },
-      -- ['<C-s>'] = { ':w!<CR>', 'Save file' },
-      -- ['<Tab>'] = { ':BufferLineCycleNext<CR>', 'Next' },
-      -- ['<S-Tab>'] = { ':BufferLineCyclePrev<CR>', 'Previous' },
-
+      ['/'] = { ':lua require"Comment.api".toggle_current_linewise()<CR>', 'Comment line' },
+      ['e'] = { ':NvimTreeToggle<CR>', 'NvimTree toggle' },
       b = {
         name = 'Buffers',
         j = { ':BufferLinePick<CR>', 'Jump' },

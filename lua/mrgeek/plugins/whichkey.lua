@@ -57,6 +57,15 @@ local default = {
   },
 }
 
+-- Define normal mappings
 which_key.register(MrGeek.mappings.keymappings, MrGeek.mappings.opts)
+which_key.register(MrGeek.mappings.vkeymappings, MrGeek.mappings.vopts)
+
+-- Define global mappings
+which_key.register(MrGeek.mappings.globalmappings, MrGeek.mappings.globalopts)
+which_key.register(MrGeek.mappings.vglobalmappings, MrGeek.mappings.vglobalopts)
+
+-- Define global terminal mappings
+which_key.register(MrGeek.mappings.terminal_globalmappings, MrGeek.mappings.tglobalopts)
 
 which_key.setup(default)
