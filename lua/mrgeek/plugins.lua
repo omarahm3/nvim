@@ -300,22 +300,22 @@ return packer.startup(function(use)
     end
   }
 
-  use {
-    'filipdutescu/renamer.nvim',
-    event = 'BufRead',
-    branch = 'master',
-    requires = {
-      {
-        'nvim-lua/plenary.nvim'
-      },
-    },
-    config = function()
-      require('mrgeek.plugins.renamer')
-    end,
-    setup = function()
-      require('mrgeek.keymaps').renamer()
-    end,
-  }
+  -- use {
+  --   'filipdutescu/renamer.nvim',
+  --   event = 'BufRead',
+  --   branch = 'master',
+  --   requires = {
+  --     {
+  --       'nvim-lua/plenary.nvim'
+  --     },
+  --   },
+  --   config = function()
+  --     require('mrgeek.plugins.renamer')
+  --   end,
+  --   setup = function()
+  --     require('mrgeek.keymaps').renamer()
+  --   end,
+  -- }
 
   use {
     'booperlv/nvim-gomove',
@@ -499,36 +499,36 @@ return packer.startup(function(use)
     },
   }
 
-  use {
-    'ThePrimeagen/refactoring.nvim',
-    requires = {
-      {
-        'nvim-lua/plenary.nvim'
-      },
-      {
-        'nvim-treesitter/nvim-treesitter'
-      },
-    },
-    after = 'nvim-treesitter',
-    config = function()
-      require('refactoring').setup({})
-    end,
-    setup = function()
-      require('mrgeek.keymaps').refactoring()
-    end,
-  }
+  -- use {
+  --   'ThePrimeagen/refactoring.nvim',
+  --   requires = {
+  --     {
+  --       'nvim-lua/plenary.nvim'
+  --     },
+  --     {
+  --       'nvim-treesitter/nvim-treesitter'
+  --     },
+  --   },
+  --   after = 'nvim-treesitter',
+  --   config = function()
+  --     require('refactoring').setup({})
+  --   end,
+  --   setup = function()
+  --     require('mrgeek.keymaps').refactoring()
+  --   end,
+  -- }
 
-  use {
-    'michaelb/sniprun',
-    event = 'BufRead',
-    run = 'bash ./install.sh',
-    config = function()
-      require('mrgeek.plugins.snip_run')
-    end,
-    setup = function()
-      require('mrgeek.keymaps').sniprun()
-    end,
-  }
+  -- use {
+  --   'michaelb/sniprun',
+  --   event = 'BufRead',
+  --   run = 'bash ./install.sh',
+  --   config = function()
+  --     require('mrgeek.plugins.snip_run')
+  --   end,
+  --   setup = function()
+  --     require('mrgeek.keymaps').sniprun()
+  --   end,
+  -- }
 
   -- Debugging
   use {
