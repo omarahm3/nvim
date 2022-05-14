@@ -3,7 +3,7 @@ local opts = {
   silent = true,
 }
 
-local term_opts = { silent = true }
+-- local term_opts = { silent = true }
 
 local keymap = vim.api.nvim_set_keymap
 
@@ -151,18 +151,18 @@ M.toggle_term = function()
 end
 
 M.refactoring = function()
-  keymap('v', '<leader>rr', '<Esc>:lua require("telescope").extensions.refactoring.refactors()<CR>', opts)
+  -- keymap('v', '<leader>rr', '<Esc>:lua require("telescope").extensions.refactoring.refactors()<CR>', opts)
 end
 
 M.sniprun = function()
-  keymap('v', '<leader>sr', ':lua require("sniprun").run("v")<CR>', opts)
-  keymap('n', '<leader>sr', ':lua require("sniprun").run()<CR>', opts)
+  -- keymap('v', '<leader>sr', ':lua require("sniprun").run("v")<CR>', opts)
+  -- keymap('n', '<leader>sr', ':lua require("sniprun").run()<CR>', opts)
 end
 
 M.renamer = function()
-  keymap('i', '<F2>', ':lua require("renamer").rename()<CR>', opts)
-  keymap('n', '<leader>rn', ':lua require("renamer").rename()<CR>', opts)
-  keymap('v', '<leader>rn', ':lua require("renamer").rename()<CR>', opts)
+  -- keymap('i', '<F2>', ':lua require("renamer").rename()<CR>', opts)
+  -- keymap('n', '<leader>rn', ':lua require("renamer").rename()<CR>', opts)
+  -- keymap('v', '<leader>rn', ':lua require("renamer").rename()<CR>', opts)
 end
 
 -- Moving blocks
@@ -204,12 +204,12 @@ M.yoda = function()
 end
 
 M.diffview = function()
-  keymap("n", "<leader>do", ":DiffviewOpen -uno<CR>", opts)
-  keymap("n", "<leader>dc", ":DiffviewClose<CR>", opts)
-  keymap("n", "<leader>df", ":DiffviewToggleFiles<CR>", opts)
-  keymap("n", "<leader>ds", ":DiffviewFocusFiles<CR>", opts)
-  keymap("n", "<leader>dr", ":DiffviewRefresh<CR>", opts)
-  keymap("n", "<leader>dh", ":DiffviewFileHistory %:p<CR>", opts)
+  -- keymap("n", "<leader>do", ":DiffviewOpen -uno<CR>", opts)
+  -- keymap("n", "<leader>dc", ":DiffviewClose<CR>", opts)
+  -- keymap("n", "<leader>df", ":DiffviewToggleFiles<CR>", opts)
+  -- keymap("n", "<leader>ds", ":DiffviewFocusFiles<CR>", opts)
+  -- keymap("n", "<leader>dr", ":DiffviewRefresh<CR>", opts)
+  -- keymap("n", "<leader>dh", ":DiffviewFileHistory %:p<CR>", opts)
 end
 
 M.truezen = function()
