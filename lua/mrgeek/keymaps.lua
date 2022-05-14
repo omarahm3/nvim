@@ -219,7 +219,7 @@ M.truezen = function()
 end
 
 M.hop = function()
-  keymap('n', 'f', ':lua require"hop".hint_words()<cr>', {})
+  -- keymap('n', 'f', ':lua require"hop".hint_words()<cr>', {})
 end
 
 return M

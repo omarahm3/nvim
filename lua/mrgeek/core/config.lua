@@ -178,6 +178,7 @@ MrGeek = {
       ['<C-k>'] = { '<C-w>k', 'Move window up' },
       ['<C-l>'] = { '<C-w>l', 'Move window right' },
       ['<C-p>'] = { ':Telescope find_files<CR>', 'Find file' },
+      ['f'] = { ':lua require"hop".hint_words()<cr>', 'Hop words' },
     },
     vkeymappings = {
       ['/'] = { ':lua require"Comment.api".toggle_current_linewise_op(vim.fn.visualmode())<CR>', 'Comment' },
