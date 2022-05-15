@@ -25,7 +25,6 @@ local float = {
 MrGeek = {
   log = {
     level = 'debug',
-    override_notify = false,
   },
   icons = icons,
   theme = {
@@ -61,7 +60,6 @@ MrGeek = {
       max_width = 30,
       context = 30,
     },
-    automatic_servers_installation = true,
     buffer_mappings = {
       normal_mode = {
         ['K'] = { vim.lsp.buf.hover, 'Show hover' },
@@ -72,7 +70,7 @@ MrGeek = {
         ['gs'] = { vim.lsp.buf.signature_help, 'show signature help' },
         ['<leader>cf'] = { vim.lsp.buf.formatting, 'Format whole file' },
         ['<leader>ca'] = { vim.lsp.buf.code_action, 'Check code action' },
-        ['<leader>cr'] = { vim.lsp.buf.rename, 'Check code action' },
+        ['<leader>cr'] = { vim.lsp.buf.rename, 'Rename' },
         ['gp'] = {
           function()
             require('mrgeek.lsp.peek').Peek 'definition'
@@ -116,9 +114,6 @@ MrGeek = {
       numhl = 'LspDiagnosticsSignInformation',
     },
   },
-  which_key = {
-    mappings = {
-      d = {}
-    }
-  }
+  default_leader = '<Space>',
+  mappings = {},
 }

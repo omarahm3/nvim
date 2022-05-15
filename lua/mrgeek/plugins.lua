@@ -155,9 +155,6 @@ return packer.startup(function(use)
     config = function()
       require('mrgeek.plugins.bufferline')
     end,
-    setup = function()
-      require('mrgeek.keymaps').buffer_line()
-    end,
   }
 
   use {
@@ -170,9 +167,6 @@ return packer.startup(function(use)
     after = 'nvim-ts-context-commentstring',
     config = function()
       require('mrgeek.plugins.comment')
-    end,
-    setup = function()
-      require('mrgeek.keymaps').comment()
     end,
   }
 
@@ -196,9 +190,6 @@ return packer.startup(function(use)
     'glepnir/dashboard-nvim',
     config = function()
       require('mrgeek.plugins.dashboard')
-    end,
-    setup = function()
-      require('mrgeek.keymaps').dashboard()
     end,
   }
 
@@ -236,9 +227,6 @@ return packer.startup(function(use)
     config = function()
       require('mrgeek.plugins.twilight')
     end,
-    setup = function()
-      require('mrgeek.keymaps').twilight()
-    end,
   }
 
   use {
@@ -246,9 +234,6 @@ return packer.startup(function(use)
     event = 'BufRead',
     config = function()
       require('mrgeek.plugins.truezen')
-    end,
-    setup = function()
-      require('mrgeek.keymaps').truezen()
     end,
   }
 
@@ -273,18 +258,12 @@ return packer.startup(function(use)
     config = function()
       require('mrgeek.plugins.symbols_outline')
     end,
-    setup = function()
-      require('mrgeek.keymaps').symbols_outline()
-    end,
   }
 
   use {
     'akinsho/toggleterm.nvim',
     config = function()
       require('mrgeek.plugins.toggle_term')
-    end,
-    setup = function()
-      require('mrgeek.keymaps').toggle_term()
     end,
   }
 
@@ -300,22 +279,19 @@ return packer.startup(function(use)
     end
   }
 
-  use {
-    'filipdutescu/renamer.nvim',
-    event = 'BufRead',
-    branch = 'master',
-    requires = {
-      {
-        'nvim-lua/plenary.nvim'
-      },
-    },
-    config = function()
-      require('mrgeek.plugins.renamer')
-    end,
-    setup = function()
-      require('mrgeek.keymaps').renamer()
-    end,
-  }
+  -- use {
+  --   'filipdutescu/renamer.nvim',
+  --   event = 'BufRead',
+  --   branch = 'master',
+  --   requires = {
+  --     {
+  --       'nvim-lua/plenary.nvim'
+  --     },
+  --   },
+  --   config = function()
+  --     require('mrgeek.plugins.renamer')
+  --   end,
+  -- }
 
   use {
     'booperlv/nvim-gomove',
@@ -332,9 +308,6 @@ return packer.startup(function(use)
         move_past_end_col = false,
       }
     end,
-    setup = function()
-      require('mrgeek.keymaps').go_move()
-    end,
   }
 
   use {
@@ -342,9 +315,6 @@ return packer.startup(function(use)
     event = 'BufRead',
     config = function()
       require('mrgeek.plugins.jester')
-    end,
-    setup = function()
-      require('mrgeek.keymaps').jester()
     end,
   }
 
@@ -357,9 +327,6 @@ return packer.startup(function(use)
     config = function()
       require('yode-nvim').setup({})
     end,
-    setup = function()
-      require('mrgeek.keymaps').yoda()
-    end,
   }
 
   -- Git --
@@ -370,7 +337,6 @@ return packer.startup(function(use)
       require('mrgeek.plugins.gitsigns')
     end,
     setup = function()
-      require('mrgeek.keymaps').git_signs()
       require('mrgeek.utils').packer_lazy_load 'gitsigns.nvim'
     end,
   }
@@ -381,7 +347,6 @@ return packer.startup(function(use)
     config = function()
     end,
     setup = function()
-      require('mrgeek.keymaps').vim_fugitive()
       require('mrgeek.utils').packer_lazy_load 'vim-fugitive'
     end,
   }
@@ -391,9 +356,6 @@ return packer.startup(function(use)
     requires = 'nvim-lua/plenary.nvim',
     config = function()
       require('mrgeek.plugins.diffview')
-    end,
-    setup = function()
-      require('mrgeek.keymaps').diffview()
     end,
   }
 
@@ -453,9 +415,6 @@ return packer.startup(function(use)
     config = function()
       require('mrgeek.telescope').setup()
     end,
-    setup = function()
-      require('mrgeek.keymaps').telescope()
-    end,
   }
 
   use {
@@ -499,36 +458,30 @@ return packer.startup(function(use)
     },
   }
 
-  use {
-    'ThePrimeagen/refactoring.nvim',
-    requires = {
-      {
-        'nvim-lua/plenary.nvim'
-      },
-      {
-        'nvim-treesitter/nvim-treesitter'
-      },
-    },
-    after = 'nvim-treesitter',
-    config = function()
-      require('refactoring').setup({})
-    end,
-    setup = function()
-      require('mrgeek.keymaps').refactoring()
-    end,
-  }
+  -- use {
+  --   'ThePrimeagen/refactoring.nvim',
+  --   requires = {
+  --     {
+  --       'nvim-lua/plenary.nvim'
+  --     },
+  --     {
+  --       'nvim-treesitter/nvim-treesitter'
+  --     },
+  --   },
+  --   after = 'nvim-treesitter',
+  --   config = function()
+  --     require('refactoring').setup({})
+  --   end,
+  -- }
 
-  use {
-    'michaelb/sniprun',
-    event = 'BufRead',
-    run = 'bash ./install.sh',
-    config = function()
-      require('mrgeek.plugins.snip_run')
-    end,
-    setup = function()
-      require('mrgeek.keymaps').sniprun()
-    end,
-  }
+  -- use {
+  --   'michaelb/sniprun',
+  --   event = 'BufRead',
+  --   run = 'bash ./install.sh',
+  --   config = function()
+  --     require('mrgeek.plugins.snip_run')
+  --   end,
+  -- }
 
   -- Debugging
   use {
@@ -687,9 +640,6 @@ return packer.startup(function(use)
       -- you can configure Hop the way you like here; see :h hop-config
       require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end,
-    setup = function()
-      require('mrgeek.keymaps').hop()
-    end
   }
 
   use {
