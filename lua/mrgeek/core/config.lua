@@ -22,8 +22,6 @@ local float = {
   end
 }
 
-local keymappings = require('mrgeek.core.keymappings').mappings
-
 MrGeek = {
   log = {
     level = 'debug',
@@ -116,5 +114,6 @@ MrGeek = {
       numhl = 'LspDiagnosticsSignInformation',
     },
   },
-  mappings = keymappings,
+  default_leader = '<Space>',
+  mappings = {},
 }

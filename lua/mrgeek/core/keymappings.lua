@@ -1,9 +1,7 @@
-local M = {}
-
-M.mappings = {
+local mappings = {
   opts = {
     mode = 'n', -- NORMAL mode
-    prefix = '<leader>',
+    prefix = MrGeek.default_leader,
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
@@ -11,7 +9,7 @@ M.mappings = {
   },
   vopts = {
     mode = 'v', -- VISUAL mode
-    prefix = '<leader>',
+    prefix = MrGeek.default_leader,
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
@@ -223,4 +221,4 @@ M.mappings = {
   }
 }
 
-return M
+MrGeek.mappings = mappings
