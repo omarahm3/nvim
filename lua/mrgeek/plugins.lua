@@ -592,11 +592,11 @@ return packer.startup(function(use)
     'github/copilot.vim'
   }
 
-  use {
-    'tzachar/cmp-tabnine',
-    run = './install.sh',
-    requires = 'hrsh7th/nvim-cmp',
-  }
+  -- use {
+  --   'tzachar/cmp-tabnine',
+  --   run = './install.sh',
+  --   requires = 'hrsh7th/nvim-cmp',
+  -- }
 
   use {
     'zbirenbaum/copilot.lua',

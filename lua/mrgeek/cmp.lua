@@ -50,7 +50,7 @@ local kind_icons = {
 
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 local source_mapping = {
-  cmp_tabnine = MrGeek.icons.ribbon,
+  -- cmp_tabnine = MrGeek.icons.ribbon,
   copilot = MrGeek.icons.light,
   nvim_lsp = MrGeek.icons.paragraph .. '[LSP]',
   nvim_lua = MrGeek.icons.bomb,
@@ -137,7 +137,7 @@ local default = {
   },
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'cmp_tabnine' },
+    -- { name = 'cmp_tabnine' },
     { name = 'copilot' },
     { name = 'nvim_lua' },
     { name = 'luasnip' },
