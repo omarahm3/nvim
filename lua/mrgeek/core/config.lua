@@ -28,8 +28,8 @@ MrGeek = {
   },
   icons = icons,
   theme = {
-    name = 'rose-pine',
-    lualine = 'rose-pine',
+    name = 'catppuccin',
+    lualine = 'catppuccin',
   },
   lsp = {
     diagnostics = {

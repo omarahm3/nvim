@@ -64,6 +64,6 @@ for _, server in ipairs(servers) do
   setup_server(server.name, server.setup)
 end
 
-for _, server in ipairs { 'bashls', 'cssls', 'html', 'phpactor' } do
+for _, server in ipairs { 'bashls', 'cssls', 'html', 'phpactor', 'pyright' } do
   setup_server(server, {})
 end
