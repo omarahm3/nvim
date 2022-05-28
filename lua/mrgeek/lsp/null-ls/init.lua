@@ -26,6 +26,9 @@ function M.setup()
       }
     }),
 
+    -- Vale
+    require("null-ls").builtins.diagnostics.vale,
+
     -- GIT
     null_ls.builtins.code_actions.gitsigns,
 

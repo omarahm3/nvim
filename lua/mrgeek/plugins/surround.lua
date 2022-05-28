@@ -25,7 +25,7 @@ local default = {
       d = { '"', '"' }
     },
   },
-  prefix = "<C-s>",
+  prefix = "<C-'>",
 }
 
 surround.setup(default)

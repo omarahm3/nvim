@@ -524,7 +524,7 @@ return packer.startup(function(use)
 
   use {
     'jose-elias-alvarez/null-ls.nvim',
-    after = 'nvim-lspconfig',
+    -- after = 'nvim-lspconfig',
   }
 
   use {
@@ -545,6 +545,14 @@ return packer.startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
       require('mrgeek.plugins.trouble')
+    end
+  }
+
+  use {
+    'narutoxy/dim.lua',
+    requires = { 'nvim-treesitter/nvim-treesitter', 'neovim/nvim-lspconfig' },
+    config = function()
+      require('dim').setup({})
     end
   }
 
