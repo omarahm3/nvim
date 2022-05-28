@@ -32,6 +32,7 @@ capabilities.textDocument.codeAction = {
     },
   },
 }
+
 local default_capabilities = require('mrgeek.lsp').common_capabilities()
 
 local on_attach = function(client, bufnr)
@@ -44,7 +45,7 @@ local on_attach = function(client, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   require('nvim-lsp-ts-utils').setup {
-    debug = false,
+    debug = true,
     disable_commands = false,
     enable_import_on_completion = true,
     import_all_timeout = 5000, -- ms
@@ -64,8 +65,8 @@ local on_attach = function(client, bufnr)
     watch_dir = nil,
 
     -- filter diagnostics
-    filter_out_diagnostics_by_severity = { 'hint' },
-    filter_out_diagnostics_by_code = {},
+    -- filter_out_diagnostics_by_severity = { 'hint' },
+    -- filter_out_diagnostics_by_code = {},
   }
 
   require('nvim-lsp-ts-utils').setup_client(client)
