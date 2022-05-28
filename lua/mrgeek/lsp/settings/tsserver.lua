@@ -49,22 +49,9 @@ local on_attach = function(client, bufnr)
     enable_import_on_completion = true,
     import_all_timeout = 5000, -- ms
 
-    -- eslint
-    eslint_enable_code_actions = false,
-    eslint_enable_disable_comments = false,
-    eslint_bin = 'eslint_d',
-    eslint_config_fallback = nil,
-    eslint_enable_diagnostics = false,
-    eslint_opts = {
-      -- diagnostics_format = '#{m} [#{c}]',
-      condition = function(utils)
-        return utils.root_has_file('.eslintrc')
-      end,
-    },
-
     -- formatting
     enable_formatting = false,
-    formatter = 'eslint_d',
+    formatter = 'eslint',
     formatter_config_fallback = nil,
 
     -- parentheses completion
