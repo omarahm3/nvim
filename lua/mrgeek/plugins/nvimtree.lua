@@ -12,38 +12,7 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = {
-    unstaged = "",
-    staged = "S",
-    unmerged = "",
-    renamed = "➜",
-    deleted = "",
-    untracked = "U",
-    ignored = "◌",
-  },
-  folder = {
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-  },
-}
-
-vim.g.nvim_tree_git_hl = true
-vim.g.nvim_tree_root_folder_modifier = ':t'
-vim.g.nvim_tree_show_icons = {
-  git = 1,
-  folders = 1,
-  files = 1,
-  folder_arrows = 1,
-  tree_width = 30,
-}
-
-local default ={
+local default = {
   disable_netrw = true,
   hijack_netrw = true,
   open_on_setup = false,
@@ -55,6 +24,38 @@ local default ={
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,
+  renderer = {
+    root_folder_modifier = ':t',
+    highlight_git = true,
+    icons = {
+      show = {
+        git = true,
+        folder = true,
+        folder_arrow = true,
+        file = true,
+      },
+      glyphs = {
+        default = "",
+        symlink = "",
+        git = {
+          unstaged = "",
+          staged = "S",
+          unmerged = "",
+          renamed = "➜",
+          deleted = "",
+          untracked = "U",
+          ignored = "◌",
+        },
+        folder = {
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+        },
+      }
+    },
+  },
   hijack_directories = {
     enable = true,
     auto_open = true,
@@ -99,9 +100,9 @@ local default ={
     mappings = {
       custom_only = false,
       list = {
-      { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-      { key = "h", cb = tree_cb "close_node" },
-      { key = "v", cb = tree_cb "vsplit" },
+        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+        { key = "h", cb = tree_cb "close_node" },
+        { key = "v", cb = tree_cb "vsplit" },
       },
     },
     number = false,
