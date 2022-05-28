@@ -92,7 +92,7 @@ function M.setup()
 
   require 'mrgeek.lsp.lsp-installer'
 
-  require 'mrgeek.lsp.null-ls'
+  require 'mrgeek.lsp.null-ls'.setup()
 
   require 'mrgeek.lsp.run'
   require 'mrgeek.lsp.functions'
