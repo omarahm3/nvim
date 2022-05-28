@@ -8,7 +8,7 @@ local float = {
   prefix = '',
   focusable = false,
   format = function(diagnostic)
-    local code = diagnostic.user_data.lsp.code
+    local code = diagnostic.code
 
     if not diagnostic.source or not code then
       return string.format('%s', diagnostic.message)
