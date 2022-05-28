@@ -12,9 +12,13 @@ function M.setup()
 
   local sources = {
     -- JS
-    b.formatting.prettierd.with { filetypes = { 'html', 'markdown', 'css' } },
-    b.formatting.eslint_d,
-    b.diagnostics.eslint_d,
+    b.formatting.eslint.with {
+      only_local = 'node_modules/.bin',
+      diagnostics_format = '#{m} [#{c}]',
+      condition = function(utils)
+        return utils.root_has_file('.eslintrc')
+      end,
+    },
 
     -- PHP
     null_ls.builtins.diagnostics.php,
@@ -26,8 +30,15 @@ function M.setup()
       }
     }),
 
+    -- fish
+    null_ls.builtins.diagnostics.fish,
+
+    -- Spell check
+    null_ls.builtins.diagnostics.codespell,
+    null_ls.builtins.formatting.codespell,
+
     -- Vale
-    require("null-ls").builtins.diagnostics.vale,
+    null_ls.builtins.diagnostics.vale,
 
     -- GIT
     null_ls.builtins.code_actions.gitsigns,
