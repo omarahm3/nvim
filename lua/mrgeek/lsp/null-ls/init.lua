@@ -47,6 +47,7 @@ function M.setup()
     -- Shell
     b.formatting.shfmt,
     b.diagnostics.shellcheck.with { diagnostics_format = '#{m} [#{c}]' },
+    b.code_actions.shellcheck,
   }
 
   local default_opts = require 'mrgeek.lsp'.get_common_opts()
