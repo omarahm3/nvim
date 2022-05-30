@@ -30,7 +30,6 @@ function M.setup()
 
     -- Spell check
     b.diagnostics.codespell,
-    b.formatting.codespell,
 
     -- Vale
     b.diagnostics.vale,
