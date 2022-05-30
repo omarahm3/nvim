@@ -1,3 +1,4 @@
+local log = require "mrgeek.core.log"
 -- Credits:
 -- 1) https://github.com/LunarVim/LunarVim/blob/rolling/lua/lvim/lsp/utils.lua
 
@@ -134,12 +135,9 @@ function M.format_filter(clients)
   )
 end
 
----Provide vim.lsp.buf.format for nvim <0.8
----@param opts table
 function M.format(opts)
   opts = opts or { filter = M.format_filter }
-
-  return vim.lsp.buf.formatting(opts)
+  return vim.lsp.buf.format(opts)
 end
 
 return M
