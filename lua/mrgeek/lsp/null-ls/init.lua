@@ -1,10 +1,11 @@
+local log = require "mrgeek.core.log"
 local M = {}
 
 function M.setup()
   local present, null_ls = pcall(require, 'null-ls')
 
   if not present then
-    vim.notify('null-ls is not installed')
+    log:error('null-ls does not exist')
     return
   end
 
@@ -12,17 +13,11 @@ function M.setup()
 
   local sources = {
     -- JS
-    b.formatting.eslint.with {
-      only_local = 'node_modules/.bin',
-      diagnostics_format = '#{m} [#{c}]',
-      condition = function(utils)
-        return utils.root_has_file('.eslintrc')
-      end,
-    },
+    b.formatting.eslint,
 
     -- PHP
-    null_ls.builtins.diagnostics.php,
-    null_ls.builtins.diagnostics.phpcs.with({
+    b.diagnostics.php,
+    b.diagnostics.phpcs.with({
       command = './bin/phpcs',
       args = {
         "--standard=./ruleset.xml",
@@ -31,20 +26,20 @@ function M.setup()
     }),
 
     -- fish
-    null_ls.builtins.diagnostics.fish,
+    b.diagnostics.fish,
 
     -- Spell check
-    null_ls.builtins.diagnostics.codespell,
-    null_ls.builtins.formatting.codespell,
+    b.diagnostics.codespell,
+    b.formatting.codespell,
 
     -- Vale
-    null_ls.builtins.diagnostics.vale,
+    b.diagnostics.vale,
 
     -- GIT
-    null_ls.builtins.code_actions.gitsigns,
+    b.code_actions.gitsigns,
 
     -- Go
-    null_ls.builtins.diagnostics.golangci_lint,
+    b.diagnostics.golangci_lint,
 
     -- Lua
     b.formatting.stylua,
