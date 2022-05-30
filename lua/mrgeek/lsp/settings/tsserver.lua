@@ -39,13 +39,14 @@ local on_attach = function(client, bufnr)
   require('mrgeek.lsp').common_on_attach(client, bufnr)
   client.server_capabilities.document_formatting = false
   client.server_capabilities.document_range_formatting = false
+  client.server_capabilities.documentFormattingProvider = false
 
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   require('nvim-lsp-ts-utils').setup {
-    debug = true,
+    debug = false,
     disable_commands = false,
     enable_import_on_completion = true,
     import_all_timeout = 5000, -- ms
