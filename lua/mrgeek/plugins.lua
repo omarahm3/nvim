@@ -333,7 +333,7 @@ return packer.startup(function(use)
     end,
   })
 
-  use("Vonr/align.nvim")
+  use("junegunn/vim-easy-align")
 
   -- Git --
   use({
