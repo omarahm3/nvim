@@ -64,6 +64,7 @@ which_key.register(MrGeek.mappings.vkeymappings, MrGeek.mappings.vopts)
 -- Define global mappings
 which_key.register(MrGeek.mappings.globalmappings, MrGeek.mappings.globalopts)
 which_key.register(MrGeek.mappings.vglobalmappings, MrGeek.mappings.vglobalopts)
+which_key.register(MrGeek.mappings.xglobalmappings, MrGeek.mappings.xglobalopts)
 
 -- Define global terminal mappings
 which_key.register(MrGeek.mappings.terminal_globalmappings, MrGeek.mappings.tglobalopts)
