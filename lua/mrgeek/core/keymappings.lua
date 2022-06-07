@@ -15,14 +15,6 @@ local mappings = {
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
   },
-  xglobalopts = {
-    mode = "x", -- VISUAL mode
-    prefix = MrGeek.default_leader,
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = true, -- use `nowait` when creating keymaps
-  },
   globalopts = {
     mode = "n", -- NORMAL mode
     prefix = "",
@@ -48,9 +40,6 @@ local mappings = {
     ["<S-Tab>"] = { "<gv", "Indent left" },
     ["<Tab>"] = { ">gv", "Indent right" },
     ["p"] = { '"_dP', "Keep what you are pasting in the clipboard register" },
-  },
-  xglobalmappings = {
-    ["ga"] = { ":EasyAlign<CR>", "Interactive alignment" },
   },
   terminal_globalmappings = {
     ["<C-h>"] = { "<C-\\><C-N><C-w>h", "Teminal left" },
