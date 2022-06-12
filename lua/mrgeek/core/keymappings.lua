@@ -179,7 +179,8 @@ local mappings = {
     },
     f = {
       name = "Find",
-      b = { ":Telescope git_branches<CR>", "Checkout branch" },
+      b = { ":Telescope file_browser<CR>", "File browser" },
+      B = { ":Telescope git_branches<CR>", "Checkout branch" },
       c = {
         ':lua require("telescope.builtin.internal").colorscheme({enable_preview = true})<CR>',
         "Colorscheme",

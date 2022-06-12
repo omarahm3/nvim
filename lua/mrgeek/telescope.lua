@@ -86,6 +86,7 @@ local default = {
   extensions = {
     file_browser = {
       theme = 'ivy',
+      hijack_netrw = true,
       mappings = {
         ['i'] = {},
         ['n'] = {},
@@ -119,7 +120,7 @@ local M = {}
 M.setup = function()
   telescope.setup(default)
 
-  local extensions = { 'terms', 'file_browser', 'fzf', 'repo' }
+  local extensions = { 'file_browser', 'fzf', 'repo' }
 
   pcall(function()
     for _, ext in ipairs(extensions) do
