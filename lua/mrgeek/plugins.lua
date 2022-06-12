@@ -517,6 +517,14 @@ return packer.startup(function(use)
   })
 
   use({
+    "j-hui/fidget.nvim",
+    after = "nvim-lspconfig",
+    config = function()
+      require("fidget").setup{}
+    end,
+  })
+
+  use({
     "ray-x/lsp_signature.nvim",
     after = "nvim-lspconfig",
     config = function()
