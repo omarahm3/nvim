@@ -193,6 +193,16 @@ return packer.startup(function(use)
   })
 
   use({
+    "Shatur/neovim-session-manager",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("mrgeek.plugins.session_manager")
+    end,
+  })
+
+  use({
     "max397574/better-escape.nvim",
     event = "InsertEnter",
     config = function()
