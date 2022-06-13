@@ -122,8 +122,10 @@ local mappings = {
     },
     s = {
       name = "Session",
-      s = { ":SessionSave<CR>", "Save session" },
-      l = { ":SessionLoad<CR>", "Load session" },
+      s = { ":SessionManager save_current_session<CR>", "Save session" },
+      l = { ":SessionManager load_last_session<CR>", "Load last session" },
+      L = { ":SessionManager load_session<CR>", "Select and load session" },
+      d = { ":SessionManager delete_session<CR>", "Select and delete session" },
     },
     g = {
       name = "Git",
