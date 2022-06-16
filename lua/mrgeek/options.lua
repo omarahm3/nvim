@@ -1,8 +1,8 @@
 -- these are vim.opt.<OPTIONS>
 local options = {
   backup = false,                                   -- creates backup file
+  cmdheight = 0,                                    -- more space to neovim command line to display messages
   clipboard = 'unnamedplus',                        -- allows neovim to access system clipboard
-  cmdheight = 1,                                    -- more space to neovim command line to display messages
   completeopt = { 'menuone', 'noselect' },          -- mostly just for cmp
   conceallevel = 0,                                 -- so that `` is visible on markdown
   fileencoding = 'utf-8',                           -- the encoding written to file
