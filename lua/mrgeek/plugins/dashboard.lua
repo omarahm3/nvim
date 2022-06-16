@@ -46,7 +46,7 @@ db.custom_header = {
 db.custom_center = {
   {
     icon = "  ",
-    desc = "Recently last session                  ",
+    desc = "Recently last session                   ",
     shortcut = "SPC s l",
     action = "SessionLoad",
   },
