@@ -54,6 +54,10 @@ local default = {
 local M = {}
 M.setup = function()
   ts_config.setup(default)
+  -- Set ejs syntax highlighting
+  vim.cmd([[
+    au BufNewFile,BufRead *.ejs set filetype=html
+  ]])
 end
 
 return M
