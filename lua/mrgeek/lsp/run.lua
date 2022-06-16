@@ -50,7 +50,7 @@ local servers = {
   {
     name = 'gopls',
     setup = {
-      settubgs = {
+      settings = {
         codelenses = {
           generate = false,
           gc_detaills = true,
@@ -64,6 +64,6 @@ for _, server in ipairs(servers) do
   setup_server(server.name, server.setup)
 end
 
-for _, server in ipairs { 'bashls', 'cssls', 'html', 'phpactor', 'pyright' } do
+for _, server in ipairs { 'bashls', 'cssls', 'html', 'phpactor', 'pyright', 'rust_analyzer', 'sorbet' } do
   setup_server(server, {})
 end
