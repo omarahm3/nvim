@@ -11,7 +11,7 @@ local default = {
 			ruler = false,
 			showmode = false,
 			showcmd = false,
-			cmdheight = 1,
+			cmdheight = 0,
 		},
 		top = {
 			showtabline = 0,
