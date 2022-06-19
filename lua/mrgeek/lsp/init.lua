@@ -36,6 +36,10 @@ function M.common_capabilities()
       'additionalTextEdits',
     },
   }
+  capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+  }
 
   local present, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 
