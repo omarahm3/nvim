@@ -48,6 +48,7 @@ local mappings = {
     ["<C-l>"] = { "<C-\\><C-N><C-w>l", "Teminal right" },
   },
   globalmappings = {
+    ["<C-q>"] = { ":wqall<CR>", "Close nvim" },
     ["<ESC>"] = { ":noh<CR>", "No highlight" },
     ["<C-s>"] = { ":w!<CR>", "Save file" },
     ["<Tab>"] = { ":BufferLineCycleNext<CR>", "Next" },
