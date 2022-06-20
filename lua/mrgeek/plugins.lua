@@ -240,7 +240,7 @@ return packer.startup(function(use)
 
   use({
     "Pocco81/TrueZen.nvim",
-    event = "BufRead",
+    -- event = "BufRead",
     config = function()
       require("mrgeek.plugins.truezen")
     end,
