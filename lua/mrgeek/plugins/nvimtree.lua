@@ -13,7 +13,7 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 local default = {
-  disable_netrw = true,
+  disable_netrw = false,
   hijack_netrw = true,
   open_on_setup = false,
   ignore_ft_on_setup = {
@@ -23,7 +23,7 @@ local default = {
   },
   open_on_tab = false,
   hijack_cursor = false,
-  update_cwd = true,
+  update_cwd = false,
   renderer = {
     root_folder_modifier = ':t',
     highlight_git = true,
