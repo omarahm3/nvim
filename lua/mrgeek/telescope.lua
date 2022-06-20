@@ -1,10 +1,11 @@
-local present, telescope = pcall(require, 'telescope')
+local present, telescope = pcall(require, "telescope")
 
 if not present then
   return
 end
 
-local telescope_actions = require('telescope.actions.set')
+local telescope_actions = require("telescope.actions.set")
+local fb_actions = require("telescope").extensions.file_browser.actions
 
 -- Fixing issue with folds not working on files opened with telescope
 -- REF: https://github.com/nvim-telescope/telescope.nvim/issues/699
@@ -17,24 +18,24 @@ local fix_folds = {
       end,
     })
     return true
-  end
+  end,
 }
 
 local default = {
   defaults = {
-    prompt_prefix = ' ',
-    selection_caret = ' ',
-    entry_prefix = '  ',
-    initial_mode = 'insert',
-    selection_strategy = 'reset',
-    sorting_strategy = 'descending',
-    layout_strategy = 'horizontal',
+    prompt_prefix = " ",
+    selection_caret = " ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "horizontal",
     layout_config = {
       width = 0.75,
       -- height = 0.80,
       preview_cutoff = 120,
       horizontal = {
-        prompt_position = 'bottom',
+        prompt_position = "bottom",
         preview_width = function(_, cols, _)
           if cols < 120 then
             return math.floor(cols * 0.5)
@@ -49,35 +50,35 @@ local default = {
       },
     },
     vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case',
-      '--hidden',
-      '--glob=!.git/',
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--hidden",
+      "--glob=!.git/",
     },
     -- file_sorter = require('telescope.sorters').get_fuzzy_file,
-    file_ignore_patterns = { 'node_modules' },
+    file_ignore_patterns = { "node_modules" },
     -- generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
     path_display = { shorten = 5 },
     winblend = 0,
     border = {},
     borderchars = {
-      '─',
-      '│',
-      '─',
-      '│',
-      '╭',
-      '╮',
-      '╯',
-      '╰',
+      "─",
+      "│",
+      "─",
+      "│",
+      "╭",
+      "╮",
+      "╯",
+      "╰",
     },
     color_devicons = true,
     use_less = true,
-    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     -- file_previewer = require('telescope.previewers').vim_buffer_cat.new,
     -- grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
     -- qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
@@ -85,19 +86,21 @@ local default = {
   },
   extensions = {
     file_browser = {
-      theme = 'ivy',
+      -- theme = "ivy",
       hijack_netrw = true,
       mappings = {
-        ['i'] = {},
-        ['n'] = {},
-      }
+        ["i"] = {
+          ["<C-n>"] = fb_actions.create,
+        },
+        ["n"] = {},
+      },
     },
     fzf = {
       fuzzy = true,
       override_generic_sorter = true,
       override_file_sorter = true,
-      case_mode = 'smart_case',
-    }
+      case_mode = "smart_case",
+    },
   },
   pickers = {
     find_files = {
@@ -120,7 +123,7 @@ local M = {}
 M.setup = function()
   telescope.setup(default)
 
-  local extensions = { 'file_browser', 'fzf', 'repo' }
+  local extensions = { "file_browser", "fzf", "repo" }
 
   pcall(function()
     for _, ext in ipairs(extensions) do
