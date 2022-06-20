@@ -279,8 +279,8 @@ return packer.startup(function(use)
     "kevinhwang91/nvim-ufo",
     requires = "kevinhwang91/promise-async",
     config = function()
-      require('ufo').setup()
-    end
+      require("ufo").setup()
+    end,
   })
 
   use({
@@ -671,6 +671,13 @@ return packer.startup(function(use)
 
   use({
     "dstein64/vim-startuptime",
+  })
+
+  use({
+    "https://gitlab.com/yorickpeterse/nvim-pqf.git",
+    config = function()
+      require("pqf").setup()
+    end,
   })
 
   use({ "antoinemadec/FixCursorHold.nvim" })
