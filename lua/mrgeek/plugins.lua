@@ -469,6 +469,11 @@ return packer.startup(function(use)
   })
 
   use({
+    "nvim-telescope/telescope-frecency.nvim",
+    requires = { "tami5/sqlite.lua" },
+  })
+
+  use({
     "airblade/vim-rooter",
     config = function()
       vim.g["rooter_cd_cmd"] = "lcd"

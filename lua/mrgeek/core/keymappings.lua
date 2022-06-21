@@ -191,7 +191,7 @@ local mappings = {
         "Colorscheme",
       },
       f = { ":Telescope find_files<CR>", "Find file" },
-      h = { ":Telescope help_tags<CR>", "Find help" },
+      t = { ":Telescope help_tags<CR>", "Find help" },
       M = { ":Telescope man_pages<CR>", "Man pages" },
       o = { ":Telescope oldfiles<CR>", "Open recent files" },
       r = {
@@ -202,6 +202,7 @@ local mappings = {
       w = { ":Telescope live_grep<CR>", "Text" },
       k = { ":Telescope keymaps<CR>", "Keymaps" },
       C = { ":Telescope commands<CR>", "Commands" },
+      h = { ":lua require('telescope').extensions.frecency.frecency({ winblend = 10, border = true, previewer = false, shorten_path = false })<CR>", "History" },
     },
     t = {
       name = "Terminal",

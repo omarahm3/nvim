@@ -138,6 +138,22 @@ local default = {
         ["n"] = {},
       },
     },
+    frecency = {
+      -- db_root = join_paths(get_cache_dir(), "telescope"),
+      show_scores = true,
+      show_unindexed = true,
+      ignore_patterns = { "*.git/*", "*/tmp/*" },
+      disable_devicons = false,
+      workspaces = {
+        ["conf"] = "/home/mrgeek/.config",
+        ["rvim"] = "/home/mrgeek/.config/nvim",
+        ["data"] = "/home/mrgeek/.local/share",
+        ["project"] = "/home/mrgeek/projects",
+        ["playground"] = "/home/mrgeek/playground",
+        ["work"] = "/home/mrgeek/work",
+        ["brain"] = "/home/mrgeek/.brain",
+      },
+    },
     fzf = {
       fuzzy = true,
       override_generic_sorter = true,
@@ -173,7 +189,7 @@ local M = {}
 M.setup = function()
   telescope.setup(default)
 
-  local extensions = { "file_browser", "fzf", "repo" }
+  local extensions = { "file_browser", "fzf", "repo", "frecency" }
 
   pcall(function()
     for _, ext in ipairs(extensions) do
