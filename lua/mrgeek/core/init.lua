@@ -1,3 +1,4 @@
+require 'mrgeek.core.globals'
 require 'mrgeek.core.config'
 require 'mrgeek.core.keymappings'
 
