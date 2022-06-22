@@ -232,7 +232,7 @@ local mappings = {
       d = { ":YodeBufferDelete<CR>", "Yoda delete buffer" },
       a = { ":TZAtaraxis<CR>", "Ataraxis mode" },
       f = { ":TZFocus<CR>", "Focus mode" },
-      m = { ":TZMinimalist<CR>", "Focus mode" },
+      m = { ":TZMinimalist<CR>", "Minimalist mode" },
     },
   },
 }
