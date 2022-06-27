@@ -51,7 +51,7 @@ local kind_icons = {
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 local source_mapping = {
   -- cmp_tabnine = MrGeek.icons.ribbon,
-  copilot = MrGeek.icons.light,
+  -- copilot = MrGeek.icons.light,
   nvim_lsp = MrGeek.icons.paragraph .. '[LSP]',
   nvim_lua = MrGeek.icons.bomb,
   luasnip = MrGeek.icons.snippet,
@@ -138,7 +138,7 @@ local default = {
   sources = {
     { name = 'nvim_lsp' },
     -- { name = 'cmp_tabnine' },
-    { name = 'copilot' },
+    -- { name = 'copilot' },
     { name = 'nvim_lua' },
     { name = 'luasnip' },
     { name = 'buffer' },
@@ -196,6 +196,6 @@ M.setup = function()
   cmp.setup(default)
 end
 
-vim.cmd("au InsertChange * lua require('copilot.utils').send_completion_request()")
+-- vim.cmd("au InsertChange * lua require('copilot.utils').send_completion_request()")
 
 return M

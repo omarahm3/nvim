@@ -620,9 +620,9 @@ return packer.startup(function(use)
     "hrsh7th/cmp-cmdline",
   })
 
-  use({
-    "github/copilot.vim",
-  })
+  -- use({
+  --   "github/copilot.vim",
+  -- })
 
   -- use {
   --   'tzachar/cmp-tabnine',
@@ -630,22 +630,22 @@ return packer.startup(function(use)
   --   requires = 'hrsh7th/nvim-cmp',
   -- }
 
-  use({
-    "zbirenbaum/copilot.lua",
-    after = { "copilot.vim" },
-    event = { "VimEnter" },
-    -- branch = 'dev',
-    config = function()
-      vim.defer_fn(function()
-        require("copilot").setup()
-      end, 100)
-    end,
-  })
+  -- use({
+  --   "zbirenbaum/copilot.lua",
+  --   after = { "copilot.vim" },
+  --   event = { "VimEnter" },
+  --   -- branch = 'dev',
+  --   config = function()
+  --     vim.defer_fn(function()
+  --       require("copilot").setup()
+  --     end, 100)
+  --   end,
+  -- })
 
-  use({
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua", "nvim-cmp" },
-  })
+  -- use({
+  --   "zbirenbaum/copilot-cmp",
+  --   after = { "copilot.lua", "nvim-cmp" },
+  -- })
 
   -- Core
   use({ "Tastyep/structlog.nvim" })
