@@ -40,6 +40,7 @@ local function configure_debuggers()
   require("mrgeek.dap.lua").setup()
   require("mrgeek.dap.go").setup()
   require("mrgeek.dap.node").setup()
+  require("mrgeek.dap.php").setup()
 end
 
 configure()
