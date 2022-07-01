@@ -15,14 +15,14 @@ function M.setup()
         ["/var/www/web"] = "${workspaceFolder}/web",
         ["/var/www/app_dev.php"] = "${workspaceFolder}/web/app_dev.php",
         ["/var/www/vendor"] = "${workspaceFolder}/vendor",
-      }
+      },
     },
   }
 
   dap.adapters.php = {
     type = "executable",
     command = "node",
-    args = { os.getenv('HOME') .. "/.local/share/nvim/dapinstall/php/vscode-php-debug/out/phpDebug.js" },
+    args = { os.getenv("HOME") .. "/.local/share/nvim/dapinstall/php/vscode-php-debug/out/phpDebug.js" },
   }
 end
 
