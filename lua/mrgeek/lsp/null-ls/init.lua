@@ -96,6 +96,22 @@ function M.setup()
 
     -- Spell check
     b.diagnostics.codespell,
+    b.diagnostics.write_good.with({
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "css",
+        "scss",
+        "less",
+        "html",
+        "json",
+        "jsonc",
+        "yaml",
+        "markdown",
+      },
+    }),
 
     -- Vale
     b.diagnostics.vale,
