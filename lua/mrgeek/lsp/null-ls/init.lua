@@ -71,7 +71,7 @@ function M.setup()
     -- PHP
     b.diagnostics.php,
     b.diagnostics.phpcs.with({
-      command = "./bin/phpcs",
+      command = vim.fn.expand("~/.config/composer/vendor/bin/phpcs"),
       extra_args = {
         "--standard=./ruleset.xml",
         -- "src/"
