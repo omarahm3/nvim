@@ -43,21 +43,8 @@ function M.setup()
 
   local sources = {
     -- JS
-    b.formatting.eslint_d.with({
-      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "css", "scss", "less", "html", "json", "jsonc", "yaml", "markdown" },
-      extra_args = {
-        "--no-eslintrc",
-        "--config",
-        vim.fn.expand("~/.node-style-rules/.eslintrc"),
-      }
-    }),
-    b.diagnostics.eslint_d.with({
-      extra_args = {
-        "--no-eslintrc",
-        "--config",
-        vim.fn.expand("~/.node-style-rules/.eslintrc"),
-      },
-    }),
+    b.formatting.eslint_d,
+    b.diagnostics.eslint_d,
     b.code_actions.eslint_d,
 
     b.formatting.prettier.with({
