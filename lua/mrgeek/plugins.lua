@@ -231,6 +231,13 @@ return packer.startup(function(use)
 	})
 
 	use({
+		"kylechui/nvim-surround",
+		config = function()
+			require("mrgeek.plugins.nvim-surround")
+		end,
+	})
+
+	use({
 		"folke/twilight.nvim",
 		event = "BufRead",
 		config = function()
