@@ -140,7 +140,7 @@ local mappings = {
       h = { ':lua require "gitsigns".stage_hunk()<CR>', "Stage hunk" },
       u = { ':lua require "gitsigns".undo_stage_hunk()<CR>', "Undo stage hunk" },
       c = { ':G commit -m "', "Commit changes" },
-      p = { ':G!push<CR>', "Push changes" },
+      p = { ":G!push<CR>", "Push changes" },
       s = { ":G<CR>", "Status" },
       d = { ':lua require "gitsigns".diffthis("~")<CR>', "Diff current file with remote" },
       L = { ":lua _LAZYGIT_TOGGLE()<CR>", "LazyGit" },
@@ -195,14 +195,26 @@ local mappings = {
       M = { ":Telescope man_pages<CR>", "Man pages" },
       o = { ":Telescope oldfiles<CR>", "Open recent files" },
       r = {
-        ':lua require"telescope".extensions.repo.list{fd_opts={"--no-ignore-vcs"}}<CR>',
+        function()
+          local dirs = {
+            "~/work",
+            "~/playground",
+            "~/projects",
+            "~/.dotfiles",
+            "~/ansible-local",
+          }
+          require("telescope").extensions.repo.list({ search_dirs = dirs })
+        end,
         "Open repositories",
       },
       R = { ":Telescope registers<CR>", "Registers" },
       w = { ":Telescope live_grep<CR>", "Text" },
       k = { ":Telescope keymaps<CR>", "Keymaps" },
       C = { ":Telescope commands<CR>", "Commands" },
-      h = { ":lua require('telescope').extensions.frecency.frecency({ winblend = 10, border = true, previewer = false, shorten_path = false })<CR>", "History" },
+      h = {
+        ":lua require('telescope').extensions.frecency.frecency({ winblend = 10, border = true, previewer = false, shorten_path = false })<CR>",
+        "History",
+      },
     },
     t = {
       name = "Terminal",
