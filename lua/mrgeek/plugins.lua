@@ -66,9 +66,7 @@ return packer.startup(function(use)
       "kyazdani42/nvim-web-devicons",
       opt = true,
     },
-    config = function()
-      require("mrgeek.plugins.lualine")
-    end,
+    config = [[ require("mrgeek.plugins.lualine") ]],
   })
 
   use({
@@ -76,33 +74,29 @@ return packer.startup(function(use)
     requires = {
       "MunifTanjim/nui.nvim",
     },
-    config = function()
-      require("mrgeek.plugins.dressing")
-    end,
+    config = [[ require("mrgeek.plugins.dressing") ]],
   })
 
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
-    config = function()
-      require("mrgeek.treesitter").setup()
-    end,
-    setup = function()
-      require("mrgeek.post_setup").setup_fold()
-    end,
+    requires = {
+      "nvim-treesitter/nvim-treesitter-refactor",
+      "RRethy/nvim-treesitter-textsubjects",
+    },
+    config = [[ require("mrgeek.treesitter").setup() ]],
+    setup = [[ require("mrgeek.post_setup").setup_fold() ]],
   })
 
   use({
-    "nvim-treesitter/playground",
-    after = "nvim-treesitter",
+    "gpanders/nvim-parinfer",
+    event = "InsertEnter *",
   })
 
   use({
     "windwp/nvim-ts-autotag",
     after = "nvim-treesitter",
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
+    config = [[ require("nvim-ts-autotag").setup() ]],
   })
 
   use({
@@ -120,13 +114,6 @@ return packer.startup(function(use)
   })
 
   use({
-    "RRethy/nvim-treesitter-textsubjects",
-    after = {
-      "nvim-treesitter",
-    },
-  })
-
-  use({
     "p00f/nvim-ts-rainbow",
     after = "nvim-treesitter",
   })
@@ -134,9 +121,7 @@ return packer.startup(function(use)
   use({
     "windwp/nvim-autopairs",
     after = "nvim-treesitter",
-    config = function()
-      require("mrgeek.plugins.autopairs")
-    end,
+    config = [[ require("mrgeek.plugins.autopairs") ]],
   })
 
   use({
@@ -148,9 +133,7 @@ return packer.startup(function(use)
     "akinsho/bufferline.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     branch = "main",
-    config = function()
-      require("mrgeek.plugins.bufferline")
-    end,
+    config = [[ require("mrgeek.plugins.bufferline") ]],
   })
 
   use({
@@ -161,32 +144,24 @@ return packer.startup(function(use)
   use({
     "numToStr/Comment.nvim",
     after = "nvim-ts-context-commentstring",
-    config = function()
-      require("mrgeek.plugins.comment")
-    end,
+    config = [[ require("mrgeek.plugins.comment") ]],
   })
 
   use({
     "folke/which-key.nvim",
     event = "BufRead",
-    config = function()
-      require("mrgeek.plugins.whichkey")
-    end,
+    config = [[ require("mrgeek.plugins.whichkey") ]],
   })
 
   use({
     "romgrk/nvim-treesitter-context",
     after = "nvim-treesitter",
-    config = function()
-      require("mrgeek.plugins.context")
-    end,
+    config = [[ require("mrgeek.plugins.context") ]],
   })
 
   use({
     "glepnir/dashboard-nvim",
-    config = function()
-      require("mrgeek.plugins.dashboard")
-    end,
+    config = [[ require("mrgeek.plugins.dashboard") ]],
   })
 
   use({
@@ -194,97 +169,72 @@ return packer.startup(function(use)
     requires = {
       "nvim-lua/plenary.nvim",
     },
-    config = function()
-      require("mrgeek.plugins.session_manager")
-    end,
+    config = [[ require("mrgeek.plugins.session_manager") ]],
   })
 
   use({
     "max397574/better-escape.nvim",
     event = "InsertEnter",
-    config = function()
-      require("better_escape").setup({
+    config = [[ require("better_escape").setup({
         mapping = { "jk" },
         timeout = 300,
-      })
-    end,
+      }) ]],
   })
 
   use({
     "norcalli/nvim-colorizer.lua",
     opt = true,
     event = "BufRead",
-    config = function()
-      require("colorizer").setup()
-    end,
+    config = [[ require("colorizer").setup() ]],
   })
 
   use({
     "ur4ltz/surround.nvim",
     event = "InsertEnter",
-    config = function()
-      require("mrgeek.plugins.surround")
-    end,
+    config = [[ require("mrgeek.plugins.surround") ]],
   })
 
   use({
     "kylechui/nvim-surround",
-    config = function()
-      require("mrgeek.plugins.nvim-surround")
-    end,
+    config = [[ require("mrgeek.plugins.nvim-surround") ]],
   })
 
   use({
     "folke/twilight.nvim",
     event = "BufRead",
-    config = function()
-      require("mrgeek.plugins.twilight")
-    end,
+    config = [[ require("mrgeek.plugins.twilight") ]],
   })
 
   use({
     "Pocco81/TrueZen.nvim",
-    -- event = "BufRead",
-    config = function()
-      require("mrgeek.plugins.truezen")
-    end,
+    config = [[ require("mrgeek.plugins.truezen") ]],
   })
 
   use({
     "gbprod/cutlass.nvim",
-    config = function()
-      require("cutlass").setup({})
-    end,
+    config = [[ require("cutlass").setup({}) ]],
   })
 
   use({
     "rcarriga/nvim-notify",
-    config = function()
-      require("mrgeek.plugins.notify")
-    end,
+    config = [[ require("mrgeek.plugins.notify") ]],
   })
 
   use({
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
-    config = function()
-      require("mrgeek.plugins.symbols_outline")
-    end,
+    config = [[ require("mrgeek.plugins.symbols_outline") ]],
   })
 
   use({
     "akinsho/toggleterm.nvim",
-    config = function()
-      require("mrgeek.plugins.toggle_term")
-    end,
+    config = [[ require("mrgeek.plugins.toggle_term") ]],
   })
 
   use({
     "kevinhwang91/nvim-ufo",
     requires = "kevinhwang91/promise-async",
-    config = function()
-      require("ufo").setup()
-    end,
+    config = [[ require("ufo").setup() ]],
   })
 
   use({
@@ -294,15 +244,12 @@ return packer.startup(function(use)
         "anuvyklack/nvim-keymap-amend",
       },
     },
-    config = function()
-      require("mrgeek.plugins.pretty_fold")
-    end,
+    config = [[ require("mrgeek.plugins.pretty_fold") ]],
   })
 
   use({
     "nvim-neorg/neorg",
-    config = function()
-      require("neorg").setup({
+    config = [[ require("neorg").setup({
         load = {
           ["core.defaults"] = {},
           ["core.norg.dirman"] = {
@@ -314,16 +261,14 @@ return packer.startup(function(use)
             },
           },
         },
-      })
-    end,
+      }) ]],
     requires = "nvim-lua/plenary.nvim",
   })
 
   use({
     "booperlv/nvim-gomove",
     event = "BufRead",
-    config = function()
-      require("gomove").setup({
+    config = [[ require("gomove").setup({
         -- whether or not to map default key bindings, (true/false)
         map_defaults = true,
         -- whether or not to reindent lines moved vertically (true/false)
@@ -332,16 +277,13 @@ return packer.startup(function(use)
         undojoin = true,
         -- whether to not to move past end column when moving blocks horizontally, (true/false)
         move_past_end_col = false,
-      })
-    end,
+      }) ]],
   })
 
   use({
     "David-Kunz/jester",
     event = "BufRead",
-    config = function()
-      require("mrgeek.plugins.jester")
-    end,
+    config = [[ require("mrgeek.plugins.jester") ]],
   })
 
   use({
@@ -350,14 +292,12 @@ return packer.startup(function(use)
       "nvim-lua/plenary.nvim",
     },
     event = "BufRead",
-    config = function()
-      require("yode-nvim").setup({})
-    end,
+    config = [[ require("yode-nvim").setup({}) ]],
   })
 
   use({
     "junegunn/vim-easy-align",
-    config = function()
+    config = [[
       local keymap = vim.keymap.set
 
       -- Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -365,36 +305,27 @@ return packer.startup(function(use)
 
       -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
       keymap("n", "ga", "<Plug>(EasyAlign)")
-    end,
+    ]],
   })
 
   -- Git --
   use({
     "lewis6991/gitsigns.nvim",
     opt = true,
-    config = function()
-      require("mrgeek.plugins.gitsigns")
-    end,
-    setup = function()
-      require("mrgeek.utils").packer_lazy_load("gitsigns.nvim")
-    end,
+    config = [[ require("mrgeek.plugins.gitsigns") ]],
+    setup = [[ require("mrgeek.utils").packer_lazy_load("gitsigns.nvim") ]],
   })
 
   use({
     "tpope/vim-fugitive",
     opt = true,
-    config = function() end,
-    setup = function()
-      require("mrgeek.utils").packer_lazy_load("vim-fugitive")
-    end,
+    setup = [[ require("mrgeek.utils").packer_lazy_load("vim-fugitive") ]],
   })
 
   use({
     "sindrets/diffview.nvim",
     requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("mrgeek.plugins.diffview")
-    end,
+    config = [[ require("mrgeek.plugins.diffview") ]],
   })
 
   -- Color schemes --
@@ -404,9 +335,7 @@ return packer.startup(function(use)
 
   use({
     "marko-cerovac/material.nvim",
-    config = function()
-      require("mrgeek.theme.material")
-    end,
+    config = [[ require("mrgeek.theme.material") ]],
   })
 
   use("shaunsingh/moonlight.nvim")
@@ -422,9 +351,7 @@ return packer.startup(function(use)
   use({
     "catppuccin/nvim",
     as = "catppuccin",
-    config = function()
-      require("mrgeek.plugins.catppuccin")
-    end,
+    config = [[ require("mrgeek.plugins.catppuccin") ]],
   })
 
   -- File managing plugins --
@@ -434,23 +361,17 @@ return packer.startup(function(use)
       "kyazdani42/nvim-web-devicons", -- optional, for file icon
     },
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    config = function()
-      require("mrgeek.plugins.nvimtree")
-    end,
+    config = [[ require("mrgeek.plugins.nvimtree") ]],
   })
 
   use({
     "karb94/neoscroll.nvim", -- pretty smooth scrolling
-    config = function()
-      require("neoscroll").setup({})
-    end,
+    config = [[ require("neoscroll").setup({}) ]],
   })
 
   use({
     "nvim-telescope/telescope.nvim",
-    config = function()
-      require("mrgeek.telescope").setup()
-    end,
+    config = [[ require("mrgeek.telescope").setup() ]],
   })
 
   use({
@@ -479,9 +400,9 @@ return packer.startup(function(use)
 
   use({
     "airblade/vim-rooter",
-    config = function()
+    config = [[
       vim.g["rooter_cd_cmd"] = "lcd"
-    end,
+    ]],
   })
 
   use({
@@ -514,9 +435,7 @@ return packer.startup(function(use)
       { "leoluz/nvim-dap-go", module = "dap-go" },
       { "jbyuki/one-small-step-for-vimkind", module = "osv" },
     },
-    config = function()
-      require("mrgeek.plugins.dap")
-    end,
+    config = [[ require("mrgeek.plugins.dap") ]],
   })
 
   -- Debugger management
@@ -524,7 +443,6 @@ return packer.startup(function(use)
     "Pocco81/dap-buddy.nvim",
     branch = "dev",
     event = "BufWinEnter",
-    -- event = 'BufRead',
   })
 
   -- LSP base --
@@ -546,17 +464,13 @@ return packer.startup(function(use)
   use({
     "j-hui/fidget.nvim",
     after = "nvim-lspconfig",
-    config = function()
-      require("fidget").setup({})
-    end,
+    config = [[ require("fidget").setup({}) ]],
   })
 
   use({
     "ray-x/lsp_signature.nvim",
     after = "nvim-lspconfig",
-    config = function()
-      require("mrgeek.plugins.lsp_signature")
-    end,
+    config = [[ require("mrgeek.plugins.lsp_signature") ]],
   })
 
   use({
@@ -571,17 +485,13 @@ return packer.startup(function(use)
   use({
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("mrgeek.plugins.trouble")
-    end,
+    config = [[ require("mrgeek.plugins.trouble") ]],
   })
 
   use({
     "narutoxy/dim.lua",
     requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
-    config = function()
-      require("dim").setup({})
-    end,
+    config = [[ require("dim").setup({}) ]],
   })
 
   -- CMP and snippets plugins --
@@ -599,9 +509,7 @@ return packer.startup(function(use)
 
   use({
     "hrsh7th/nvim-cmp",
-    config = function()
-      require("mrgeek.cmp").setup()
-    end,
+    config = [[ require("mrgeek.cmp").setup() ]],
   })
 
   use({
@@ -624,40 +532,13 @@ return packer.startup(function(use)
     "hrsh7th/cmp-cmdline",
   })
 
-  -- use({
-  --   "github/copilot.vim",
-  -- })
-
-  -- use {
-  --   'tzachar/cmp-tabnine',
-  --   run = './install.sh',
-  --   requires = 'hrsh7th/nvim-cmp',
-  -- }
-
-  -- use({
-  --   "zbirenbaum/copilot.lua",
-  --   after = { "copilot.vim" },
-  --   event = { "VimEnter" },
-  --   -- branch = 'dev',
-  --   config = function()
-  --     vim.defer_fn(function()
-  --       require("copilot").setup()
-  --     end, 100)
-  --   end,
-  -- })
-
-  -- use({
-  --   "zbirenbaum/copilot-cmp",
-  --   after = { "copilot.lua", "nvim-cmp" },
-  -- })
-
   -- Core
   use({ "Tastyep/structlog.nvim" })
 
   -- Experimental plugins --
   use({
     "nathom/filetype.nvim", -- better and more extensive filetypes list
-    config = function()
+    config = [[
       require("filetype").setup({
         overrides = {
           complex = {
@@ -666,16 +547,13 @@ return packer.startup(function(use)
           },
         },
       })
-    end,
+    ]],
   })
 
   use({
     "phaazon/hop.nvim",
     branch = "v1",
-    config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-      require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
-    end,
+    config = [[ require("hop").setup({ keys = "etovxqpdygfblzhckisuran" }) ]],
   })
 
   use({
@@ -684,18 +562,14 @@ return packer.startup(function(use)
 
   use({
     "https://gitlab.com/yorickpeterse/nvim-pqf.git",
-    config = function()
-      require("pqf").setup()
-    end,
+    config = [[ require("pqf").setup() ]],
   })
 
   use({ "antoinemadec/FixCursorHold.nvim" })
 
   use({
     "edluffy/specs.nvim",
-    config = function()
-      require("specs").setup({})
-    end,
+    config = [[ require("specs").setup({}) ]],
   })
 
   -- Packer stuff --
