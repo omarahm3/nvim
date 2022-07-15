@@ -1,8 +1,24 @@
 local packer = nil
+
 local function init()
   if packer == nil then
-    packer = require 'packer'
-    packer.init { disable_commands = true }
+    packer = require("packer")
+
+    -- Packer config
+    packer.init({
+      disable_commands = true,
+      display = {
+        open_fn = function()
+          return require("packer.util").float({ border = "single" })
+        end,
+        prompt_border = "single",
+      },
+      git = {
+        clone_timeout = 6000, -- seconds
+      },
+      max_jobs = 20,
+      compile_on_sync = true,
+    })
   end
 
   local use = packer.use
@@ -21,13 +37,16 @@ local function init()
   -- Dependencies --
   use("nvim-lua/popup.nvim") -- implementation of popup api from vim in neovim
   use("nvim-lua/plenary.nvim") -- useful lua functions that is used by lots of plugins
+  use({
+    "kyazdani42/nvim-web-devicons",
+    opt = true,
+  })
 
   -- UI stuff --
   use({
     "nvim-lualine/lualine.nvim",
     requires = {
       "kyazdani42/nvim-web-devicons",
-      opt = true,
     },
     config = [[ require("mrgeek.plugins.lualine") ]],
   })
@@ -40,33 +59,35 @@ local function init()
     config = [[ require("mrgeek.plugins.dressing") ]],
   })
 
+  -- Treesitter plugins --
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     requires = {
       "nvim-treesitter/nvim-treesitter-refactor",
       "RRethy/nvim-treesitter-textsubjects",
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      "romgrk/nvim-treesitter-context",
+      "windwp/nvim-ts-autotag",
+      "p00f/nvim-ts-rainbow",
+      "windwp/nvim-autopairs",
+    },
+    wants = {
+      "nvim-treesitter-refactor",
+      "nvim-treesitter-textsubjects",
+      "nvim-treesitter-textobjects",
+      "nvim-ts-context-commentstring",
+      "nvim-treesitter-context",
     },
     config = [[ require("mrgeek.treesitter").setup() ]],
     setup = [[ require("mrgeek.post_setup").setup_fold() ]],
   })
 
   use({
-    "gpanders/nvim-parinfer",
-    event = "InsertEnter *",
-  })
-
-  use({
     "windwp/nvim-ts-autotag",
     after = "nvim-treesitter",
     config = [[ require("nvim-ts-autotag").setup() ]],
-  })
-
-  use({
-    "jose-elias-alvarez/nvim-lsp-ts-utils",
-    after = {
-      "nvim-treesitter",
-    },
   })
 
   use({
@@ -88,8 +109,22 @@ local function init()
   })
 
   use({
-    "kyazdani42/nvim-web-devicons",
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    requires = {
+      "numToStr/Comment.nvim",
+    },
     after = "nvim-treesitter",
+  })
+
+  use({
+    "romgrk/nvim-treesitter-context",
+    after = "nvim-treesitter",
+    config = [[ require("mrgeek.plugins.context") ]],
+  })
+
+  use({
+    "gpanders/nvim-parinfer",
+    event = "InsertEnter *",
   })
 
   use({
@@ -97,11 +132,6 @@ local function init()
     requires = "kyazdani42/nvim-web-devicons",
     branch = "main",
     config = [[ require("mrgeek.plugins.bufferline") ]],
-  })
-
-  use({
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    after = "nvim-treesitter",
   })
 
   use({
@@ -114,12 +144,6 @@ local function init()
     "folke/which-key.nvim",
     event = "BufRead",
     config = [[ require("mrgeek.plugins.whichkey") ]],
-  })
-
-  use({
-    "romgrk/nvim-treesitter-context",
-    after = "nvim-treesitter",
-    config = [[ require("mrgeek.plugins.context") ]],
   })
 
   use({
@@ -148,28 +172,25 @@ local function init()
     "norcalli/nvim-colorizer.lua",
     opt = true,
     event = "BufRead",
+    ft = { "css" },
     config = [[ require("colorizer").setup() ]],
   })
 
   use({
-    "ur4ltz/surround.nvim",
-    event = "InsertEnter",
-    config = [[ require("mrgeek.plugins.surround") ]],
-  })
-
-  use({
     "kylechui/nvim-surround",
+    event = "InsertEnter",
     config = [[ require("mrgeek.plugins.nvim-surround") ]],
   })
 
   use({
     "folke/twilight.nvim",
-    event = "BufRead",
+    cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
     config = [[ require("mrgeek.plugins.twilight") ]],
   })
 
   use({
     "Pocco81/TrueZen.nvim",
+    cmd = { "TZFocus", "TZAtaraxis", "TZMinimalist" },
     config = [[ require("mrgeek.plugins.truezen") ]],
   })
 
@@ -191,6 +212,7 @@ local function init()
 
   use({
     "akinsho/toggleterm.nvim",
+    cmd = "ToggleTerm",
     config = [[ require("mrgeek.plugins.toggle_term") ]],
   })
 
@@ -198,34 +220,6 @@ local function init()
     "kevinhwang91/nvim-ufo",
     requires = "kevinhwang91/promise-async",
     config = [[ require("ufo").setup() ]],
-  })
-
-  use({
-    "anuvyklack/pretty-fold.nvim",
-    requires = {
-      {
-        "anuvyklack/nvim-keymap-amend",
-      },
-    },
-    config = [[ require("mrgeek.plugins.pretty_fold") ]],
-  })
-
-  use({
-    "nvim-neorg/neorg",
-    config = [[ require("neorg").setup({
-        load = {
-          ["core.defaults"] = {},
-          ["core.norg.dirman"] = {
-            config = {
-              workspaces = {
-                work = "~/notes/work",
-                home = "~/notes/home",
-              },
-            },
-          },
-        },
-      }) ]],
-    requires = "nvim-lua/plenary.nvim",
   })
 
   use({
@@ -246,9 +240,11 @@ local function init()
   use({
     "David-Kunz/jester",
     event = "BufRead",
+    ft = { "javascript", "typescript" },
     config = [[ require("mrgeek.plugins.jester") ]],
   })
 
+  -- TODO properly setup yode
   use({
     "hoschi/yode-nvim",
     requires = {
@@ -334,31 +330,40 @@ local function init()
 
   use({
     "nvim-telescope/telescope.nvim",
+    requires = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
+      "nvim-telescope/telescope-frecency.nvim",
+      "cljoly/telescope-repo.nvim",
+    },
+    wants = {
+      "popup.nvim",
+      "plenary.nvim",
+      "telescope-fzf-native.nvim",
+      "telescope-file-browser.nvim",
+      "telescope-frecency.nvim",
+      "telescope-repo.nvim",
+    },
     config = [[ require("mrgeek.telescope").setup() ]],
-  })
-
-  use({
+    cmd = "Telescope",
+    module = "telescope",
+  }, {
     "nvim-telescope/telescope-fzf-native.nvim",
-    requires = {
-      {
-        "nvim-telescope/telescope.nvim",
-      },
-    },
     run = "make",
-  })
-
-  use({
+  }, {
     "nvim-telescope/telescope-file-browser.nvim",
-    requires = {
-      {
-        "nvim-telescope/telescope.nvim",
-      },
-    },
-  })
-
-  use({
+    after = "telescope.nvim",
+  }, {
     "nvim-telescope/telescope-frecency.nvim",
-    requires = { "tami5/sqlite.lua" },
+    after = "telescope.nvim",
+  }, {
+    "cljoly/telescope-repo.nvim",
+    requires = {
+      "airblade/vim-rooter",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    after = "telescope.nvim",
   })
 
   use({
@@ -366,21 +371,6 @@ local function init()
     config = [[
       vim.g["rooter_cd_cmd"] = "lcd"
     ]],
-  })
-
-  use({
-    "cljoly/telescope-repo.nvim",
-    requires = {
-      {
-        "airblade/vim-rooter",
-      },
-      {
-        "nvim-lua/plenary.nvim",
-      },
-      {
-        "nvim-telescope/telescope.nvim",
-      },
-    },
   })
 
   -- Debugging
@@ -408,15 +398,38 @@ local function init()
     event = "BufWinEnter",
   })
 
-  -- LSP base --
+  -- LSP plugins --
   use({
     "neovim/nvim-lspconfig",
-  })
-
-  -- LSP plugins --
-
-  use({
+    requires = {
+      "williamboman/nvim-lsp-installer",
+      "jose-elias-alvarez/nvim-lsp-ts-utils",
+      "ray-x/lsp_signature.nvim",
+      "onsails/lspkind-nvim",
+    },
+    wants = {
+      "nvim-lsp-installer",
+      "nvim-lsp-ts-utils",
+      "lsp_signature.nvim",
+      "lspkind-nvim",
+    },
+  }, {
     "williamboman/nvim-lsp-installer",
+    after = "nvim-lspconfig",
+  }, {
+    "jose-elias-alvarez/nvim-lsp-ts-utils",
+    after = "nvim-lspconfig",
+  }, {
+    "j-hui/fidget.nvim",
+    after = "nvim-lspconfig",
+    config = [[ require("fidget").setup({}) ]],
+  }, {
+    "ray-x/lsp_signature.nvim",
+    after = "nvim-lspconfig",
+    config = [[ require("mrgeek.plugins.lsp_signature") ]],
+  }, {
+    "onsails/lspkind-nvim",
+    after = "nvim-lspconfig",
   })
 
   use({
@@ -425,24 +438,7 @@ local function init()
   })
 
   use({
-    "j-hui/fidget.nvim",
-    after = "nvim-lspconfig",
-    config = [[ require("fidget").setup({}) ]],
-  })
-
-  use({
-    "ray-x/lsp_signature.nvim",
-    after = "nvim-lspconfig",
-    config = [[ require("mrgeek.plugins.lsp_signature") ]],
-  })
-
-  use({
     "simrat39/rust-tools.nvim",
-  })
-
-  use({
-    "onsails/lspkind-nvim",
-    after = "nvim-lspconfig",
   })
 
   use({
