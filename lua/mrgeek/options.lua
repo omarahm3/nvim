@@ -43,6 +43,23 @@ local g_options = {
   did_load_filetypes = 0,                           -- Needed by nathom/filetype.nvim to prevent loading default filetypes
   do_filetype_lua = 1,
   material_style = 'oceanic',                      -- the main variant of material theme
+  loaded_python_provider = 0,
+  python3_host_prog = '/usr/bin/python',
+  node_host_prog = '/usr/local/bin/neovim-node-host',
+}
+
+-- Disable some built-in plugins we don't want
+local disabled_built_ins = {
+  'gzip',
+  'man',
+  'matchit',
+  'matchparen',
+  'shada_plugin',
+  'tarPlugin',
+  'tar',
+  'zipPlugin',
+  'zip',
+  'netrwPlugin',
 }
 
 vim.opt.shortmess:append 'c'
@@ -53,6 +70,10 @@ end
 
 for key, value in pairs(options) do
   vim.opt[key] = value
+end
+
+for _, value in pairs(disabled_built_ins) do
+  vim.g['loaded_' .. value] = 1
 end
 
 vim.cmd'set whichwrap+=<,>,[,],h,l'
