@@ -159,6 +159,14 @@ local mappings = {
         h = { ":DiffviewFileHistory %:p<CR>", "File history" },
       },
     },
+    p = {
+      name = "Packer",
+      i = { ":PackerInstall<CR>", "Install" },
+      u = { ":PackerUpdate<CR>", "Update" },
+      s = { ":PackerSync<CR>", "Sync" },
+      C = { ":PackerClean<CR>", "Clean" },
+      c = { ":PackerCompile<CR>", "Compile" },
+    },
     l = {
       name = "LSP",
       a = { ":lua vim.lsp.buf.code_action()<CR>", "Code action" },
