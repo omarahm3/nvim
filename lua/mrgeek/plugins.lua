@@ -71,7 +71,6 @@ local function init()
       "romgrk/nvim-treesitter-context",
       "windwp/nvim-ts-autotag",
       "p00f/nvim-ts-rainbow",
-      "windwp/nvim-autopairs",
     },
     wants = {
       "nvim-treesitter-refactor",
@@ -104,7 +103,8 @@ local function init()
 
   use({
     "windwp/nvim-autopairs",
-    after = "nvim-treesitter",
+    event = "InsertCharPre",
+    after = "nvim-cmp",
     config = [[ require("mrgeek.plugins.autopairs") ]],
   })
 
@@ -401,6 +401,10 @@ local function init()
   -- LSP plugins --
   use({
     "neovim/nvim-lspconfig",
+    after = {
+      "nvim-cmp",
+    },
+    event = { "BufRead", "BufNewFile", "InsertEnter" },
     requires = {
       "williamboman/nvim-lsp-installer",
       "jose-elias-alvarez/nvim-lsp-ts-utils",
@@ -455,40 +459,56 @@ local function init()
 
   -- CMP and snippets plugins --
   use({
-    "hrsh7th/cmp-nvim-lsp",
-  })
-
-  use({
-    "rafamadriz/friendly-snippets",
-  })
-
-  use({
-    "L3MON4D3/LuaSnip",
-  })
-
-  use({
     "hrsh7th/nvim-cmp",
     config = [[ require("mrgeek.cmp").setup() ]],
-  })
-
-  use({
-    "saadparwaiz1/cmp_luasnip",
-  })
-
-  use({
-    "hrsh7th/cmp-nvim-lua",
-  })
-
-  use({
-    "hrsh7th/cmp-buffer",
-  })
-
-  use({
-    "hrsh7th/cmp-path",
-  })
-
-  use({
-    "hrsh7th/cmp-cmdline",
+    wants = {
+      "cmp-nvim-lsp",
+      "LuaSnip",
+      "cmp_luasnip",
+    },
+    requires = {
+      {
+        "L3MON4D3/LuaSnip",
+        wants = {
+          "friendly-snippets",
+        },
+        event = "InsertCharPre",
+      },
+      {
+        "rafamadriz/friendly-snippets",
+        event = "InsertCharPre",
+      },
+      {
+        "saadparwaiz1/cmp_luasnip",
+        event = "InsertCharPre",
+        after = "nvim-cmp",
+      },
+      {
+        "hrsh7th/cmp-nvim-lsp",
+        event = "InsertCharPre",
+        after = "nvim-cmp",
+      },
+      {
+        "hrsh7th/cmp-nvim-lua",
+        event = "InsertCharPre",
+        after = "nvim-cmp",
+      },
+      {
+        "hrsh7th/cmp-buffer",
+        event = "InsertCharPre",
+        after = "nvim-cmp",
+      },
+      {
+        "hrsh7th/cmp-path",
+        event = "InsertCharPre",
+        after = "nvim-cmp",
+      },
+      {
+        "hrsh7th/cmp-cmdline",
+        event = "CmdlineEnter",
+        after = "nvim-cmp",
+      },
+    },
   })
 
   -- Core
