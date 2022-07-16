@@ -25,9 +25,9 @@ cmd([[command! PackerClean packadd packer.nvim | lua require('mrgeek.plugins').c
 cmd([[command! PackerCompile packadd packer.nvim | lua require('mrgeek.plugins').compile()]])
 
 -- autocommand that will reload neovim whenever you save plugins.lua file
--- cmd([[
---   augroup packer_user_config
---     autocmd!
---     autocmd BufWritePost plugins.lua source <afile> | PackerSync
---   augroup end
--- ]])
+cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])

@@ -64,13 +64,45 @@ local function init()
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     requires = {
-      "nvim-treesitter/nvim-treesitter-refactor",
-      "RRethy/nvim-treesitter-textsubjects",
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "JoosepAlviste/nvim-ts-context-commentstring",
-      "romgrk/nvim-treesitter-context",
-      "windwp/nvim-ts-autotag",
-      "p00f/nvim-ts-rainbow",
+      {
+        "nvim-treesitter/nvim-treesitter-refactor",
+      },
+      {
+        "RRethy/nvim-treesitter-textsubjects",
+      },
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = {
+          "nvim-treesitter",
+        },
+      },
+      {
+        "windwp/nvim-ts-autotag",
+        after = "nvim-treesitter",
+        config = [[ require("nvim-ts-autotag").setup() ]],
+      },
+      {
+        "p00f/nvim-ts-rainbow",
+        after = "nvim-treesitter",
+      },
+      {
+        "windwp/nvim-autopairs",
+        event = "InsertCharPre",
+        after = "nvim-cmp",
+        config = [[ require("mrgeek.plugins.autopairs") ]],
+      },
+      {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        requires = {
+          "numToStr/Comment.nvim",
+        },
+        after = "nvim-treesitter",
+      },
+      {
+        "romgrk/nvim-treesitter-context",
+        after = "nvim-treesitter",
+        config = [[ require("mrgeek.plugins.context") ]],
+      },
     },
     wants = {
       "nvim-treesitter-refactor",
@@ -81,45 +113,6 @@ local function init()
     },
     config = [[ require("mrgeek.treesitter").setup() ]],
     setup = [[ require("mrgeek.post_setup").setup_fold() ]],
-  })
-
-  use({
-    "windwp/nvim-ts-autotag",
-    after = "nvim-treesitter",
-    config = [[ require("nvim-ts-autotag").setup() ]],
-  })
-
-  use({
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    after = {
-      "nvim-treesitter",
-    },
-  })
-
-  use({
-    "p00f/nvim-ts-rainbow",
-    after = "nvim-treesitter",
-  })
-
-  use({
-    "windwp/nvim-autopairs",
-    event = "InsertCharPre",
-    after = "nvim-cmp",
-    config = [[ require("mrgeek.plugins.autopairs") ]],
-  })
-
-  use({
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    requires = {
-      "numToStr/Comment.nvim",
-    },
-    after = "nvim-treesitter",
-  })
-
-  use({
-    "romgrk/nvim-treesitter-context",
-    after = "nvim-treesitter",
-    config = [[ require("mrgeek.plugins.context") ]],
   })
 
   use({
