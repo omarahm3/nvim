@@ -323,11 +323,30 @@ local function init()
 
   use({
     "nvim-telescope/telescope.nvim",
+    event = "BufEnter",
     requires = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      "nvim-telescope/telescope-file-browser.nvim",
-      "nvim-telescope/telescope-frecency.nvim",
-      "cljoly/telescope-repo.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        after = "telescope.nvim",
+        run = "make",
+      },
+      {
+        "nvim-telescope/telescope-file-browser.nvim",
+        after = "telescope.nvim",
+      },
+      {
+        "nvim-telescope/telescope-frecency.nvim",
+        after = "telescope.nvim",
+      },
+      {
+        "cljoly/telescope-repo.nvim",
+        requires = {
+          "airblade/vim-rooter",
+          "nvim-lua/plenary.nvim",
+          "nvim-telescope/telescope.nvim",
+        },
+        after = "telescope.nvim",
+      },
     },
     wants = {
       "popup.nvim",
@@ -340,23 +359,6 @@ local function init()
     config = [[ require("mrgeek.telescope").setup() ]],
     cmd = "Telescope",
     module = "telescope",
-  }, {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    run = "make",
-  }, {
-    "nvim-telescope/telescope-file-browser.nvim",
-    after = "telescope.nvim",
-  }, {
-    "nvim-telescope/telescope-frecency.nvim",
-    after = "telescope.nvim",
-  }, {
-    "cljoly/telescope-repo.nvim",
-    requires = {
-      "airblade/vim-rooter",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-    after = "telescope.nvim",
   })
 
   use({
