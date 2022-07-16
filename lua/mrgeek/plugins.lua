@@ -401,10 +401,28 @@ local function init()
     },
     event = { "BufRead", "BufNewFile", "InsertEnter" },
     requires = {
-      "williamboman/nvim-lsp-installer",
-      "jose-elias-alvarez/nvim-lsp-ts-utils",
-      "ray-x/lsp_signature.nvim",
-      "onsails/lspkind-nvim",
+      {
+        "williamboman/nvim-lsp-installer",
+        after = "nvim-lspconfig",
+      },
+      {
+        "jose-elias-alvarez/nvim-lsp-ts-utils",
+        after = "nvim-lspconfig",
+      },
+      {
+        "j-hui/fidget.nvim",
+        after = "nvim-lspconfig",
+        config = [[ require("fidget").setup({}) ]],
+      },
+      {
+        "ray-x/lsp_signature.nvim",
+        after = "nvim-lspconfig",
+        config = [[ require("mrgeek.plugins.lsp_signature") ]],
+      },
+      {
+        "onsails/lspkind-nvim",
+        after = "nvim-lspconfig",
+      },
     },
     wants = {
       "nvim-lsp-installer",
@@ -412,23 +430,6 @@ local function init()
       "lsp_signature.nvim",
       "lspkind-nvim",
     },
-  }, {
-    "williamboman/nvim-lsp-installer",
-    after = "nvim-lspconfig",
-  }, {
-    "jose-elias-alvarez/nvim-lsp-ts-utils",
-    after = "nvim-lspconfig",
-  }, {
-    "j-hui/fidget.nvim",
-    after = "nvim-lspconfig",
-    config = [[ require("fidget").setup({}) ]],
-  }, {
-    "ray-x/lsp_signature.nvim",
-    after = "nvim-lspconfig",
-    config = [[ require("mrgeek.plugins.lsp_signature") ]],
-  }, {
-    "onsails/lspkind-nvim",
-    after = "nvim-lspconfig",
   })
 
   use({
@@ -449,6 +450,10 @@ local function init()
   use({
     "narutoxy/dim.lua",
     requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+    after = {
+      "nvim-treesitter",
+      "nvim-lspconfig",
+    },
     config = [[ require("dim").setup({}) ]],
   })
 
@@ -526,7 +531,8 @@ local function init()
 
   use({
     "phaazon/hop.nvim",
-    branch = "v1",
+    branch = "v2",
+    event = "BufRead",
     config = [[ require("hop").setup({ keys = "etovxqpdygfblzhckisuran" }) ]],
   })
 
