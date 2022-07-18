@@ -280,6 +280,11 @@ local function init()
     config = [[ require("mrgeek.plugins.diffview") ]],
   })
 
+  use({
+    "akinsho/git-conflict.nvim",
+    config = [[ require("git-conflict").setup() ]]
+  })
+
   -- Color schemes --
   use("folke/tokyonight.nvim") -- tokyonight theme yay
 
