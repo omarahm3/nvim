@@ -70,7 +70,7 @@ local mappings = {
     g = {
       h = { ':lua require "gitsigns".stage_hunk()<CR>', "Stage hunk" },
     },
-    y = {
+    o = {
       name = "Focus",
       c = { ":YodeCreateSeditorFloating<CR>", "Yoda create" },
       r = { ":YodeCreateSeditorReplace<CR>", "Yoda replace" },
