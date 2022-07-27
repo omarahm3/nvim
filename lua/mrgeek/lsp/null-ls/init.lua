@@ -106,7 +106,7 @@ function M.setup()
   local default_opts = require("mrgeek.lsp").get_common_opts()
 
   null_ls.setup(vim.tbl_deep_extend("force", default_opts, {
-    debug = true,
+    debug = false,
     sources = sources,
     on_attach = function(client, bufnr)
       -- TODO allow auto formatting once prettierd rules are set

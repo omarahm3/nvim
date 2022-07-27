@@ -8,8 +8,8 @@ local utils = require("nvim-surround.utils")
 
 local default = {
   keymaps = { -- vim-surround style keymaps
-    insert = "ys",
-    insert_line = "yss",
+    -- insert = "ys",
+    -- insert_line = "yss",
     visual = "S",
     delete = "ds",
     change = "cx",
