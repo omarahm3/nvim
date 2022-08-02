@@ -13,21 +13,3 @@ local function remap_leader()
 end
 
 remap_leader()
-
-local cmd = vim.cmd
-
--- Commands
-cmd([[command! WhatHighlight :call util#syntax_stack()]])
-cmd([[command! PackerInstall packadd packer.nvim | lua require('mrgeek.plugins').install()]])
-cmd([[command! PackerUpdate packadd packer.nvim | lua require('mrgeek.plugins').update()]])
-cmd([[command! PackerSync packadd packer.nvim | lua require('mrgeek.plugins').sync()]])
-cmd([[command! PackerClean packadd packer.nvim | lua require('mrgeek.plugins').clean()]])
-cmd([[command! PackerCompile packadd packer.nvim | lua require('mrgeek.plugins').compile()]])
-
--- autocommand that will reload neovim whenever you save plugins.lua file
-cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])

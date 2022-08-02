@@ -8,31 +8,38 @@ function M.setup()
     underline = true,
     severity_sort = true,
     float = {
-      style = 'minimal',
-      border = 'rounded',
-      source = 'always',
-      header = '',
-      prefix = '',
+      style = "minimal",
+      border = "rounded",
+      source = "always",
+      header = "",
+      prefix = "",
       format = function(diagnostic)
         local code = diagnostic.user_data.lsp.code
 
         if not diagnostic.source or not code then
-          return string.format('%s', diagnostic.message)
+          return string.format("%s", diagnostic.message)
         end
 
-        if diagnostic.source == 'eslint' then
-          return string.format('%s [%s]', diagnostic.message, code)
+        if diagnostic.source == "eslint" then
+          return string.format("%s [%s]", diagnostic.message, code)
         end
 
-        return string.format('%s [%s]', diagnostic.message, diagnostic.source)
-      end
+        return string.format("%s [%s]", diagnostic.message, diagnostic.source)
+      end,
     },
   }
 
   vim.diagnostic.config(config)
 
-  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+    vim.lsp.handlers.signature_help,
+    { border = "rounded" }
+  )
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics,
+    { virtual_text = false }
+  )
 end
 
 return M

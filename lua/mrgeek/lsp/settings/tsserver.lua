@@ -37,8 +37,7 @@ local default_capabilities = require('mrgeek.lsp').common_capabilities()
 
 local on_attach = function(client, bufnr)
   require('mrgeek.lsp').common_on_attach(client, bufnr)
-  client.server_capabilities.document_formatting = false
-  client.server_capabilities.document_range_formatting = false
+  client.server_capabilities.documentRangeFormattingProvider = false
   client.server_capabilities.documentFormattingProvider = false
 
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
