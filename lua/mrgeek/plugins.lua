@@ -14,12 +14,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
   })
 end
 
-return require('packer').startup({
+return require("packer").startup({
   function(use)
-    use({
-      "lewis6991/impatient.nvim",
-    })
-
     -- Packer plugin --
     use({
       "wbthomason/packer.nvim", -- have packer manage itself
@@ -27,11 +23,22 @@ return require('packer').startup({
     })
 
     -- Dependencies --
+    use({ "lewis6991/impatient.nvim" })
     use("nvim-lua/popup.nvim") -- implementation of popup api from vim in neovim
     use("nvim-lua/plenary.nvim") -- useful lua functions that is used by lots of plugins
+    use({ "kyazdani42/nvim-web-devicons" })
     use({
-      "kyazdani42/nvim-web-devicons",
-      opt = true,
+      "nathom/filetype.nvim", -- better and more extensive filetypes list
+      config = [[
+      require("filetype").setup({
+        overrides = {
+          complex = {
+            -- Set the filetype of any full filename matching the regex to gitconfig
+            ["Dockerfile*"] = "dockerfile", -- Included in the plugin
+          },
+        },
+      })
+    ]] ,
     })
 
     -- UI stuff --
@@ -391,6 +398,14 @@ return require('packer').startup({
       event = "BufWinEnter",
     })
 
+    use({
+      "williamboman/mason.nvim",
+    })
+
+    use({
+      "williamboman/mason-lspconfig.nvim",
+    })
+
     -- LSP plugins --
     use({
       "neovim/nvim-lspconfig",
@@ -399,14 +414,6 @@ return require('packer').startup({
       },
       event = { "BufRead", "BufNewFile", "InsertEnter" },
       requires = {
-        {
-          "williamboman/mason.nvim",
-          after = "nvim-lspconfig",
-        },
-        {
-          "williamboman/mason-lspconfig.nvim",
-          after = "nvim-lspconfig",
-        },
         {
           "jose-elias-alvarez/nvim-lsp-ts-utils",
           after = "nvim-lspconfig",
@@ -427,8 +434,6 @@ return require('packer').startup({
         },
       },
       wants = {
-        "mason.nvim",
-        "mason-lspconfig.nvim",
         "nvim-lsp-ts-utils",
         "lsp_signature.nvim",
         "lspkind-nvim",
@@ -518,19 +523,6 @@ return require('packer').startup({
     use({ "Tastyep/structlog.nvim" })
 
     -- Experimental plugins --
-    use({
-      "nathom/filetype.nvim", -- better and more extensive filetypes list
-      config = [[
-      require("filetype").setup({
-        overrides = {
-          complex = {
-            -- Set the filetype of any full filename matching the regex to gitconfig
-            ["Dockerfile*"] = "dockerfile", -- Included in the plugin
-          },
-        },
-      })
-    ]] ,
-    })
 
     use({
       "phaazon/hop.nvim",
@@ -556,7 +548,7 @@ return require('packer').startup({
     })
 
     if packer_bootstrap then
-      require('packer').sync()
+      require("packer").sync()
     end
   end,
   config = {
@@ -565,8 +557,8 @@ return require('packer').startup({
     max_jobs = 50,
     display = {
       open_fn = function()
-        return require('packer.util').float({ border = 'rounded' })
-      end
-    }
-  }
+        return require("packer.util").float({ border = "rounded" })
+      end,
+    },
+  },
 })
