@@ -85,7 +85,12 @@ function M.setup()
     b.diagnostics.codespell,
 
     -- Vale
-    b.diagnostics.vale,
+    b.diagnostics.vale.with({
+      extra_args = {
+        "--config",
+        vim.fn.expand("~/.config/vale/vale.ini")
+      }
+    }),
 
     -- GIT
     b.code_actions.gitsigns,
