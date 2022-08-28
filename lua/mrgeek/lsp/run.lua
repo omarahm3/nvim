@@ -75,6 +75,7 @@ for _, server in ipairs({
   "prismals",
   "tailwindcss",
   "yamlls",
+  "dockerls",
 }) do
   setup_server(server, {})
 end
