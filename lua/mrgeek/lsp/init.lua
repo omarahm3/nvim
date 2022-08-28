@@ -72,6 +72,13 @@ function M.common_on_attach(client, bufnr)
     utils.setup_codelens_refresh(client, bufnr)
   end
 
+  if client.server_capabilities.documentSymbolProvider then
+    local navic_present, navic = pcall(require, "nvim-navic")
+    if navic_present then
+      navic.attach(client, bufnr)
+    end
+  end
+
   add_lsp_buffer_keybindings(bufnr)
 end
 
