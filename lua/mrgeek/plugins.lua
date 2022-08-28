@@ -97,18 +97,12 @@ return require("packer").startup({
           },
           after = "nvim-treesitter",
         },
-        {
-          "romgrk/nvim-treesitter-context",
-          after = "nvim-treesitter",
-          config = [[ require("mrgeek.plugins.context") ]],
-        },
       },
       wants = {
         "nvim-treesitter-refactor",
         "nvim-treesitter-textsubjects",
         "nvim-treesitter-textobjects",
         "nvim-ts-context-commentstring",
-        "nvim-treesitter-context",
       },
       config = [[ require("mrgeek.treesitter").setup() ]],
       setup = [[ require("mrgeek.post_setup").setup_fold() ]],
@@ -455,15 +449,15 @@ return require("packer").startup({
       config = [[ require("mrgeek.plugins.trouble") ]],
     })
 
-    use({
-      "narutoxy/dim.lua",
-      requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
-      after = {
-        "nvim-treesitter",
-        "nvim-lspconfig",
-      },
-      config = [[ require("dim").setup({}) ]],
-    })
+    -- use({
+    --   "narutoxy/dim.lua",
+    --   requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+    --   after = {
+    --     "nvim-treesitter",
+    --     "nvim-lspconfig",
+    --   },
+    --   config = [[ require("dim").setup({}) ]],
+    -- })
 
     -- CMP and snippets plugins --
     use({
@@ -523,6 +517,23 @@ return require("packer").startup({
     use({ "Tastyep/structlog.nvim" })
 
     -- Experimental plugins --
+    use({
+      "ellisonleao/glow.nvim",
+    })
+
+    use({
+      "utilyre/barbecue.nvim",
+      requires = {
+        "neovim/nvim-lspconfig",
+        "smiteshp/nvim-navic",
+        "kyazdani42/nvim-web-devicons", -- optional
+      },
+      config = function()
+        require("barbecue").setup({
+          separator = "  ",
+        })
+      end,
+    })
 
     use({
       "phaazon/hop.nvim",
