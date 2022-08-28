@@ -66,7 +66,7 @@ local mappings = {
     ["f"] = { ':lua require"hop".hint_words()<cr>', "Hop words" },
   },
   vkeymappings = {
-    ["/"] = { ':lua require"Comment.api".toggle_current_linewise_op(vim.fn.visualmode())<CR>', "Comment" },
+    ["/"] = { ':lua require"Comment.api".toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },
     g = {
       h = { ':lua require "gitsigns".stage_hunk()<CR>', "Stage hunk" },
     },
@@ -83,7 +83,7 @@ local mappings = {
   keymappings = {
     ["w"] = { ":w!<CR>", "Save file" },
     ["x"] = { ':lua require("mrgeek.utils").close_buffer()<CR>', "Close current buffer" },
-    ["/"] = { ':lua require"Comment.api".toggle_current_linewise()<CR>', "Comment line" },
+    ["/"] = { ':lua require"Comment.api".toggle.linewise.current()<CR>', "Comment line" },
     ["e"] = { ":NvimTreeToggle<CR>", "NvimTree toggle" },
     b = {
       name = "Buffers",
@@ -189,6 +189,10 @@ local mappings = {
       s = { ":Telescope lsp_document_symbols<CR>", "Document symbols" },
       S = { ":Telescope lsp_dynamic_workspace_symbols<CR>", "Workspace symbols" },
       e = { ":Telescope quickfix<CR>", "Telescope quickfix" },
+    },
+    m = {
+      name = "Markdown",
+      p = { ":Glow<CR>", "Preview" },
     },
     f = {
       name = "Find",
