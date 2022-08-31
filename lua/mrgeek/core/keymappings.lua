@@ -258,6 +258,14 @@ local mappings = {
       f = { ":TZFocus<CR>", "Focus mode" },
       m = { ":TZMinimalist<CR>", "Minimalist mode" },
     },
+    z = {
+      name = 'Telekasten',
+      p = { ':lua require("telekasten").panel()<CR>', 'Panel' },
+      f = { ':lua require("telekasten").find_notes()<CR>', 'Find notes' },
+      d = { ':lua require("telekasten").find_daily_notes()<CR>', 'Find daily notes' },
+      g = { ':lua require("telekasten").search_notes()<CR>', 'Search all notes' },
+      z = { ':lua require("telekasten").follow_link()<CR>', 'Follow link' },
+    },
   },
 }
 

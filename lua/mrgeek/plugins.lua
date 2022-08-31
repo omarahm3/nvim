@@ -24,8 +24,8 @@ return require("packer").startup({
 
     -- Dependencies --
     use({ "lewis6991/impatient.nvim" })
-    use("nvim-lua/popup.nvim") -- implementation of popup api from vim in neovim
-    use("nvim-lua/plenary.nvim") -- useful lua functions that is used by lots of plugins
+    use({ "nvim-lua/popup.nvim" }) -- implementation of popup api from vim in neovim
+    use({ "nvim-lua/plenary.nvim" }) -- useful lua functions that is used by lots of plugins
     use({ "kyazdani42/nvim-web-devicons" })
     use({
       "nathom/filetype.nvim", -- better and more extensive filetypes list
@@ -509,6 +509,15 @@ return require("packer").startup({
           after = "nvim-cmp",
         },
       },
+    })
+
+    -- Notes
+    use({
+      "renerocksai/telekasten.nvim",
+      requires = {
+        "renerocksai/calendar-vim",
+      },
+      config = [[ require("mrgeek.plugins.telekasten") ]],
     })
 
     -- Core
