@@ -356,8 +356,6 @@ return require("packer").startup({
         "telescope-repo.nvim",
       },
       config = [[ require("mrgeek.telescope").setup() ]],
-      cmd = "Telescope",
-      module = "telescope",
     })
 
     use({
