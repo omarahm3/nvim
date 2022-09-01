@@ -266,6 +266,14 @@ local mappings = {
       g = { ':lua require("telekasten").search_notes()<CR>', 'Search all notes' },
       z = { ':lua require("telekasten").follow_link()<CR>', 'Follow link' },
     },
+    c = {
+      name = 'Git conflict',
+      o = { '<Plug>(git-conflict-ours)', 'Ours' },
+      t = { '<Plug>(git-conflict-theirs)', 'Theirs' },
+      b = { '<Plug>(git-conflict-both)', 'Both' },
+      ["0"] = { '<Plug>(git-conflict-none)', 'None' },
+      z = { ':lua require("telekasten").follow_link()<CR>', 'Follow link' },
+    },
   },
 }
 
