@@ -41,6 +41,10 @@ return require("packer").startup({
     ]] ,
     })
 
+    use({
+      "elkowar/yuck.vim",
+    })
+
     -- UI stuff --
     use({
       "nvim-lualine/lualine.nvim",
