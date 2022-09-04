@@ -437,6 +437,14 @@ return require("packer").startup({
     })
 
     use({
+      "ray-x/go.nvim",
+      requires = {
+        "ray-x/guihua.lua",
+      },
+      config = [[ require("go").setup({}) ]],
+    })
+
+    use({
       "jose-elias-alvarez/null-ls.nvim",
       -- after = 'nvim-lspconfig',
     })

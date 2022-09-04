@@ -8,3 +8,5 @@ autocmd("TextYankPost", {
     vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
   end,
 })
+-- Format go files on save
+autocmd("BufWritePre", { pattern = "*.go", command = ":silent! lua require('go.format').goimport()" })
