@@ -76,7 +76,8 @@ for _, server in ipairs({
   "tailwindcss",
   "yamlls",
   "dockerls",
-  "taplo"
+  "taplo",
+  "ansiblels",
 }) do
   setup_server(server, {})
 end

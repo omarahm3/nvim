@@ -16,6 +16,7 @@ mason_lsp.setup({
   -- A list of servers to automatically install if they're not already installed
   ensure_installed = {
     "bash-language-server",
+    "ansible-language-server",
     "css-lsp",
     "html-lsp",
     "json-lsp",
