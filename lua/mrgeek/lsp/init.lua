@@ -72,7 +72,7 @@ function M.common_on_attach(client, bufnr)
     utils.setup_codelens_refresh(client, bufnr)
   end
 
-  if client.server_capabilities.documentSymbolProvider then
+  if client.server_capabilities.documentSymbolProvider and client.name ~= "phpactor" then
     local navic_present, navic = pcall(require, "nvim-navic")
     if navic_present then
       navic.attach(client, bufnr)
