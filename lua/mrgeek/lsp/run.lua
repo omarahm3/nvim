@@ -58,6 +58,12 @@ local servers = {
       },
     },
   },
+  {
+    name = "tailwindcss",
+    setup = {
+      filetypes = { "ejs", "html", "twig", "css", "less", "postcss", "sass", "scss", "javascriptreact", "typescriptreact" },
+    },
+  },
 }
 
 for _, server in ipairs(servers) do
@@ -73,7 +79,6 @@ for _, server in ipairs({
   "rust_analyzer",
   "sorbet",
   "prismals",
-  "tailwindcss",
   "yamlls",
   "dockerls",
   "taplo",
