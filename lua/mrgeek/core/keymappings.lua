@@ -189,6 +189,7 @@ local mappings = {
       s = { ":Telescope lsp_document_symbols<CR>", "Document symbols" },
       S = { ":Telescope lsp_dynamic_workspace_symbols<CR>", "Workspace symbols" },
       e = { ":Telescope quickfix<CR>", "Telescope quickfix" },
+      x = { ":source %<CR>", "Source file" },
     },
     m = {
       name = "Markdown",
