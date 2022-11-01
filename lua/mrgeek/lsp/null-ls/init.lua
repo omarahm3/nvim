@@ -32,10 +32,6 @@ function M.setup()
         "yaml",
         "markdown",
       },
-      --[[ extra_args = { ]]
-      --[[   "--config", ]]
-      --[[   vim.fn.expand("~/.node-style-rules/.prettierrc.json"), ]]
-      --[[ }, ]]
     }),
 
     -- PHP
