@@ -472,16 +472,6 @@ return require("packer").startup({
       config = [[ require("mrgeek.plugins.trouble") ]],
     })
 
-    use({
-      "narutoxy/dim.lua",
-      requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
-      after = {
-        "nvim-treesitter",
-        "nvim-lspconfig",
-      },
-      config = [[ require("dim").setup({}) ]],
-    })
-
     -- CMP and snippets plugins --
     use({
       "hrsh7th/nvim-cmp",
