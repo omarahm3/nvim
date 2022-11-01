@@ -193,7 +193,7 @@ local mappings = {
     },
     m = {
       name = "Markdown",
-      p = { ":Glow<CR>", "Preview" },
+      p = { ":MarkdownPreviewToggle<CR>", "Preview" },
     },
     f = {
       name = "Find",
