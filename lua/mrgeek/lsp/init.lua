@@ -44,7 +44,7 @@ function M.common_capabilities()
   local present, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 
   if present then
-    capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+    capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
   end
 
   return capabilities
