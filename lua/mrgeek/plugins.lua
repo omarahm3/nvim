@@ -342,6 +342,17 @@ return require("packer").startup({
           after = "telescope.nvim",
         },
         {
+          "nvim-telescope/telescope-ui-select.nvim",
+          after = "telescope.nvim",
+          requires = {
+            "kkharji/sqlite.lua",
+          },
+        },
+        {
+          "nvim-telescope/telescope-smart-history.nvim",
+          after = "telescope.nvim",
+        },
+        {
           "cljoly/telescope-repo.nvim",
           requires = {
             "airblade/vim-rooter",
@@ -358,6 +369,8 @@ return require("packer").startup({
         "telescope-file-browser.nvim",
         "telescope-frecency.nvim",
         "telescope-repo.nvim",
+        "telescope-ui-select.nvim",
+        "telescope-smart-history.nvim",
       },
       config = [[ require("mrgeek.telescope").setup() ]],
     })
