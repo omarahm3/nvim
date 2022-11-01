@@ -544,6 +544,37 @@ return require("packer").startup({
     })
 
     use({
+      "iamcco/markdown-preview.nvim",
+      run = "cd app && yarn install",
+      setup = function()
+        vim.g.mkdp_filetypes = { "markdown" }
+      end,
+      ft = { "markdown" },
+    })
+
+    use({
+      "folke/noice.nvim",
+      event = "VimEnter",
+      config = function()
+        require("noice").setup({
+          popupmenu = {
+            enabled = false,
+          },
+          lsp = {
+            signature = {
+              enabled = false,
+            },
+          },
+        })
+      end,
+      requires = {
+        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+        "MunifTanjim/nui.nvim",
+        "rcarriga/nvim-notify",
+      },
+    })
+
+    use({
       "utilyre/barbecue.nvim",
       requires = {
         "neovim/nvim-lspconfig",
