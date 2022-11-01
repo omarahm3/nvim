@@ -92,6 +92,15 @@ function M.setup()
       }
     }),
 
+    -- Python
+    b.diagnostics.pylint.with({
+      diagnostics_postprocess = function(diagnostic)
+        diagnostic.code = diagnostic.message_id
+      end,
+    }),
+    b.formatting.isort,
+    b.formatting.black,
+
     -- GIT
     b.code_actions.gitsigns,
 
