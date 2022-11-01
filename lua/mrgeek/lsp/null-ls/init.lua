@@ -43,9 +43,9 @@ function M.setup()
 
   local sources = {
     -- JS
-    b.formatting.eslint_d,
-    b.diagnostics.eslint_d,
-    b.code_actions.eslint_d,
+    b.formatting.eslint,
+    b.diagnostics.eslint,
+    b.code_actions.eslint,
 
     b.formatting.prettier.with({
       filetypes = {
