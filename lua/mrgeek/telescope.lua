@@ -108,6 +108,10 @@ local default = {
     grep_previewer = previewers.vim_buffer_vimgrep.new,
     qflist_previewer = previewers.vim_buffer_qflist.new,
     buffer_previewer_maker = previewers.buffer_previewer_maker,
+    history = {
+      path = "~/.local/share/nvim/databases/telescope_history.sqlite3",
+      limit = 100,
+    },
     mappings = {
       ["i"] = {
         ["<a-j>"] = actions.move_selection_next,
@@ -128,6 +132,12 @@ local default = {
     },
   },
   extensions = {
+    smart_history = {
+      history = {
+        path = "~/.local/share/nvim/databases/telescope_history.sqlite3",
+        limit = 100,
+      },
+    },
     file_browser = {
       -- theme = "ivy",
       hijack_netrw = true,
@@ -189,7 +199,7 @@ local M = {}
 M.setup = function()
   telescope.setup(default)
 
-  local extensions = { "file_browser", "fzf", "repo", "frecency" }
+  local extensions = { "file_browser", "fzf", "repo", "frecency", "ui-select", "smart_history" }
 
   pcall(function()
     for _, ext in ipairs(extensions) do
