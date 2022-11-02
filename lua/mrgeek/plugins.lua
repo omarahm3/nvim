@@ -617,6 +617,7 @@ return require("packer").startup({
   end,
   config = {
     compile_path = compile_path,
+    autoremove = true,
     disable_commands = true,
     max_jobs = 50,
     display = {
