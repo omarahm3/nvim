@@ -42,10 +42,10 @@ local mappings = {
     ["p"] = { '"_dP', "Keep what you are pasting in the clipboard register" },
   },
   terminal_globalmappings = {
-    ["<C-h>"] = { "<C-\\><C-N><C-w>h", "Teminal left" },
-    ["<C-j>"] = { "<C-\\><C-N><C-w>j", "Teminal down" },
-    ["<C-k>"] = { "<C-\\><C-N><C-w>k", "Teminal up" },
-    ["<C-l>"] = { "<C-\\><C-N><C-w>l", "Teminal right" },
+    ["<C-h>"] = { "<C-\\><C-N><C-w>h", "Terminal left" },
+    ["<C-j>"] = { "<C-\\><C-N><C-w>j", "Terminal down" },
+    ["<C-k>"] = { "<C-\\><C-N><C-w>k", "Terminal up" },
+    ["<C-l>"] = { "<C-\\><C-N><C-w>l", "Terminal right" },
   },
   globalmappings = {
     ["<C-q>"] = { ":wqall<CR>", "Close nvim" },
