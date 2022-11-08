@@ -58,6 +58,9 @@ function M.setup()
     b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
     b.code_actions.shellcheck,
 
+    -- Ansible
+    b.diagnostics.ansiblelint,
+
     -- All
     b.formatting.trim_whitespace,
     b.diagnostics.todo_comments,
