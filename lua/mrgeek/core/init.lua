@@ -1,6 +1,7 @@
 require("mrgeek.core.globals")
 require("mrgeek.core.config")
 require("mrgeek.core.keymappings")
+require("mrgeek.core.options")
 
 -- Remap space as a leader key
 local function remap_leader()
@@ -13,3 +14,4 @@ local function remap_leader()
 end
 
 remap_leader()
+

@@ -61,7 +61,9 @@ local servers = {
   {
     name = "tailwindcss",
     setup = {
-      filetypes = { "ejs", "html", "twig", "css", "less", "postcss", "sass", "scss", "javascriptreact", "typescriptreact" },
+      root_dir = function(fname)
+        return lspconfig.util.root_pattern("tailwind.config.js", "tailwind.config.cjs", "tailwind.js", "tailwind.cjs")(fname)
+      end
     },
   },
 }
