@@ -3,5 +3,6 @@
     "Lua.diagnostics.disable": [
         "undefined-field",
         "undefined-doc-name"
-    ]
+    ],
+    "Lua.workspace.checkThirdParty": false
 }
